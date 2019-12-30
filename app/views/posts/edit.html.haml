@@ -1,5 +1,7 @@
-%h1 記事の編集
-= render 'form', post: @post
-= link_to '詳細', @post
-|
-= link_to '戻る', posts_path
+%h1 テーマの編集
+.margin-0-auto
+  = render 'form', post: @post
+  .button
+    = link_to '詳細', @post
+    |
+    = link_to '学習テーマ一覧', posts_path

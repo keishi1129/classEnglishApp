@@ -7,11 +7,13 @@
       %ul
         - post.errors.full_messages.each do |message|
           %li= message
-  .field
-    = form.label :title
-    = form.text_field :title
-  .field
-    = form.label :content
-    = form.rich_text_area :content
-  .actions
-    = form.submit
+  .margin-0-auto
+    .mb-5        
+      .field
+        = form.label :title
+        = form.text_field :title, class: "form-control"
+      .field
+        = form.label :content
+        = form.rich_text_area :content
+      .actions
+        = form.submit class: 'btn btn-primary'

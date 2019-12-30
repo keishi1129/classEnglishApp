@@ -1,8 +1,18 @@
 %p#notice= notice
-%p
-  %strong タイトル:
-  = @post.title
-  = @post.content
-= link_to '編集', edit_post_path(@post)
-|
-= link_to '戻る', posts_path
+
+.margin-0-auto
+  .bgc-gray
+    .mb-3
+      %p.post-content
+        %strong タイトル:
+        = @post.title
+        = @post.content
+    -if current_user.admin?
+      .button
+        = link_to '編集', edit_post_path(@post)
+        |
+        = link_to '学習テーマ一覧', posts_path
+    -else
+      .button
+        |
+        = link_to '学習テーマ一覧', posts_path

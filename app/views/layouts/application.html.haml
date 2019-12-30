@@ -8,4 +8,28 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+    .app-header
+      %h1.app-header__title ClassEnglish!
+      %ul.app-header__list
+        - if current_user && current_user.admin?
+          %li
+            = link_to '学習テーマ一覧', posts_path, class: 'nav-link'
+          %li
+            = link_to '単語王', posts_path, class: 'nav-link'
+          %li
+            = link_to '生徒一覧', admin_users_path, class: 'nav-link'
+          %li
+            = link_to '新規生徒登録', new_admin_user_path, class: 'nav-link'
+          %li
+            = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+        - elsif current_user
+          %li
+            = link_to '学習テーマ一覧', posts_path, class: 'nav-link'
+          %li
+            = link_to 'ログイン', login_path, class: 'nav-link'
+          %li
+            = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+        - else
+
+    .main-content
+      = yield
