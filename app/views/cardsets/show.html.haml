@@ -1,0 +1,8 @@
+%p#notice= notice
+-@cardset.words.each do |word|
+  %p=word.name
+  %p=word.meaning
+
+= link_to 'Edit', edit_user_cardset_path(@cardset)
+\|
+= link_to 'Back', user_cardsets_path

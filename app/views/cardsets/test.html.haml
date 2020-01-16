@@ -1,0 +1,30 @@
+.margin-0-auto
+  %h1 単語王チャレンジ
+  .start-btn{"data-words-length": @words.length}
+    %button{class: "btn btn-primary"} START
+  -@words.each do |word|
+    .word-test
+      =render partial: 'word-card', locals: {word: word}
+      .select-answers
+        %button.selector=@wordForMeanings.where.not(id: word.id)[rand(0...@length)].meaning
+        %button.selector=@wordForMeanings.where.not(id: word.id)[rand(0...@length)].meaning
+        %button.selector=@wordForMeanings.where.not(id: word.id)[rand(0...@length)].meaning
+        %button.selector=@wordForMeanings.where.not(id: word.id)[rand(0...@length)].meaning
+        %button.next 次の問題
+
+  .answer-rate
+    =link_to "単語力詳細へ", admin_user_mypage_path, class: "nav-link mb-3"
+    %table.table.table-hover
+      %thead.thead-default
+        %tr
+          %th 単語
+          %th 正解
+          %th あなたの解答
+      %tbody
+        -@words.each do |word|
+          %tr
+            %td=word.name
+            %td=word.meaning
+            %td.your-answer
+
+        
