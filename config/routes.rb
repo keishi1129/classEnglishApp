@@ -1,12 +1,43 @@
 Rails.application.routes.draw do
+  root "posts#index"
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-
-  namespace :admin do
-    resources :users
+  get '/word_find', to: 'cardsets#word_find'
+  # resources :groups do
+  #   collection do
+  #     get 'user_list', to: 'groups#before_user_list'
+  #     get 'user_create', to: 'groups#before_user_create'
+  #   end
+  # end
+  resources :groups do
+    namespace :admin do
+      resources :users
+    end
   end
-  resources :posts
-  root "posts#index"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :admin do
+    resources :users do
+      get '/mypage', to: 'users#mypage'
+      get '/word_practice', to: 'users#word_practice'
+
+    end
+  end
+   
+  
+  resources :posts do
+    post :import, on: :collection
+  end
+
+  resources :users, only: :show do
+    resources :cardsets do
+      get '/practice', to: 'cardsets#practice'
+      get '/test', to: 'cardsets#test'
+    end
+    resources :tests do
+      collection do
+        get 'word_king'
+      end
+      
+    end
+  end
 end

@@ -12,6 +12,7 @@ ja:
       post:
         id: ID
         title: タイトル
+        url: 参照元
         content: 本文
         desc: 詳しい説明
         image: 画像
