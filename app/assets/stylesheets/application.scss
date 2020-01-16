@@ -13,5 +13,20 @@
  *= require_tree .
  *= require_self
  */
-@import 'common';
+
+
+@import 'layouts/common';
+@import 'layouts/mixin';
+@import 'layouts/color';
+@import 'layouts/breadcrumbs';
+@import 'layouts/header';
 @import 'posts/form';
+@import 'posts/show';
+@import 'posts/actiontext';
+@import 'groups/groups';
+@import 'cardsets/test';
+@import 'cardsets/practice';
+@import 'cardsets/form';
+@import 'users/mypage';
+@import 'users/side-bar';
+@import 'users/user-info';

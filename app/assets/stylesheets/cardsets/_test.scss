@@ -1,0 +1,47 @@
+
+.start-btn{
+  font-size: 50px;
+  width: 100px;
+  margin: 0 auto;
+}
+.word-card {
+width: 500px;
+margin: 40px auto;
+height: 300px;
+font-size: 50px;
+border: 1px solid #999;
+box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+border-radius: 5%;
+align-items: center;
+}
+.word-info{
+  width: 100%;
+  padding: 30px;
+  .upper-info{
+    display: flex;
+  .word-id{
+    width: 30%;
+    text-align: center;
+  }
+  .word-name{
+    width: 70%;
+  }
+  }
+  .lower-info{
+    margin-top: 10px;
+    text-align: center;
+
+    .word-meaning{
+      font-size: 50px;
+      margin-top: 30px;
+    }
+  }
+}
+
+.answer-rate{
+
+  &__message{
+    font-size: 30px;
+    font-weight: bold;
+  }
+}

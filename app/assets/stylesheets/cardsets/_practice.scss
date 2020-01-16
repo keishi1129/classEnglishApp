@@ -1,0 +1,437 @@
+.SetPage-studyPreview{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  .SetPageCardsPreview-container{
+    height: 22.5rem;
+    max-width: 32.5rem;
+    width: 32.5rem;
+    padding: 0;
+    overflow-x: visible;
+  }
+
+  .SetPage-studyModes{
+    margin-top: 2.5rem;
+    max-width: 32.5rem;
+  
+    .SetPageModeButton-modeName{
+      margin-left: 1rem;
+      font-size: 1.125rem;
+      line-height: 1.44;
+      position: relative;
+      font-weight: 600;
+      letter-spacing: 0!important;
+      padding-left: 2.0625rem;
+      color: #455358;
+      bottom: 0;
+    }
+
+    .SetPageModes-buttonWrapper{
+      display: block;
+      height: 1.5rem;
+      margin-bottom: 1.5rem;
+      width: 13.375rem;
+    }
+    .setPageModes-buttonWrapper-link{
+      display: block;
+      height: 1.5rem;
+      margin-bottom: 1.5rem;
+      width: 13.375rem;
+    }
+  }
+}
+
+.SetPageCardsPreview{
+  height: 100%;
+  padding: 0;
+  overflow-x: visible;
+  clear: both;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 81.25em;
+  padding: 0;
+  &-inner{
+    border: none;
+    height: 100%;
+  }
+  
+}
+
+
+
+.SetPageModes-group{
+  display: inline-block;
+
+  .SetPageModeButton-content{
+    position: relative;
+  }
+  &--study{
+    .SetPageModes-buttonWrapper{
+      height: 1rem;
+      margin: 0 0 .8125rem;
+    }
+    .SetPageModeButton{
+      border: none;
+      box-shadow: none;
+    }
+    .SetPageModeButton-content{
+      text-align: left;
+    }
+  }
+}
+
+.is-highlighted{
+  border-bottom-color: #ffcd1f;
+}
+
+.CardsList {
+  margin: 0 auto;
+  position: relative;
+  width: auto;
+  height: 100%;
+  max-width: 50rem;
+  
+  &--showSingle{
+
+    .CardsList-container{
+      perspective: 1000px;
+    }
+    .CardsItem{
+      background: transparent;
+      box-shadow: none;
+      transform-style: preserve-3d;
+
+      .CardsItemSide{
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        visibility: visible;
+        z-index: 4;
+        backface-visibility: hidden;
+        transform: none;
+        transform-style: flat;
+        transition: all .32s ease-in-out!important;
+        .CardsItemInner{
+          background-color: #fff;
+          visibility: visible;
+        }
+        &--secondSide{
+          transform: rotateX(-180deg) translateY(5%) scale(1.1);
+          opacity: 0;
+          z-index: 5;
+  
+        }
+      }
+
+      &.showing{
+        display: block;
+        z-index: 5;
+
+        &.current, &.previous, &.next{
+          display: block!important;
+          transition: transform .24s ease,opacity .12s linear!important;
+        }
+      }
+
+      &.previous{
+        opacity: 0;
+        transform: translateX(-16%) rotateY(16deg) translateZ(0)!important;
+        pointer-events: none;
+      }
+      &.current{
+        z-index: 6;
+      }
+      &.next{
+        opacity: 0;
+        transform: translateX(16%) rotateY(-16deg) translateZ(0)!important;
+        pointer-events: none;
+      }
+      
+
+      &.showing-first{
+        .CardsItemSide--firstSide{
+          .CardsItemInner{
+            transform: translateY(50%)
+          }
+        }
+      }
+      &.showing-second{
+
+        .CardsItemSide {
+          transform: rotateX(180deg) translateY(-5%) scale(1.1)!important;
+          opacity: 0;
+
+          &--firstSide{
+            .CardsItemInner{
+              height: 100%;
+              transform: none;
+              transition: none!important;
+            }
+          }
+          &--secondSide{
+            transform: none!important;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .CardsList-navControl{
+      bottom: 0;
+    } 
+  }
+
+  .CardsList-container{
+    position: absolute;
+    margin-top: 0;
+    top: 0;
+    left: 0;
+    bottom: 2rem;
+    height: 100%;
+    width: 100%;
+    transition: none!important;
+    transform: none!important;
+    overflow: visible;
+  }
+}
+
+.CardsItem.showing.current {
+  display: block!important;
+  transition: transform .24s ease,opacity .12s linear!important;
+}
+// .CardsItem.next.finished {
+//   .CardsItemSide--firstSide {
+//     transition: transform .2s ease-out;
+//     transform: translateY(50%)
+//   }
+// }
+
+.CardsItem{
+  background: #fff;
+  bottom: 15%;
+  clear: left;
+  display: none!important;
+  height: auto!important;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: none!important;
+  zoom: 1;
+
+  .CardsItemSide{
+    border-radius: .3125rem;
+    overflow: hidden;
+    box-shadow: 0 0.3125rem 1.25rem 0 rgba(0,0,0,.24);
+    background: transparent;
+    background-position: 50%;
+    background-repeat: none;
+    background-size: contain;
+    border: 0;
+    cursor: pointer;
+    display: block;
+    font-size: 42px;
+    height: 100%!important;
+    position: relative;
+    transform: none;
+  
+    .CardsItemInner{
+      background-color: #fff;
+      visibility: visible;
+      align-items: center;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      left: 0;
+      top: 0;
+      width: 100%;
+ 
+
+      .CardsItemInner-cell{
+        height: 100%;
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
+        word-wrap: break-word;
+        flex-grow: 1;
+        font-size: inherit;
+        left: 0;
+        overflow: visible!important;
+        padding: 0 34px;
+        position: relative;
+        text-align: center;
+        vertical-align: middle;
+        hyphens: auto;
+      }
+    }
+  
+
+    &--firstSide{
+      z-index: 2;
+      .CardsItemInner{
+        transform: translateY(0);
+        height: 45%
+      }
+    }
+    &--secondSide{
+      transform: rotateX(-180deg) translateY(5%) scale(1.1);
+      opacity: 0;
+      z-index: 5;
+    }
+  }
+  .FormattedTextWithImage{
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding: 2.5rem 0;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  .FormattedText{
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    min-width: 40%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    word-wrap: break-word;
+
+    div{
+      max-height: 100%;
+    }
+  }
+}
+
+.CardsList-navControl{
+  position: absolute;
+  bottom: 8%;
+
+  &.previousButton{
+    left: 33%;
+  }
+  &.nextButton{
+    right: 33%;
+  }
+
+  &.progressIndex{
+    height: 2rem;
+    left: 0;
+    margin: auto;
+    right: 0;
+    text-align: center;
+    width: 10%;
+    color: #97a5aa;
+
+    .UIText{
+      font-size: .75rem;
+
+      .UIText--bodyThree{
+        font-weight: 600;
+        font-size: .875rem;
+        line-height: 1.285714285714286;
+      }
+    }
+  }
+}
+.CardsList-fontSizer{
+  font-size: 42px;
+  overflow: scroll;
+  position: fixed;
+  top: 0;
+  left: -3000px;
+  visibility: hidden;
+  white-space: pre-wrap;
+}
+
+.UIIconButton{
+  display: inline-block;
+  .UIButton{
+    background-color: #3ccfcf;
+    color: #fff;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    display: inline-block;
+    max-width: 100%;
+    line-height: 1.285714285714286;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    width: auto;
+  
+    &--borderless{
+      background-color: transparent;
+      color: #455358;
+    }
+  
+    .UIButton-wrapper{
+      padding: .5625rem;
+      align-items: center;
+      display: inline-flex;
+      justify-content: center;
+      width: 100%;
+    }    
+  
+  }
+}
+
+
+.cardset-content {
+  div {
+    display: none;
+
+    &.active{
+      display: block;
+    }
+  }
+}
+
+.memorized { display: none; }
+
+.memorized + label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  color: #ddd;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.memorized + label:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #6cc0e5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .6;
+  transition: all .12s, border-color .08s;
+}
+
+.memorized:checked + label:before {
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg);
+}
+

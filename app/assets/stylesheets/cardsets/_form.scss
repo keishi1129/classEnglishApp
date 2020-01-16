@@ -1,0 +1,301 @@
+.bgc-gray {
+  background-color: #eee;
+  padding-top: 50px;
+}
+.CreateSetPage{
+  counter-reset: studiable-item;
+}
+.CreateSetHeader{
+  background: #fff;
+  overflow: visible;
+  padding: 1.5rem 0 2rem;
+  position: relative;
+
+  &.is-sticky .CreateSetHeader-sticky{
+    position: fixed;
+    box-shadow: 0 0.3125rem 1rem 0 rgba(0,0,0,.24);
+    z-index: 1000;
+    height: 6.875rem;
+  }
+}
+
+.CreateSetHeader-stickyPlaceholder{
+  height: 6.875rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.UIContainer{
+  clear: both;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 81.25em;
+  padding: 0 2.5rem;
+}
+
+.CreateSetHeader-heading{
+  align-items: center;
+  display: flex;
+  height: 6.875rem;
+  justify-content: space-between;
+}
+.CreateSetHeader-headingContent{
+  display: grid;
+  grid-gap: .5rem;
+  grid-template-columns: 1fr auto;
+}
+.CreateSetHeader-textarea {
+  max-width: 36.75rem;
+  position: relative;
+  z-index: 301;
+}
+
+.CreateSetHeader-title{
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin: .3125rem 0;
+}
+.SpecialCharacterTextarea{
+  position: relative;
+}
+.UITextarea{
+  cursor: pointer;
+  display: block;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.444444444444444;
+
+  &-content{
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+  }
+
+  &-textarea{
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    color: #2d3639;
+    cursor: text;
+    flex: 1 1 auto;
+    outline: none;
+    overflow: hidden;
+    padding-bottom: .375rem;
+    white-space: pre-wrap;
+    width: 100%;
+    word-break: break-word
+  }
+
+  &-border{
+    align-self: flex-end;
+    display: block;
+    height: .25rem;
+    box-shadow: 0 0.125rem 0 0 #455358;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    width: 100%;
+  }
+
+  &-label{
+    color: #97a5aa;
+    display: flex;
+    justify-content: space-between;
+    margin-top: .625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: .75rem;
+    letter-spacing: .0625rem;
+    line-height: 1.333333333333333;
+    user-select: none;
+  }
+}
+.UITextarea-textarea.UITextarea-autoExpandTextarea.is-focused~.UITextarea-border,.UITextarea-textarea.UITextarea-autoExpandTextarea.is-focused~.UITextarea-border{
+  box-shadow: 0 0.25rem 0 0 #ffcd1f;
+}
+.AutoExpandTextarea{
+  position: relative;
+  &-sizer {
+    visibility: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  &-wrapper{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  &-textarea{
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    display: block;
+    outline: none;
+    overflow: hidden;
+    resize: none;
+  }
+}
+
+
+.UIButton {
+  appearance: none;
+  border: none;
+  border-radius: .25rem;
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
+  max-width: 100%;
+  padding: .75rem 1.5rem;
+  font-weight: 600;
+  font-size: .875rem;
+  line-height: 1.285714285714286;
+  transition: all .12s cubic-bezier(.47,0,.745,.715);
+  width: auto;
+  background-color: transparent;
+}
+.UIButton-wrapper{
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+}
+.CreateSetHeader-sticky{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  height: 4rem;
+  transform: translateZ(0);
+}
+
+
+
+
+.TermRows{
+  &-termRowWrap{
+    counter-increment: studiable-item;
+    box-shadow: 0 0.3125rem 1rem 0 rgba(0,0,0,.24);
+  }
+}
+
+.TermRow{
+  align-items: flex-start;
+  counter-increment: term-row;
+  display: flex;
+  width: 100%;
+
+}
+
+.TermContent-sideWrap{
+  display: table;
+  min-height: 3.375rem;
+  table-layout: fixed;
+  transition: none .3s ease-out;
+  transition-property: background;
+  width: 100%;
+}
+
+.TermContent-inner{
+  background-color: white;
+  cursor: move;
+  position: relative;
+}
+
+.StudiableItemToolbar{
+  align-items: center;
+  border-bottom: 2px solid #f0f0f0;
+  display: flex;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  transition: all .12s ease;
+
+  &-counter{
+    width: 2.5rem;
+    color: #97a5aa;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: .0875rem;
+    line-height: 1.5;
+    display: flex;
+    flex: 0 1 auto;
+    user-select: none;
+    width: 4rem;
+    justify-content: center;
+
+    &:before{
+      content: counter(studiable-item);
+    }
+  }
+
+  &-editableToggles{
+    align-items: center;
+    cursor: default;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    transform: translateY(.125rem);
+  }
+}
+
+.TermContent-side{
+  cursor: text;
+  display: table-cell;
+  padding-top: .75rem;
+  position: relative;
+  vertical-align: top;
+  word-break: break-word;
+
+  &--word{
+    padding-left: .75rem;
+    padding-right: 1.25rem;
+    width: 50%;
+  }
+  &--definition{
+    padding-left: 1.25rem;
+    padding-right: .75rem;
+    width: 50%;
+  }
+
+  textarea{
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: inherit;
+    display: block;
+    font: inherit;
+    line-height: inherit;
+    outline: none;
+    overflow: hidden;
+    resize: none;
+    text-shadow: inherit;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+  }
+}
+
+.WordSide{
+  position: relative;
+
+}
+
+.DefinitionSide{
+  position: relative;
+  word-break: break-word;
+}
+
+.TermRowSeparator{
+  align-items: center;
+  display: flex;
+  height: 1.25rem;
+  justify-content: center;
+  margin-left: 5.375rem;
+  position: relative;
+  z-index: 1;
+}
