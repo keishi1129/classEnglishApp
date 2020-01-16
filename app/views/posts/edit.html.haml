@@ -1,7 +1,6 @@
-%h1 テーマの編集
+%h1 長文問題の編集
 .margin-0-auto
   = render 'form', post: @post
   .button
-    = link_to '詳細', @post
-    |
-    = link_to '学習テーマ一覧', posts_path
+    = link_to '詳細', @post, class: 'nav-link'
+    = link_to '長文問題の一覧', posts_path, class: 'nav-link'
