@@ -1,0 +1,43 @@
+.app-header
+  %h1.app-header__title ClassEnglish!
+  %ul.app-header__list
+    - if current_user && current_user.admin?
+      .header-nav.nav-link 
+        学習する
+        .droplist
+          %ul
+            %li
+              =link_to posts_path, class: 'nav-link' do
+                読解王
+      .header-nav.nav-link
+        クラス情報
+        .droplist
+          %ul
+            %li
+              =link_to groups_path, class: 'nav-link' do
+                生徒一覧
+            %li
+              =link_to groups_path, class: 'nav-link' do
+                生徒登録
+            %li
+              =link_to new_group_path, class: 'nav-link' do
+                新規クラス登録
+      %li
+        = link_to 'マイページ', admin_user_mypage_path(current_user), class: 'nav-link'
+      %li
+        = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+    - elsif current_user
+      .header-nav.nav-link 
+        学習する
+        .droplist
+          %ul
+            %li
+              =link_to posts_path, class: 'nav-link' do
+                探求
+      %li
+        = link_to 'マイページ', admin_user_mypage_path(current_user), class: 'nav-link'
+      %li
+        = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+    - else
+      %li
+        = link_to 'ログイン', login_path, class: 'nav-link'

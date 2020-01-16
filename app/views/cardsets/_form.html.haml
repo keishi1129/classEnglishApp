@@ -1,0 +1,42 @@
+= form_for cardset, url: url, local: true do |f|
+  .CreateSetHeader
+    .CreateSetHeader-stickyPlaceholder
+      .CreateSetHeader-sticky
+        .UIContainer
+          .CreateSetHeader-heading
+            .CreateSetHeader-headingText
+              .CreateSetHeader-title
+                %span 新しい学習セットを作成する
+            .CreateSetHeader-infoButtonWrap
+              -if current_user.admin?
+                = f.select :use, Cardset.uses.keys,{prompt: '---'}, class: "btn btn-info"
+              = f.submit '作成する', class:"btn btn-primary"
+              = link_to '単語を追加する', '#', class:"btn btn-warning addCards"
+              = link_to '学習セット一覧', user_cardsets_path, class:"btn btn-info"
+    .UIContainer
+      .CreateSetHeader-headingContent
+        .CreateSetHeader-textarea.CreateSetHeader-title
+          .SpecialCharacterTextarea
+            %label.UITextarea
+              .UITextarea-content
+                .AutoExpandTextarea.UITextarea-textarea
+                  .AutoExpandTextarea-sizer
+                  .AutoExpandTextarea-wrapper
+                    =f.text_area :name, placeholder:"課目名、章、ユニット", class:"AutoExpandTextarea-textarea"
+                %span.UITextarea-border
+              %span.UITextarea-label
+                %span タイトル
+              - if cardset.errors.any?
+                #error_explanation
+                  %ul
+                    - cardset.errors[:name].each do |message|
+                      %li= message
+    .bgc-gray
+      .UIContainer#input_cards
+        - if cardset.errors.any?
+          #error_explanation
+            %ul
+              - cardset.errors[:words].each do |message|
+                %li= message
+        =render partial: 'new_card', locals: {f: f}
+      .UIContainer

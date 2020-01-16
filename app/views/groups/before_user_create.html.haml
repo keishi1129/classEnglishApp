@@ -1,0 +1,19 @@
+%h1 生徒を登録するクラスを選択してください
+
+.mb-3
+%table.table.table-hover
+  %thead.thead-default
+    %tr
+      %th クラス
+      %th 作成者
+      %th 
+  %tbody
+    -@groups.each do |group|
+      %tr
+        %td
+          =link_to new_group_user_path(group), class: 'nav-link' do
+            =group.name
+        %td
+          =link_to teacher_path(group.teachers.first), class: 'nav-link' do
+            =group.teachers.first.name
+            先生

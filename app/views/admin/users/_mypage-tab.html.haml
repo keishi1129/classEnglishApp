@@ -1,0 +1,80 @@
+%section.mypage-tab-section
+  %ul.mypage-tabs
+    %li.active
+      %h3
+        =link_to "#" do
+          vocabulary
+    %li
+      %h3
+        =link_to "#" do
+          reading skill
+    %li
+      %h3
+        =link_to "#" do
+          listening skill
+    %li
+      %h3
+        =link_to "#" do
+          speaking skill
+
+  .mypage-content        
+    .mypage-item.active
+      .point-boxes
+        .point-box
+          .point-box__number
+            %strong 120
+          .point-box__name
+            %p 語彙数______________________
+      =link_to '単語を覚える',  user_cardsets_path, class: "nav-link"
+      =link_to '単語王チャレンジ', word_king_user_tests_path, class: "nav-link"
+
+    .mypage-item
+      .point-boxes
+        .point-box
+          .point-box__number
+            %strong 120
+          .point-box__name
+            %p WPM_______________ 
+        %p.operator ×
+        .point-box
+          .point-box__number
+            %strong 120
+          .point-box__name
+            %p 正答率________________
+      =link_to '長文を読む', posts_path, class: "nav-link"
+      =link_to '読解王チャレンジ', '#', class: "nav-link"
+
+    .mypage-item
+      .point-boxes
+        .point-box
+          .point-box__number
+            %strong 12
+          .point-box__name
+            %p WPM_______________
+        %p.operator ×
+        .point-box
+          .point-box__number
+            %strong 120
+          .point-box__name
+            %p 正答率________________
+      =link_to '問題を聴く', '#', class: "nav-link"
+      =link_to '聴解王チャレンジ', '#', class: "nav-link"
+
+    .mypage-item
+      .point-boxes
+        .point-box
+          .point-box__number
+            %strong 12
+          .point-box__name
+            %p WPM_______________
+        %p.operator ×
+        .point-box
+          .point-box__number
+            %strong 120
+          .point-box__name
+            %p 正答率________________
+      =link_to '問題を解く', '#', class: "nav-link"
+      =link_to '雑談王チャレンジ', '#', class: "nav-link"
+      =link_to '弁論王チャレンジ', '#', class: "nav-link"
+            
+      

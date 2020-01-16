@@ -5,8 +5,17 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @posts.generate_csv, filename: "posts-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"}
+    end
   end
 
+  def import
+    current_user.posts.import(params[:file])
+    redirect_to posts_url, notice: "長文問題を追加しました"
+  end
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -69,6 +78,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :url, :content, :use).merge(user_id: current_user.id)
     end
 end

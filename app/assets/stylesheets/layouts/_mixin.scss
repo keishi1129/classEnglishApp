@@ -1,0 +1,47 @@
+@mixin form-require {
+  background: $red;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+@mixin question {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #0099e8;
+  color: #fff;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: center;
+}
+
+@mixin register-btn-red {
+  background: $red;
+  border: 1px solid $red;
+  color: #fff;
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+}
+
+@mixin social-media-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  line-height: 44px;
+  color: #fff;
+}
+
+@mixin tab-list {
+  display: inline-block;
+  background: #eee;
+  text-align: center;
+  vertical-align: top;
+  cursor: pointer;
+}

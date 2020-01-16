@@ -1,0 +1,47 @@
+= f.fields_for :words do |w|
+  .TermRows.mt-5
+    %div
+      .TermRows-termRowWrap
+        .TermRow
+          .TermContent 
+            .TermContent-inner
+              .StudiableItemToolbar
+                %span.StudiableItemToolbar-counter 
+                .StudiableItemToolbar-editableToggles
+                .StudiableItemToolbar-actionableToggles
+                  %span.ContextToggle
+                    %button.UIButton.UIButton--borderles{ "area-label": "このカードを削除", tabindex: -1}
+                      %span.UIButton-wrapper
+                        %i{class:"fa fa-trash", "aria-label": "delete"}
+              .TermContent-inner
+                .TermContent-sides
+                  .TermContent-sideWrap
+                    .TermContent-side.TermContent-side--word
+                      .WordSide
+                        .SpecialCharacterTextarea
+                          %label.UITextarea
+                            .UITextarea-content
+                              .AutoExpandTextarea.UITextarea-textarea
+                                .AutoExpandTextarea-sizer
+                                .AutoExpandTextarea-wrapper
+                                  =w.text_area :name, class:"AutoExpandTextarea-textarea"
+                                  =w.check_box :_destroy, class: "hidden", style: "display:none"
+                              %span.UITextarea-border
+                            %span.UITextarea-label
+                              %span 用語
+                    .TermContent-side.TermContent-side--definition
+                      .DefinitionSide
+                        .SpecialCharacterTextarea
+                          %label.UITextarea
+                            .UITextarea-content
+                              .AutoExpandTextarea.UITextarea-textarea
+                                .AutoExpandTextarea-sizer
+                                .AutoExpandTextarea-wrapper
+                                  =w.text_area :meaning, class:"AutoExpandTextarea-textarea"
+                              %span.UITextarea-border
+                            %span.UITextarea-label
+                              %span 定義
+      .TermRowSeparator
+
+  
+

@@ -15,6 +15,19 @@ class SessionsController < ApplicationController
     end
   end
 
+  # def teacher_new
+  # end
+
+  # def teacher_create
+  #   teacher = Teacher.find_by(email: session_params[:email])
+  #   if teacher&.authenticate(session_params[:password])
+  #     session[:teacher_id]= teacher.id
+  #     redirect_to root_url, notice: 'ログインしました'
+  #   else
+  #     render :teacher_new
+  #   end
+  # end
+
   def destroy
     reset_session
     redirect_to root_url, notice: 'ログアウトしました'

@@ -1,0 +1,20 @@
+%h1 グループ一覧
+
+.mb-3
+%table.table.table-hover
+  %thead.thead-default
+    %tr
+      %th クラス
+      %th 
+      %th 
+  %tbody
+    -@groups.each do |group|
+      %tr
+        %td
+          =group.name
+        %td
+          =link_to group_admin_users_path(group) do
+            生徒一覧
+        %td 
+          =link_to new_group_admin_user_path(group) do
+            新規生徒登録

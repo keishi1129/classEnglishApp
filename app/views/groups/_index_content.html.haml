@@ -1,0 +1,15 @@
+%h1=title
+
+.mb-3
+%table.table.table-hover
+  %thead.thead-default
+    %tr
+      %th クラス
+      %th 
+      %th 
+  %tbody
+    -@groups.each do |group|
+      %tr
+        %td
+          =link_to path(group) do
+            =group.name

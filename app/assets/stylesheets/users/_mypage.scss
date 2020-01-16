@@ -1,0 +1,145 @@
+.mypage-wrapper {
+  margin: 40px auto 0;
+  width: 1020px;
+}
+.left-content {
+  float: left;
+  width: 280px;
+  margin: 0 40px 0 0;
+  font-family: sans-serif;
+}
+
+.right-content { 
+  width: 700px;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  float: right;
+}
+
+
+
+
+.mypage-tab-section {
+  padding: 0px;
+  margin: 0;
+  .mypage-tabs{
+    margin: -2px 0;
+    border: 0;
+    font-size: 0;
+    display: block;
+    li {
+      width: 25%;
+      display: inline-block;
+      background: #fff;
+      text-align: center;
+      vertical-align: top;
+      cursor: pointer;
+    }
+    h3 {
+      font-weight: bold;
+      font-size: 22px;
+    }
+    a {
+      position: relative;
+      display: block;
+      color: #333;
+      font-size: 16px;
+      line-height: 72px;
+      text-decoration: none;
+    }
+      
+    .active{
+      border-top: 2px solid black;
+      background: #eee;
+
+      a{
+        color: black;
+      }
+    }
+
+    &--second{
+      li{
+        width: 50%;
+      }
+    }
+  }
+}
+
+.mypage-content {
+  display: block;
+  background: #eee;
+  .mypage-item {
+    display: none;
+    margin: 0 40px 0 40px;
+    position: relative;
+    height: 300px;
+  }
+  .active{
+    display: block;
+  } 
+}
+.point-boxes {
+  display: flex;
+  padding: 15px;
+  height: 120px;
+  .operator{
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 120px;
+  }
+  
+  .point-box{
+    font-style: italic;
+    position: relative;
+    margin: 0 0 0 30px ;
+    &:first-child{
+      margin: 0 20px 0 0;
+    }
+    &__name{
+      margin-top: 70px;
+      p{
+        font-size: 20px;
+      }
+    }
+    
+    &__number {
+      position: absolute;
+      left: 100px;
+      top: 20px;
+      strong{
+      font-size: 50px;
+      }
+    }
+  }
+}
+
+
+.search-form { 
+  width: 100%;
+  position: relative;
+
+  &__input{
+    width: 100%;
+    height: 40px;
+    padding:0 50px 0 10px;
+    background-color: #F5F5F5;
+    border-radius: 4px;
+    border: solid 1px #CCCCCC;
+    font-size: 16px;
+  }
+
+  &__btn{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    right: 0;
+    top: 0;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    background-color: transparent;
+    border-style: none;
+  }
+}
+
+
