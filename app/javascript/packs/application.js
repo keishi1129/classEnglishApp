@@ -7,6 +7,14 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("jquery")
+require("bootstrap")
+require("jquery/test") 
+require("jquery/practice") 
+require("jquery/tab") 
+require("jquery/cardset_new") 
+require("jquery/post") 
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -20,4 +28,5 @@ require("trix")
 require("@rails/actiontext")
 
 import "bootstrap"
+import '@fortawesome/fontawesome-free/js/all'
 import "../stylesheets/application"
