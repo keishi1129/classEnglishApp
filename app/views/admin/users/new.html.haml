@@ -1,6 +1,6 @@
-%h1 ユーザー登録
+%h1 生徒登録
 
 .nav.justify-content-end
-   = link_to '一覧', admin_users_path, class: 'nav-link'
+   = link_to '一覧', group_admin_users_path(@group), class: 'nav-link'
 
-= render partial: 'form', locals: { user: @user }
+= render partial: 'form', locals: { user: @user, url: group_admin_users_path }

@@ -2,21 +2,41 @@
   %ul#error_explanation
     -user.errors.full_messages.each do |message|
       %li = message
-= form_with model: [:admin, @user], local: true do |f|
+= form_with(model: user, url: url, local: true) do |f|
   .form-group
     = f.label :name, '名前'
     = f.text_field :name, class: 'form-control'
+    - if user.errors.any?
+      #error_explanation
+        %ul
+          - user.errors.full_messages_for(:name).each do |message|
+            %li= message
   .form-group
     = f.label :email, 'メールアドレス'
     = f.text_field :email, class: 'form-control'
+    - if user.errors.any?
+      #error_explanation
+        %ul
+          - user.errors.full_messages_for(:email).each do |message|
+            %li= message
   .form-check
     = f.label :admin, class: 'form-check-label' do
       = f.check_box :admin, class: 'form-check-input'
-      先生のご登録の時はここをチェックしてください
+      | 管理者権限
   .form-group
-    = f.label :password, 'パスワード'
-    = f.text_field :password, class: 'form-control'
+    = f.label :password, 'パスワード（デフォルトはpasswordになっています）'
+    = f.text_field :password, class: 'form-control', value: "password"
+    - if user.errors.any?
+      #error_explanation
+        %ul
+          - user.errors.full_messages_for(:password).each do |message|
+            %li= message
   .form-group
     = f.label :password_confirmation, 'パスワード（確認）'
-    = f.text_field :password_confirmation, class: 'form-control'
+    = f.text_field :password_confirmation, class: 'form-control', value: "password"
+    - if user.errors.any?
+      #error_explanation
+        %ul
+          - user.errors.full_messages_for(:password_confirmation).each do |message|
+            %li= message
   =f.submit '登録する', class: 'btn btn-primary'
