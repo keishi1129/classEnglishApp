@@ -1,0 +1,15 @@
+%h1 生徒一覧を見るクラスを選択してください
+
+.mb-3
+%table.table.table-hover
+  %thead.thead-default
+    %tr
+      %th クラス
+      %th 
+      %th 
+  %tbody
+    -@groups.each do |group|
+      %tr
+        %td
+          =link_to group_users_path(group), class: 'nav-link' do
+            =group.name
