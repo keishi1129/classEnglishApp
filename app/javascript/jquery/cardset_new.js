@@ -60,20 +60,22 @@ $(document).on('turbolinks:load', function(){
                                                 </div>
                                                 <div class="TermContent-side TermContent-side--definition">
                                                   <div class="DefinitionSide">
-                                                    <label class="UITextarea">
-                                                      <div class="UITextarea-content">
-                                                        <div class="AutoExpandTextarea UITextarea-textarea">
-                                                          <div class="AutoExpandTextarea-sizer"></div>
-                                                          <div class="AutoExpandTextarea-wrapper">
-                                                            <textarea name ="cardset[words_attributes][${index}][meaning]" class="AutoExpandTextarea-textarea"></textarea>
+                                                    <div class="SpecialCharacterTextarea">
+                                                      <label class="UITextarea">
+                                                        <div class="UITextarea-content">
+                                                          <div class="AutoExpandTextarea UITextarea-textarea">
+                                                            <div class="AutoExpandTextarea-sizer"></div>
+                                                            <div class="AutoExpandTextarea-wrapper">
+                                                              <textarea name ="cardset[words_attributes][${index}][meaning]" class="AutoExpandTextarea-textarea"></textarea>
+                                                            </div>
                                                           </div>
+                                                          <span class="UITextarea-border"></span>
+                                                        <span class="UITextarea-label">
+                                                          <span>定義</span>
+                                                        </span>
                                                         </div>
-                                                        <span class="UITextarea-border"></span>
-                                                      <span class="UITextarea-label">
-                                                        <span>定義</span>
-                                                      </span>
-                                                      </div>
-                                                    </label>
+                                                      </label>
+                                                    </div>
                                                   </div>
                                                 </div>
                                               </div>
