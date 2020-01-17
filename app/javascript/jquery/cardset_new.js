@@ -47,13 +47,14 @@ $(document).on('turbolinks:load', function(){
                                                             <div class="AutoExpandTextarea-sizer"></div>
                                                             <div class="AutoExpandTextarea-wrapper">
                                                               <textarea name="cardset[words_attributes][${index}][name]" class="AutoExpandTextarea-textarea"></textarea>
+                                                              <input type="checkbox" style="display:none" name="cardset[words_attributes][${index}][_destroy]", value="1"></input>
                                                             </div>
                                                           </div>
                                                           <span class="UITextarea-border"></span>
+                                                        </div>
                                                         <span class="UITextarea-label">
                                                           <span>用語</span>
                                                         </span>
-                                                        </div>
                                                       </label>
                                                     </div>
                                                   </div>
@@ -70,10 +71,10 @@ $(document).on('turbolinks:load', function(){
                                                             </div>
                                                           </div>
                                                           <span class="UITextarea-border"></span>
+                                                        </div>
                                                         <span class="UITextarea-label">
                                                           <span>定義</span>
                                                         </span>
-                                                        </div>
                                                       </label>
                                                     </div>
                                                   </div>
