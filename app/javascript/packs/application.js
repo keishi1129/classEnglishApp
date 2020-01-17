@@ -14,6 +14,7 @@ require("jquery/practice")
 require("jquery/tab") 
 require("jquery/cardset_new") 
 require("jquery/post") 
+require.context('images', true, /\.(png|jpg|jpeg|svg)$/)
 
 
 
