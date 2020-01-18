@@ -60,7 +60,8 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
-  gem 'capistrano-webpacker-precompile', require: false
+  # gem 'capistrano-webpacker-precompile', require: false
+  gem 'capistrano-yarn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

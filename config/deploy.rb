@@ -25,10 +25,17 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
-# Rake::Task["deploy:assets:precompile"].clear
+# --prefer-offline -> 高速化
+# --production -> devDependencies にあるパッケージはインストールしなくなる
+# --no-progress -> progress bar の非表示
+set :yarn_flags, "--prefer-offline --production --no-progress"
+set :yarn_roles, :app
+set :yarn_bin, '~/.yarn/bin/yarn'
 
+# Rake::Task["deploy:assets:precompile"].clear
+# after 'deploy:updated', 'webpacker:precompile'
 # デプロイ処理が終わった後、Unicornを再起動するための記述
-after 'deploy:publishing', 'webpacker:precompile', 'deploy:restart'
+after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
