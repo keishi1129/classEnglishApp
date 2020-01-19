@@ -32,10 +32,15 @@ Rails.application.routes.draw do
     resources :cardsets do
       get '/practice', to: 'cardsets#practice'
       get '/test', to: 'cardsets#test'
+
+      collection do 
+        get '/test_index', to: 'cardsets#test_index'
+      end
     end
-    resources :tests do
+    resources :tests, only: :show do
       collection do
         get 'word_king'
+        get 'success_or_fail'
       end
       
     end

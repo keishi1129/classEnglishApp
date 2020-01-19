@@ -1,5 +1,6 @@
 class Cardset < ApplicationRecord
-  has_many :words, dependent: :destroy
+  has_many :cardset_words
+  has_many :words, through: :cardset_words, dependent: :destroy
   accepts_nested_attributes_for :words, allow_destroy: true, reject_if: :reject_words
   validates :name, presence: {message: "名前を入力してください"}
   validates :words, length: { minimum: 5, message: "必ず5個は単語を入れてください"}

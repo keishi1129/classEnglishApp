@@ -99,6 +99,9 @@ $(document).on('turbolinks:load', function(){
     trash_index = $("#input_cards .TermRows").index(trash_can_parent) 
     $('input[type="checkbox"]').eq(trash_index).prop('checked', true);
     trash_can_parent.hide();
-    console.log("OK")
   })
+
+
+
+  
 });

@@ -4,12 +4,12 @@
     %button{class: "btn btn-primary"} START
   -@words.each do |word|
     .word-test
-      =render partial: 'word-card', locals: {word: word}
+      =render partial: 'word-card', locals: {word: word, words: @words_shaddow}
       .select-answers
-        %button.selector=@wordForMeanings.where.not(id: word.id)[rand(0...@length)].meaning
-        %button.selector=@wordForMeanings.where.not(id: word.id)[rand(0...@length)].meaning
-        %button.selector=@wordForMeanings.where.not(id: word.id)[rand(0...@length)].meaning
-        %button.selector=@wordForMeanings.where.not(id: word.id)[rand(0...@length)].meaning
+        %button.selector=@words_shaddow.where.not(id: word.id)[rand(0...@length)].meaning
+        %button.selector=@words_shaddow.where.not(id: word.id)[rand(0...@length)].meaning
+        %button.selector=@words_shaddow.where.not(id: word.id)[rand(0...@length)].meaning
+        %button.selector=@words_shaddow.where.not(id: word.id)[rand(0...@length)].meaning
         %button.next 次の問題
 
   .answer-rate

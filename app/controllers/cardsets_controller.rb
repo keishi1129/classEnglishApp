@@ -4,7 +4,12 @@ class CardsetsController < ApplicationController
   # GET /words
   # GET /words.json
   def index
-    @cardsets = Cardset.all
+    @cardsets = Cardset.練習用.all
+    @cardsets_test = Cardset.テスト用.all
+  end
+
+  def test_index
+    @cardsets_test = Cardset.テスト用.all
   end
 
   # GET /words/1
@@ -50,10 +55,12 @@ class CardsetsController < ApplicationController
   # DELETE /words/1
   # DELETE /words/1.json
   def destroy
-    @cardset.destroy
-    respond_to do |format|
-      format.html { redirect_to user_cardsets_url, notice: 'Word was successfully destroyed.' }
-      format.json { head :no_content }
+    if @cardset.練習用?
+      @cardset.destroy
+      redirect_to user_cardsets_url
+    else
+      @cardset.destroy
+      redirect_to test_index_user_cardsets_url
     end
   end
 
@@ -81,7 +88,7 @@ class CardsetsController < ApplicationController
 
   def test
     @words = @cardset.words
-    @wordForMeanings = @cardset.words
+    @words_shaddow = @cardset.words
     @length = @cardset.words.length - 1
   end
 
@@ -100,6 +107,6 @@ class CardsetsController < ApplicationController
     end
 
     def cardset_params
-      params.fetch(:cardset, {}).permit(:name, :user, words_attributes: [:name, :meaning, :_destroy, :id]).merge(user_id: current_user.id)
+      params.fetch(:cardset, {}).permit(:name, :use, words_attributes: [:name, :meaning, :_destroy, :id]).merge(user_id: current_user.id)
     end
 end

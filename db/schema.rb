@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_16_104259) do
+ActiveRecord::Schema.define(version: 2020_01_19_023044) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2020_01_16_104259) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "cardset_words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.bigint "word_id"
+    t.bigint "cardset_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cardset_id"], name: "index_cardset_words_on_cardset_id"
+    t.index ["word_id"], name: "index_cardset_words_on_word_id"
+  end
+
   create_table "cardsets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
     t.integer "use", default: 1
@@ -61,6 +70,15 @@ ActiveRecord::Schema.define(version: 2020_01_16_104259) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["origin_id"], name: "index_duplicated_cardsets_on_origin_id"
     t.index ["user_id"], name: "index_duplicated_cardsets_on_user_id"
+  end
+
+  create_table "duplicated_cardsets_words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.bigint "word_id"
+    t.bigint "duplicated_cardset_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["duplicated_cardset_id"], name: "index_duplicated_cardsets_words_on_duplicated_cardset_id"
+    t.index ["word_id"], name: "index_duplicated_cardsets_words_on_word_id"
   end
 
   create_table "group_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -94,7 +112,7 @@ ActiveRecord::Schema.define(version: 2020_01_16_104259) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.integer "wordablity", default: 0
+    t.integer "wordability", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false, null: false
@@ -104,23 +122,24 @@ ActiveRecord::Schema.define(version: 2020_01_16_104259) do
   create_table "words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
     t.string "meaning", null: false
-    t.integer "status", default: 1, null: false
+    t.integer "level", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "cardset_id"
-    t.bigint "duplicated_cardset_id"
-    t.index ["cardset_id"], name: "index_words_on_cardset_id"
-    t.index ["duplicated_cardset_id"], name: "index_words_on_duplicated_cardset_id"
+    t.bigint "cardset_word_id"
+    t.index ["cardset_word_id"], name: "index_words_on_cardset_word_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cardset_words", "cardsets"
+  add_foreign_key "cardset_words", "words"
   add_foreign_key "cardsets", "users"
   add_foreign_key "duplicated_cardsets", "cardsets", column: "origin_id"
   add_foreign_key "duplicated_cardsets", "users"
+  add_foreign_key "duplicated_cardsets_words", "duplicated_cardsets"
+  add_foreign_key "duplicated_cardsets_words", "words"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "posts", "users", column: "users_id"
-  add_foreign_key "words", "cardsets"
-  add_foreign_key "words", "duplicated_cardsets"
+  add_foreign_key "words", "cardset_words"
 end

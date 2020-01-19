@@ -1,0 +1,4 @@
+.main-content
+  -if current_user.admin?
+    =link_to '練習用学習セット一覧はこちら', user_cardsets_path
+  =render partial: 'index', locals: {title: 'テスト用学習セット', cardsets: @cardsets_test}

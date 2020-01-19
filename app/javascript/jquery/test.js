@@ -10,13 +10,24 @@ $(document).on('turbolinks:load', function(){
       $('.select-answers button').show();
       $('.next').hide();
     }else {
-      let number = $('.your-answer').children('.correct').length;
+      let correct_number = $('.your-answer').children('.correct').length;
+      let score = (correct_number/words_length)
       $('.word-test').hide();
       $('.answer').show();
       $('.answer-rate').show();
-      $('.answer-rate').prepend(answer_rate(number))
+      $('.answer-rate').prepend(answer_rate(correct_number))
+      if (window.location.href.match(/\/word_king/)){
+        console.log(score)
+        $.ajax({
+          url: "success_or_fail",
+          type: "GET",
+          dataType: 'json',
+          data: {
+            score: score
+          }
+        })
+      }   
     }
-
   }
 
   function incorrectAnswer(answer){
@@ -74,7 +85,5 @@ $(document).on('turbolinks:load', function(){
       random_num = Math.floor( Math.random()*4);
       layout(index, random_num);
     });
-
   }
-
 });
