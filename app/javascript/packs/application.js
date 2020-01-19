@@ -8,7 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
-// require("bootstrap")
 require("jquery/test") 
 require("jquery/practice") 
 require("jquery/tab") 
@@ -27,7 +26,5 @@ require.context('images', true, /\.(png|jpg|jpeg|svg)$/)
 
 require("trix")
 require("@rails/actiontext")
-
-// import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all'
 import "../stylesheets/application"
