@@ -1,3 +1,22 @@
+function wordHtml(word, url){
+  if (url === "/find_words_name"){
+    html = `<div class="AutosuggestContextItem" data-word-name="${word.name}">
+              <div class="Ellipsis">
+                ${word.name}
+              </div>
+            </div>`
+  }else{
+    html = `<div class="AutosuggestContextItem" data-word-name="${word.meaning}">
+              <div class="Ellipsis">
+                ${word.meaning}
+              </div>
+            </div>`
+  }
+
+  return html
+}  
+
+
 $(document).on('turbolinks:load', function(){
   let index = 30;
   $(document).scroll(function(){
@@ -43,7 +62,7 @@ $(document).on('turbolinks:load', function(){
                                                     <div class="SpecialCharacterTextarea">
                                                       <label class="UITextarea">
                                                         <div class="UITextarea-content">
-                                                          <div class="AutoExpandTextarea UITextarea-textarea">
+                                                          <div class="AutoExpandTextarea UITextarea-textarea UITextarea-autoExpandTextarea">
                                                             <div class="AutoExpandTextarea-sizer"></div>
                                                             <div class="AutoExpandTextarea-wrapper">
                                                               <textarea name="cardset[words_attributes][${index}][name]" class="AutoExpandTextarea-textarea"></textarea>
@@ -64,7 +83,7 @@ $(document).on('turbolinks:load', function(){
                                                     <div class="SpecialCharacterTextarea">
                                                       <label class="UITextarea">
                                                         <div class="UITextarea-content">
-                                                          <div class="AutoExpandTextarea UITextarea-textarea">
+                                                          <div class="AutoExpandTextarea UITextarea-textarea UITextarea-autoExpandTextarea">
                                                             <div class="AutoExpandTextarea-sizer"></div>
                                                             <div class="AutoExpandTextarea-wrapper">
                                                               <textarea name ="cardset[words_attributes][${index}][meaning]" class="AutoExpandTextarea-textarea"></textarea>
@@ -102,6 +121,98 @@ $(document).on('turbolinks:load', function(){
   })
 
 
+  $(".AutoExpandTextarea-textarea").focus(function(){
+    $(this).parents('.AutoExpandTextarea').addClass('is-focused') 
+    if ($(this).parents('.WordSide').length){
+      $(this).parents('.WordSide').addClass('is-active')
+      $(this).parents('.TermContent').addClass('is-active-word')
+    }else{
+      $(this).parents('.DefinitionSide').addClass('is-active')
+      $(this).parents('.TermContent').addClass('is-active-definition')
+    }
 
+  })
+
+  $(".AutoExpandTextarea-textarea").blur(function(){
+    $(this).parents('.AutoExpandTextarea').removeClass('is-focused') 
+    if ($(this).parents('.WordSide').length){
+      $(this).parents('.WordSide').removeClass('is-active')
+      $(this).parents('.TermContent').removeClass('is-active-word')
+    }else{
+      $(this).parents('.DefinitionSide').removeClass('is-active')
+      $(this).parents('.TermContent').removeClass('is-active-definition')
+    }
+  })
+  
+  $('.UIContainer').on('keyup', ".AutoExpandTextarea.is-focused .AutoExpandTextarea-textarea", function(){
+    input = $(this).val();
+    $(this).val(input)
+    if ($(this).parents('.TermContent').hasClass('is-active-word')){
+      url = "/find_words_name"
+      search_result = $('.is-active-word').find('.word-result')
+    }else{
+      url = "/find_words_definition"
+      search_result = $('.is-active-definition').find('.definition-result')
+    }
+    $.ajax({
+      type: "GET",
+      url: url,
+      data: { keyword: input},
+      dataType: "json"
+    })
+    .done(function(words){
+      $('.AutosuggestContextItem').remove();
+      if (words.length !== 0) {
+        words.forEach(function(word){
+          search_result.append(wordHtml(word, url));
+        });
+      }else{
+        return false;
+      }
+    })
+    .fail(function(){
+      return false;
+    })
+  });
+
+  
+  $(".UIContainer").on('click', '.AutosuggestContextItem', function(){
+    let value = $(this).data('word-name');
+    let textarea = $(this).parents('.TermContent-side').find('.AutoExpandTextarea-textarea')
+    let index = $('.UIContainer .AutoExpandTextarea-textarea').index(textarea)
+    textarea.val(value);
+    if($(this).parents('.word-result').length){
+      $('.UIContainer .AutoExpandTextarea-textarea').eq(index + 1).focus();
+      url = "/find_words_name"
+      search_result = $('.is-active-definition').find('.definition-result')
+      $.ajax({
+        type: "GET",
+        url: url,
+        data: { keyword: value},
+        dataType: "json"
+      })
+      .done(function(words){
+        console.log(words)
+        $('.AutosuggestContextItem').remove();
+        if (words.length !== 0) {
+          words.forEach(function(word){
+            search_result.append(wordHtml(word, "/find_words_definition"));
+          });
+        }else{
+          return false;
+        }
+      })
+    }
+    $(this).parents('.AutosuggestContext-suggestions').empty();
+  });
+
+  $('.UIContainer').on('change', '.AutoExpandTextarea-textarea', function(){
+    let value = $(this).val()
+    if (value === ""){
+      $(this).parents('.AutoExpandTextarea').removeClass('is-not-empty')
+    }else{
+      $(this).parents('.AutoExpandTextarea').addClass('is-not-empty')
+    }
+  })
   
 });

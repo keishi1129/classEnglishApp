@@ -16,31 +16,43 @@
               .TermContent-inner
                 .TermContent-sides
                   .TermContent-sideWrap
-                    .TermContent-side.TermContent-side--word
+                    .TermContent-side.TermContent-side--word               
                       .WordSide
                         .SpecialCharacterTextarea
                           %label.UITextarea
                             .UITextarea-content
-                              .AutoExpandTextarea.UITextarea-textarea
+                              .AutoExpandTextarea.UITextarea-textarea.UITextarea-autoExpandTextarea
                                 .AutoExpandTextarea-sizer
                                 .AutoExpandTextarea-wrapper
-                                  =w.text_area :name, class:"AutoExpandTextarea-textarea"
+                                  =w.text_area :name, class:"AutoExpandTextarea-textarea", placeholder: ""
                                   =w.check_box :_destroy, style: "display:none"
                               %span.UITextarea-border
                             %span.UITextarea-label
                               %span 用語
+                      %span
+                        .TermContent-autosuggestContext
+                          .AutosuggestContext
+                            .AutosuggestContext-suggestions.word-result
+                    
+                    
+                    
+                    
                     .TermContent-side.TermContent-side--definition
                       .DefinitionSide
                         .SpecialCharacterTextarea
                           %label.UITextarea
                             .UITextarea-content
-                              .AutoExpandTextarea.UITextarea-textarea
+                              .AutoExpandTextarea.UITextarea-textarea.UITextarea-autoExpandTextarea
                                 .AutoExpandTextarea-sizer
                                 .AutoExpandTextarea-wrapper
                                   =w.text_area :meaning, class:"AutoExpandTextarea-textarea"
                               %span.UITextarea-border
                             %span.UITextarea-label
                               %span 定義
+                      %span
+                        .TermContent-autosuggestContext
+                          .AutosuggestContext
+                            .AutosuggestContext-suggestions.definition-result
       .TermRowSeparator
 
   

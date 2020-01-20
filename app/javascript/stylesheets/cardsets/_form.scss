@@ -118,8 +118,6 @@
   position: relative;
   &-sizer {
     visibility: hidden;
-    white-space: pre-wrap;
-    word-wrap: break-word;
   }
   &-wrapper{
     position: absolute;
@@ -137,6 +135,17 @@
     outline: none;
     overflow: hidden;
     resize: none;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+  }
+  &-sizer, &-textarea{
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+  }
+  &.is-focused{
+    .UITextarea-border{
+      box-shadow: 0 0.25rem 0 0 #ffcd1f;
+    }
   }
 }
 
@@ -262,22 +271,6 @@
     width: 50%;
   }
 
-  textarea{
-    height: 100%;
-    width: 100%;
-    background: transparent;
-    border: none;
-    color: inherit;
-    cursor: inherit;
-    display: block;
-    font: inherit;
-    line-height: inherit;
-    outline: none;
-    overflow: hidden;
-    resize: none;
-    text-shadow: inherit;
-    -webkit-tap-highlight-color: rgba(255,255,255,0);
-  }
 }
 
 .WordSide{
@@ -298,4 +291,54 @@
   margin-left: 5.375rem;
   position: relative;
   z-index: 1;
+}
+
+#search-list{
+  overflow: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  max-height: 280px;
+  background: #fff;
+  box-shadow: 0 0 4px 0 rgba(0,0,0,0.64);
+
+  li{
+    padding: 16px 8px;
+    font-size: 14px;
+
+    &:hover{
+      background: #0099e8;
+      color: #fff;
+    }
+  }
+}
+
+.TermContent-autosuggestContext {
+    border-top: 0;
+    max-height: 13.125rem;
+    padding-top: 1.5rem;
+    padding-bottom: .5rem;
+}
+
+.AutosuggestContext-suggestions {
+  word-break: break-word;
+}
+
+
+.AutosuggestContextItem {
+  background-color: #f0f0f0;
+  color: #455358;
+  cursor: pointer;
+  margin-bottom: .625rem;
+  padding: .75rem;
+  font-weight: 400;
+  font-size: .875rem;
+  line-height: 1.285714285714286;
+  transition: all .12s cubic-bezier(.47,0,.745,.715);
+  &:hover{
+    background: #ffcd1f;
+    color: black;
+  }
+    
 }

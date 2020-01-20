@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/word_find', to: 'cardsets#word_find'
+  get '/find_words_name', to: 'cardsets#find_words_name'
+  get '/find_words_definition', to: 'cardsets#find_words_definition'
   # resources :groups do
   #   collection do
   #     get 'user_list', to: 'groups#before_user_list'

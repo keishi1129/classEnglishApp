@@ -10,7 +10,7 @@ class TestsController < ApplicationController
           @words << word
         end
       end 
-      @words_shaddow = @words
+      @words_shadow = @words
       @other_words = @cardset.words.to_ary.difference(@words)
     else
       render :no_test

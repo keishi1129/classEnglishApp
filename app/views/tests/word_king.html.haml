@@ -5,7 +5,7 @@
       %button{class: "btn btn-primary"} START
     -@words.each do |word|
       .word-test
-        =render partial: 'cardsets/word-card', locals: {word: word, words: @words_shaddow}
+        =render partial: 'cardsets/word-card', locals: {word: word, words: @words_w}
         .select-answers
           %button.selector=@other_words[rand(0...@other_words.length)].meaning
           %button.selector=@other_words[rand(0...@other_words.length)].meaning
