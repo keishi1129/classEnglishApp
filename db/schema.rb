@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_19_023044) do
+ActiveRecord::Schema.define(version: 2020_01_22_050031) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
@@ -72,15 +72,6 @@ ActiveRecord::Schema.define(version: 2020_01_19_023044) do
     t.index ["user_id"], name: "index_duplicated_cardsets_on_user_id"
   end
 
-  create_table "duplicated_cardsets_words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.bigint "word_id"
-    t.bigint "duplicated_cardset_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["duplicated_cardset_id"], name: "index_duplicated_cardsets_words_on_duplicated_cardset_id"
-    t.index ["word_id"], name: "index_duplicated_cardsets_words_on_word_id"
-  end
-
   create_table "group_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.bigint "group_id"
     t.bigint "user_id"
@@ -126,7 +117,9 @@ ActiveRecord::Schema.define(version: 2020_01_19_023044) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "cardset_word_id"
+    t.bigint "duplicated_cardset_id"
     t.index ["cardset_word_id"], name: "index_words_on_cardset_word_id"
+    t.index ["duplicated_cardset_id"], name: "index_words_on_duplicated_cardset_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -135,11 +128,10 @@ ActiveRecord::Schema.define(version: 2020_01_19_023044) do
   add_foreign_key "cardsets", "users"
   add_foreign_key "duplicated_cardsets", "cardsets", column: "origin_id"
   add_foreign_key "duplicated_cardsets", "users"
-  add_foreign_key "duplicated_cardsets_words", "duplicated_cardsets"
-  add_foreign_key "duplicated_cardsets_words", "words"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "posts", "users", column: "users_id"
   add_foreign_key "words", "cardset_words"
+  add_foreign_key "words", "duplicated_cardsets"
 end

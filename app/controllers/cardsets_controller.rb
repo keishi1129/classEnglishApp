@@ -88,7 +88,7 @@ class CardsetsController < ApplicationController
 
   def test
     @words = @cardset.words
-    @words_shaddow = @cardset.words
+    @words_shadow = @cardset.words
     @length = @cardset.words.length - 1
   end
 

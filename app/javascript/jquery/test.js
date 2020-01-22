@@ -38,7 +38,7 @@ function countDown(index, answer){
       clearInterval(cnDown);
     }
     $('#timer').text(cnt.toFixed(1));
-  },10);
+  },100);
 }
 
 function layout(index, random_num){
