@@ -11,6 +11,7 @@ height: 300px;
 font-size: 50px;
 border: 1px solid #999;
 box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+background-color: white;
 border-radius: 5%;
 align-items: center;
 }
@@ -45,3 +46,65 @@ align-items: center;
     font-weight: bold;
   }
 }
+
+#timer {
+  font-size: 100px;
+  z-index: 10;
+  float: right;
+  position: fixed;
+  bottom: 32px;
+  right: 30px;
+}
+
+.word-test{
+  background: #eee;
+  height: 1000px;
+  margin-top: 50px;
+  padding: 50px 0;
+}
+
+.select-answers{
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  width: 500px;
+
+  .selector{
+    margin-top: 20px;
+    height: 50px;
+    font-size: 20px;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    // color: #67c5ff;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    border: solid 2px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
+
+    &:hover{
+      background: #67c5ff;
+      color: white;
+    }
+  }
+
+  .next{
+    margin-top: 20px;
+    height: 50px;
+    font-size: 20px;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    // color: #67c5ff;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    border: solid 2px #ffcd1f;
+    border-radius: 3px;
+    transition: .4s;
+
+    &:hover{
+      background: #ffcd1f;
+      color: white;
+    }
+  }
+}
+

@@ -1,57 +1,71 @@
-$(document).on('turbolinks:load', function(){
-  let words_length = $('.start-btn').data('words-length')
-  function layout(index, random_num){
-    let answer = $('.answer').eq(index).data("answer")
-    if (index < words_length) {
-      $('.answer').hide();
-      $('.word-test').hide();
-      $('.word-test').eq(index).show();
-      $('.select-answers').eq(index).children("button").eq(random_num).text(answer);
-      $('.select-answers button').show();
-      $('.next').hide();
-    }else {
-      let correct_number = $('.your-answer').children('.correct').length;
-      let score = (correct_number/words_length)
-      $('.word-test').hide();
-      $('.answer').show();
-      $('.answer-rate').show();
-      $('.answer-rate').prepend(answer_rate(correct_number))
-      if (window.location.href.match(/\/word_king/)){
-        console.log(score)
-        $.ajax({
-          url: "success_or_fail",
-          type: "GET",
-          dataType: 'json',
-          data: {
-            score: score
-          }
-        })
-      }   
+
+function incorrectAnswer(answer){
+  html = `<p class="word-meaning incorrect">
+            × ${answer}
+          </p>`
+
+  return html
+}
+function correctAnswer(answer){
+  html = `<p class="word-meaning correct">
+            ◯ ${answer}
+          </p>`
+
+  return html
+}
+function answer_rate(words_length, number){
+  html = `<div>
+            <p class="answer-rate__message">${words_length}問中${number}問正解</p>
+          </div>`
+
+  return html
+}
+
+function countDown(index, answer){
+  cnt = 5.00;
+  $('#timer').text(cnt)
+  cnDown = setInterval(function(){ //1秒おきにカウントマイナス
+    cnt -= 0.1
+    if(cnt <= 0.1){//0になったら停止する
+      clearInterval(cnDown);
+      $('#timer').text("Time Up");
+      $('.lower-info').eq(index).append(incorrectAnswer(answer));
+      $('.your-answer').eq(index).text('Time up')
+      $('.select-answers button').hide();
+      $('.next').show();
     }
+    if($('#timer').hasClass('stop')){
+      clearInterval(cnDown);
+    }
+    $('#timer').text(cnt.toFixed(1));
+  },10);
+}
+
+function layout(index, random_num){
+  if($('#timer').hasClass('stop')){
+    $('#timer').removeClass('stop')
   }
-
-  function incorrectAnswer(answer){
-    html = `<p class="word-meaning incorrect">
-              × ${answer}
-            </p>`
-
-    return html
+  let words_length = $('.start-btn').data('words-length')
+  answer = $('.answer').eq(index).data("answer")
+  if (index < words_length) {
+    $('.answer').hide();
+    $('.word-test').hide();
+    $('.word-test').eq(index).show();
+    $('.select-answers').eq(index).children("button").eq(random_num).text(answer);
+    $('.select-answers button').show();
+    $('.next').hide();
+    countDown(index, answer);
+  }else {
+    let correct_number = $('.your-answer').children('.correct').length;
+    $('#timer').addClass('stop').hide();
+    $('.word-test').hide();
+    $('.answer').show();
+    $('.answer-rate').show();
+    $('.answer-rate').prepend(answer_rate(words_length, correct_number))  
   }
-  function correctAnswer(answer){
-    html = `<p class="word-meaning correct">
-              ◯ ${answer}
-            </p>`
+}
 
-    return html
-  }
-  function answer_rate(number){
-    html = `<div>
-              <p class="answer-rate__message">${words_length}問中${number}問正解</p>
-            </div>`
-
-    return html
-  }
-
+$(document).on('turbolinks:load', function(){
 
   if (window.location.href.match(/\/test/)){
 
@@ -59,7 +73,7 @@ $(document).on('turbolinks:load', function(){
     $('.word-detail').hide();
     $('.answer-rate').hide();
     let index = 0;
-    let random_num = Math.floor( Math.random()*4);
+    random_num = Math.floor( Math.random()*4);
 
     $('.start-btn').click(function(){
       $(this).hide();
@@ -68,7 +82,8 @@ $(document).on('turbolinks:load', function(){
   
     $(document).on('click', '.selector', function(){
       let input = $(this).text();
-      let answer = $('.answer').eq(index).data("answer")
+      answer = $('.answer').eq(index).data("answer")
+      $('#timer').addClass('stop')
       if (input == answer) {
         $('.lower-info').eq(index).append(correctAnswer(answer));
         $('.your-answer').eq(index).append(correctAnswer(input));
@@ -77,7 +92,9 @@ $(document).on('turbolinks:load', function(){
         $('.your-answer').eq(index).append(incorrectAnswer(input));
       }
       $('.select-answers button').hide();
-      $('.next').show();
+      setTimeout(function(){
+        $('.next').show();  
+      }, 1000)
     });
   
     $(document).on('click', '.next', function(){
@@ -86,4 +103,23 @@ $(document).on('turbolinks:load', function(){
       layout(index, random_num);
     });
   }
+
+  $('.score-input').click(function(){
+    words_length = $('.start-btn').data('words-length')
+    correct_number = $('.your-answer').children('.correct').length;
+    score = 
+    $.ajax({
+      url: "success_or_fail",
+      type: "GET",
+      dataType: 'json',
+      data: {
+        max: words_length,
+        score: correct_number 
+      }
+    })
+    .done(function(){
+      $('.answer-rate').append('<div class="msg">スコアを提出しました！</div>');
+    })
+    
+  })
 });

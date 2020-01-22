@@ -88,12 +88,11 @@ class CardsetsController < ApplicationController
 
   def test
     @words = @cardset.words
-    @words_shadow = @cardset.words
+    @words_shaddow = @cardset.words
     @length = @cardset.words.length - 1
   end
 
   def find_words_name
-    return false if params[:keyword] == ""
     @words = Word.where('name LIKE ?', "#{params[:keyword]}%").limit(3)
     respond_to do |format| 
       format.json
@@ -101,7 +100,6 @@ class CardsetsController < ApplicationController
   end
 
   def find_words_definition
-    return false if params[:keyword] == ""
     @words = Word.where('meaning LIKE ?', "#{params[:keyword]}%").limit(3)
     respond_to do |format| 
       format.json

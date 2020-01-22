@@ -1,12 +1,12 @@
 function wordHtml(word, url){
   if (url === "/find_words_name"){
-    html = `<div class="AutosuggestContextItem" data-word-name="${word.name}">
+    html = `<div class="AutosuggestContextItem" data-word-id="${word.id}" data-word-name="${word.name}">
               <div class="Ellipsis">
                 ${word.name}
               </div>
             </div>`
   }else{
-    html = `<div class="AutosuggestContextItem" data-word-name="${word.meaning}">
+    html = `<div class="AutosuggestContextItem" data-word-id="${word.id}" data-word-name="${word.meaning}">
               <div class="Ellipsis">
                 ${word.meaning}
               </div>
@@ -177,9 +177,10 @@ $(document).on('turbolinks:load', function(){
 
   
   $(".UIContainer").on('click', '.AutosuggestContextItem', function(){
-    let value = $(this).data('word-name');
-    let textarea = $(this).parents('.TermContent-side').find('.AutoExpandTextarea-textarea')
-    let index = $('.UIContainer .AutoExpandTextarea-textarea').index(textarea)
+    wordId = $(this).data('word-id');
+    value = $(this).data('word-name');
+    textarea = $(this).parents('.TermContent-side').find('.AutoExpandTextarea-textarea')
+    index = $('.UIContainer .AutoExpandTextarea-textarea').index(textarea)
     textarea.val(value);
     if($(this).parents('.word-result').length){
       $('.UIContainer .AutoExpandTextarea-textarea').eq(index + 1).focus();
@@ -192,8 +193,7 @@ $(document).on('turbolinks:load', function(){
         dataType: "json"
       })
       .done(function(words){
-        console.log(words)
-        $('.AutosuggestContextItem').remove();
+        $(this).parents('.TermContent-side').find('.AutoExpandTextarea-wrapper').append(`<input value="${wordId}" name="cardset[[word_ids][]" type="hidden" />`)
         if (words.length !== 0) {
           words.forEach(function(word){
             search_result.append(wordHtml(word, "/find_words_definition"));
@@ -206,13 +206,13 @@ $(document).on('turbolinks:load', function(){
     $(this).parents('.AutosuggestContext-suggestions').empty();
   });
 
-  $('.UIContainer').on('change', '.AutoExpandTextarea-textarea', function(){
-    let value = $(this).val()
-    if (value === ""){
-      $(this).parents('.AutoExpandTextarea').removeClass('is-not-empty')
-    }else{
-      $(this).parents('.AutoExpandTextarea').addClass('is-not-empty')
-    }
-  })
+  // $('.UIContainer').on('change', '.AutoExpandTextarea-textarea', function(){
+  //   let value = $(this).val()
+  //   if (value === ""){
+  //     $(this).parents('.AutoExpandTextarea').removeClass('is-not-empty')
+  //   }else{
+  //     $(this).parents('.AutoExpandTextarea').addClass('is-not-empty')
+  //   }
+  // })
   
 });

@@ -3,15 +3,9 @@ class TestsController < ApplicationController
 
   def word_king
     if @cardset= Cardset.テスト用[@user.wordability]
-      @words = []
-      while @words.length < 30 do 
-        word = @cardset.words[rand(0...@cardset.words.length)]
-        unless @words.include?(word)
-          @words << word
-        end
-      end 
+      @words = @cardset.words
       @words_shadow = @words
-      @other_words = @cardset.words.to_ary.difference(@words)
+      @other_words = Word.where.not(id: @words.ids)
     else
       render :no_test
     end
