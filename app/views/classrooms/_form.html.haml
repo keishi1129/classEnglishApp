@@ -1,0 +1,28 @@
+= form_for classroom do |f|
+  - if classroom.errors.any?
+    .group-form__errors
+      %h2= "#{classroom.errors.full_messages.count}件のエラーが発生しました。"
+      %ul
+        - classroom.errors.full_messages.each do |message|
+          %li= message
+  .group-form__field
+    .group-form__field--left
+      = f.label :name, class: 'group-form__label'
+    .group-form__field--right
+      = f.text_field :name, class: 'group_name group-form__input', placeholder: 'クラス名を入力してください'
+  .group-form__field
+    .group-form__field--left
+      = f.label :password, class: 'group-form__label'
+    .group-form__field--right
+      = f.text_field :password, class: 'group_name group-form__input', placeholder: 'クラスのパスワードを決めてください'
+  .group-form__field
+    .group-form__field--left
+      %label.group-form__label{:for => "members"} 先生
+    .group-form__field--right
+      #group-users.js-add-user
+        .group-user.clearfix.js-member
+          %p.group-user__name= current_teacher.name
+  .group-form__field.clearfix
+    .group-form__field--left
+    .group-form__field--right
+      = f.submit class: 'group-form__action-btn'

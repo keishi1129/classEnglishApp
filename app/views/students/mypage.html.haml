@@ -1,0 +1,11 @@
+- breadcrumb :mypage, @student
+=render "layouts/breadcrumbs"    
+.mypage-wrapper 
+  .left-content
+    =render partial: 'mypage/side-bar'
+  .right-content
+    =render partial:  'mypage/user-info', locals: {user: @student}
+    =render partial:  'mypage/mypage-tab'
+    =render partial:  'mypage/mypage-tab2'
+
+   

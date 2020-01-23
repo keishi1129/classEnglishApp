@@ -1,7 +1,7 @@
 .main-content
   .margin-0-auto
-    %h1.page-title 生徒のログイン
-    =link_to '先生のログインはこちら', login_for_teacher_path
+    %h1.page-title 先生のログイン
+    =link_to '生徒のログインはこちら', login_path
     = form_with scope: :session, local: true do |f|
       .form-group
         =f.label :email, 'メールアドレス'

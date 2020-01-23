@@ -1,0 +1,12 @@
+-# - breadcrumb :mypage, @user
+=render "layouts/breadcrumbs"    
+.mypage-wrapper 
+  .left-content
+    =render partial: 'mypage/latest-news'
+    =render partial: 'mypage/side-bar'
+  .right-content
+    =render partial:  'mypage/user-info', locals: {user: @teacher}
+    =render partial:  'mypage/mypage-tab'
+    =render partial:  'mypage/mypage-tab2'
+
+    

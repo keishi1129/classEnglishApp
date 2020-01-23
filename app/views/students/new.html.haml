@@ -1,0 +1,6 @@
+%h1 生徒登録
+
+.nav.justify-content-end
+   = link_to '一覧', classroom_path(@classroom), class: 'nav-link'
+
+= render partial: 'form', locals: { student: @student, url: classroom_students_path }

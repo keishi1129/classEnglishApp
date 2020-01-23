@@ -38,40 +38,41 @@
       z-index: 2;
     }
   } 
-}
 
-.droplist {
-  display: none;
-  position: absolute;
-  top: 30px;
-  left: -1px;
-  ul {
-    background-color: black;
-    // box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-    width: 90%;
-    list-style: none;
-    z-index: 100;
-    transition: all .2s ease;
-  }
-  li{
-    overflow: hidden;
-    width: 100%;
-    transition: .2s;
-    a{
-      color: #fff;
-      display: block;
-      font-size: 20px;
-      line-height: 44px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+  .droplist {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: -1px;
+    ul {
+      background-color: black;
+      // box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+      width: 90%;
+      list-style: none;
+      z-index: 100;
+      transition: all .2s ease;
+    }
+    li{
       overflow: hidden;
-      cursor: pointer;
-      padding: 0px 16px;
-
-      &:hover {
-        color: #0056b3;
-        text-decoration: none;
+      width: 100%;
+      transition: .2s;
+      a{
+        color: #fff;
+        display: block;
+        font-size: 20px;
+        line-height: 44px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        cursor: pointer;
+        padding: 0px 16px;
+  
+        &:hover {
+          color: #0056b3;
+          text-decoration: none;
+        }
       }
     }
   }
 }
+

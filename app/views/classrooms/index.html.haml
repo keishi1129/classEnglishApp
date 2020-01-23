@@ -1,0 +1,18 @@
+.main-content
+  %h1.page-title グループ一覧
+
+  .mb-3
+  %table.table.table-hover
+    %thead.thead-default
+      %tr
+        %th クラス
+        %th 
+        %th 
+    %tbody
+      -@classrooms.each do |classroom|
+        %tr
+          %td
+            =classroom.name
+          %td 
+            =link_to  new_classroom_student_path(classroom) do
+              新規生徒登録

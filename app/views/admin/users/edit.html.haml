@@ -1,6 +1,0 @@
-%h1 生徒情報の編集
-
-.nav.justfy-content-end 
- = link_to '生徒一覧', group_admin_users_path(@group), class: 'nav-link'
-
-= render partial: 'form', locals: { user: @user, url: group_admin_user_path}

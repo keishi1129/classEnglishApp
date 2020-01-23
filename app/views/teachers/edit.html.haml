@@ -1,0 +1,6 @@
+%h1 先生情報の編集
+
+.nav.justfy-content-end 
+ = link_to '生徒一覧', '#', class: 'nav-link'
+
+= render partial: 'form', locals: { teacher: @teacher, url: teacher_path}

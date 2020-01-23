@@ -6,21 +6,21 @@
     font-weight: bold;
     font-size: 16px;
   }
-  &__menu{
+  li{
     border-bottom: 1px solid #f3f1f2;
     &:hover a{
         background: white;
         text-decoration: none;
         color: black;
       
-      .fa-chevron-right{
+      .fa-chevron-right, .fa-chevron-up{
         color: rgb(51, 51, 51);
         transition: all 0.3s ease 0s;
         transform: translateX(0.25em);
       }
     }
 
-    &--link{
+    a{
       position: relative;
       display: block;
       min-height: 48px;
@@ -29,7 +29,7 @@
       font-size: 14px;
       color: #333;
   
-      .fa-chevron-right{
+      .fa-chevron-right, .fa-chevron-up{
         display: block;
         margin: 0 0 0 auto;
         color: #ccc;
@@ -40,4 +40,65 @@
       }
     }
   }
+}
+
+
+.mypage-top-nav {
+  position: relative;
+  cursor: pointer;
+  margin-top: 200px;
+
+  .droplist {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: -150px;
+    ul {
+      list-style: none;
+      z-index: 100;
+      transition: all .2s ease;
+    }
+  }
+  &:hover {
+    .droplist{
+      display: block;
+      // visibility: visible;
+      z-index: 2;
+    }
+  } 
+}
+
+.latest-news{
+  h2{
+
+  }
+
+  p{
+    word-wrap: break-word;
+  }
+}
+
+
+#modal-main{
+  display: none;
+  width: 500px;
+  height: 300px;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: #666666;
+  position: fixed;
+  z-index: 100;
+}
+
+  /* モーダル 背景エリア */
+#modal-bg {
+  display:none;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,0.5);
+  position:fixed;
+  top:0;
+  left:0;
+  z-index: 1;
 }

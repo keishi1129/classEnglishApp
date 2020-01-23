@@ -1,7 +1,7 @@
 .app-header
   %h1.app-header__title ClassEnglish!
   %ul.app-header__list
-    - if current_user && current_user.admin?
+    - if current_teacher
       .header-nav.nav-link 
         学習する
         .droplist
@@ -14,19 +14,19 @@
         .droplist
           %ul
             %li
-              =link_to groups_path, class: 'nav-link' do
+              =link_to classrooms_path, class: 'nav-link' do
                 生徒一覧
             %li
-              =link_to groups_path, class: 'nav-link' do
+              =link_to classrooms_path, class: 'nav-link' do
                 生徒登録
             %li
-              =link_to new_group_path, class: 'nav-link' do
+              =link_to new_classroom_path, class: 'nav-link' do
                 新規クラス登録
       %li
-        = link_to 'マイページ', admin_user_mypage_path(current_user), class: 'nav-link'
+        = link_to '先生ページ', teacher_mypage_path(current_teacher), class: 'nav-link'
       %li
         = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
-    - elsif current_user
+    - elsif current_student
       .header-nav.nav-link 
         学習する
         .droplist
@@ -35,9 +35,11 @@
               =link_to posts_path, class: 'nav-link' do
                 探求
       %li
-        = link_to 'マイページ', admin_user_mypage_path(current_user), class: 'nav-link'
+        = link_to 'マイページ', student_mypage_path(current_student), class: 'nav-link'
       %li
         = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
     - else
       %li
         = link_to 'ログイン', login_path, class: 'nav-link'
+      %li
+        = link_to '新規の先生はこちら', new_teacher_path, class: 'nav-link'

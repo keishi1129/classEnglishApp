@@ -1,0 +1,34 @@
+= form_with(model: teacher, url: url, local: true) do |f|
+  .form-group
+    = f.label :name, '名前'
+    = f.text_field :name, class: 'form-control'
+    - if teacher.errors.any?
+      #error_explanation
+        %ul
+          - teacher.errors.full_messages_for(:name).each do |message|
+            %li= message
+  .form-group
+    = f.label :email, 'メールアドレス'
+    = f.text_field :email, class: 'form-control'
+    - if teacher.errors.any?
+      #error_explanation
+        %ul
+          - teacher.errors.full_messages_for(:email).each do |message|
+            %li= message
+  .form-group
+    = f.label :password, 'パスワード（デフォルトはpasswordになっています）'
+    = f.text_field :password, class: 'form-control', value: "password"
+    - if teacher.errors.any?
+      #error_explanation
+        %ul
+          - teacher.errors.full_messages_for(:password).each do |message|
+            %li= message
+  .form-group
+    = f.label :password_confirmation, 'パスワード（確認）'
+    = f.text_field :password_confirmation, class: 'form-control', value: "password"
+    - if teacher.errors.any?
+      #error_explanation
+        %ul
+          - teacher.errors.full_messages_for(:password_confirmation).each do |message|
+            %li= message
+  =f.submit '登録する', class: 'btn btn-primary'

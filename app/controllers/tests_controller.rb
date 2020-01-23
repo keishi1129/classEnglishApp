@@ -1,6 +1,11 @@
 class TestsController < ApplicationController
   before_action :set_user 
 
+  def word_king_menu
+    @teacher = Teacher.find(params[:teacher_id]) || Student.find(params[:student_id]).teacher
+    @cardsets = @teacher.cardsets
+  end
+
   def word_king
     if @cardset= Cardset.テスト用[@user.wordability]
       @words = @cardset.words

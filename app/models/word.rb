@@ -1,6 +1,6 @@
 class Word < ApplicationRecord
   belongs_to :duplicated_cardset
-  has_many :cardset_wordsz
+  has_many :cardset_words
   has_many :cardsets, through: :cardset_words
   scope :old10, -> { order(created_at: :asc).limit(10)}
 

@@ -1,0 +1,6 @@
+%h1 生徒情報の編集
+
+.nav.justfy-content-end 
+ = link_to '生徒一覧', classroom_path(@classroom), class: 'nav-link'
+
+= render partial: 'form', locals: { student: @student, url: classroom_student_path}

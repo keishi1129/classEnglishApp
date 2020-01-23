@@ -1,7 +1,7 @@
 class DuplicatedCardset < ApplicationRecord
   belongs_to :origin, class_name: "Cardset"
   has_many :words
-  belongs_to :user, foreign_key: true, optional: true
+  belongs_to :student, foreign_key: true
 
   enum status: {
     learning:1,

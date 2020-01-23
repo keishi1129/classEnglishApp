@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_22_053519) do
+ActiveRecord::Schema.define(version: 2020_01_19_020921) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
@@ -55,92 +55,84 @@ ActiveRecord::Schema.define(version: 2020_01_22_053519) do
   create_table "cardsets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
     t.integer "use", default: 1
+    t.bigint "student_id"
+    t.bigint "teacher_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_cardsets_on_user_id"
+    t.index ["student_id"], name: "index_cardsets_on_student_id"
+    t.index ["teacher_id"], name: "index_cardsets_on_teacher_id"
+  end
+
+  create_table "classrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "password", null: false
+    t.bigint "teacher_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["teacher_id"], name: "index_classrooms_on_teacher_id"
   end
 
   create_table "duplicated_cardsets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name"
     t.bigint "origin_id"
-    t.bigint "user_id"
+    t.bigint "student_id"
+    t.bigint "teacher_id"
     t.integer "status", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["origin_id"], name: "index_duplicated_cardsets_on_origin_id"
-    t.index ["user_id"], name: "index_duplicated_cardsets_on_user_id"
-  end
-
-  create_table "group_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.bigint "group_id"
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["group_id"], name: "index_group_users_on_group_id"
-    t.index ["user_id"], name: "index_group_users_on_user_id"
-  end
-
-  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_duplicated_cardsets_on_student_id"
+    t.index ["teacher_id"], name: "index_duplicated_cardsets_on_teacher_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "title", null: false
     t.text "url"
+    t.integer "use", default: 1
+    t.integer "words_length"
+    t.bigint "teacher_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "use", default: 1
-    t.bigint "user_id"
-    t.bigint "users_id"
-    t.index ["user_id"], name: "index_posts_on_user_id"
-    t.index ["users_id"], name: "index_posts_on_users_id"
+    t.index ["teacher_id"], name: "index_posts_on_teacher_id"
+  end
+
+  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.integer "vocabulary", default: 0
+    t.integer "wpm", default: 0
+    t.bigint "classroom_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["classroom_id"], name: "index_students_on_classroom_id"
+    t.index ["email"], name: "index_students_on_email", unique: true
   end
 
   create_table "teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.integer "wordablity", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
-    t.string "password_digest", null: false
-    t.integer "wordability", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "admin", default: false, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   create_table "words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
     t.string "meaning", null: false
     t.integer "level", default: 1, null: false
+    t.bigint "cardset_id"
+    t.bigint "duplicated_cardset_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "cardset_word_id"
-    t.bigint "duplicated_cardset_id"
-    t.index ["cardset_word_id"], name: "index_words_on_cardset_word_id"
+    t.index ["cardset_id"], name: "index_words_on_cardset_id"
     t.index ["duplicated_cardset_id"], name: "index_words_on_duplicated_cardset_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cardset_words", "cardsets"
   add_foreign_key "cardset_words", "words"
-  add_foreign_key "cardsets", "users"
-  add_foreign_key "duplicated_cardsets", "cardsets", column: "origin_id"
-  add_foreign_key "duplicated_cardsets", "users"
-  add_foreign_key "group_users", "groups"
-  add_foreign_key "group_users", "users"
-  add_foreign_key "posts", "users"
-  add_foreign_key "posts", "users", column: "users_id"
-  add_foreign_key "words", "cardset_words"
-  add_foreign_key "words", "duplicated_cardsets"
+  add_foreign_key "classrooms", "teachers"
+  add_foreign_key "posts", "teachers"
+  add_foreign_key "students", "classrooms"
 end
