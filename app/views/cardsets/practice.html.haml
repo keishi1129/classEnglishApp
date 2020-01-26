@@ -1,92 +1,91 @@
 .cm-container
   .mypage-wrapper 
     .right-content
-      .practice-area
-        .SetPage-studyPreview
-          %nav.SetPage-studyModes
-            .UIRow
-              %span.SetPageModes-group.SetPageModes-group--study
-                .SetPageModes-buttonWrapper.active
-                  =link_to '#', class: 'nav-link SetPageModeButton is-highlighted' do
-                    .SetPageModeButton-content
-                      .SetPageModeButton-icon
-                      %span.SetPageModeButton-modeName 単語リスト
-                .SetPageModes-buttonWrapper
-                  =link_to '#', class: 'nav-link SetPageModeButton' do
-                    .SetPageModeButton-content
-                      .SetPageModeButton-icon
-                      %span.SetPageModeButton-modeName 学習中のセット
-                .SetPageModes-buttonWrapper
-                  =link_to '#', class: 'nav-link SetPageModeButton' do
-                    .SetPageModeButton-content
-                      .SetPageModeButton-icon
-                      %span.SetPageModeButton-modeName 未学習のセット
-                .SetPageModes-buttonWrapper-link
-                  =link_to new_cardset_path, class: 'nav-link SetPageModeButton' do
-                    .SetPageModeButton-content
-                      .SetPageModeButton-icon
-                      %span.SetPageModeButton-modeName セット作成
-                .setPageModes-buttonWrapper-link
-                  =link_to test_student_cardset_path(@cardset, @cardset), class: 'nav-link SetPageModeButton' do
-                    .SetPageModeButton-content
-                      .SetPageModeButton-icon
-                      %span.SetPageModeButton-modeName テスト
-          %section.SetPageCardsPreview-container
-            .SetPageCardsPreview
-              .SetPageCardsPreview-inner
-                .CardsList.CardsList--showSingle
-                  .CardsList-container{"data-cardset-id": "#{@cardset.id}"}
+      .SetPage-studyPreview
+        %nav.SetPage-studyModes
+          .UIRow
+            %span.SetPageModes-group.SetPageModes-group--study
+              .SetPageModes-buttonWrapper.active
+                =link_to '#', class: 'nav-link SetPageModeButton is-highlighted' do
+                  .SetPageModeButton-content
+                    .SetPageModeButton-icon
+                    %span.SetPageModeButton-modeName 単語リスト
+              .SetPageModes-buttonWrapper
+                =link_to '#', class: 'nav-link SetPageModeButton' do
+                  .SetPageModeButton-content
+                    .SetPageModeButton-icon
+                    %span.SetPageModeButton-modeName 学習中のセット
+              .SetPageModes-buttonWrapper
+                =link_to '#', class: 'nav-link SetPageModeButton' do
+                  .SetPageModeButton-content
+                    .SetPageModeButton-icon
+                    %span.SetPageModeButton-modeName 未学習のセット
+              .SetPageModes-buttonWrapper-link
+                =link_to new_cardset_path, class: 'nav-link SetPageModeButton' do
+                  .SetPageModeButton-content
+                    .SetPageModeButton-icon
+                    %span.SetPageModeButton-modeName セット作成
+              .SetPageModes-buttonWrapper-link
+                =link_to test_student_cardset_path(@cardset, @cardset), class: 'nav-link SetPageModeButton' do
+                  .SetPageModeButton-content
+                    .SetPageModeButton-icon
+                    %span.SetPageModeButton-modeName テスト
+        %section.SetPageCardsPreview-container
+          .SetPageCardsPreview
+            .SetPageCardsPreview-inner
+              .CardsList.CardsList--showSingle
+                .CardsList-container{"data-cardset-id": "#{@cardset.id}"}
 
-                    %section.CardsItem.current.showing.showing-first#card-1{"data-index": 1}
-                      .CardsItemSide.CardsItemSide--firstSide.has-text
-                        .CardsItemInner.CardsItemInner--showBox
-                          .CardsItemInner-cell
-                            .FormattedTextWithImage
-                              .FormattedText.notranslate.lang-en
-                                %div{style:"display:block"}=@words[0].name
-                      .CardsItemSide.CardsItemSide--secondSide.CardsItemSide--lastSide.has-text
-                        .CardsItemInner.CardsItemInner--showBox
-                          .CardsItemInner-cell
-                            .FormattedTextWithImage
-                              .FormattedText.notranslate.lang-ja
-                                %div{style:"display:block"}=@words[0].meaning
+                  %section.CardsItem.current.showing.showing-first#card-1{"data-index": 1}
+                    .CardsItemSide.CardsItemSide--firstSide.has-text
+                      .CardsItemInner.CardsItemInner--showBox
+                        .CardsItemInner-cell
+                          .FormattedTextWithImage
+                            .FormattedText.notranslate.lang-en
+                              %div{style:"display:block"}=@words[0].name
+                    .CardsItemSide.CardsItemSide--secondSide.CardsItemSide--lastSide.has-text
+                      .CardsItemInner.CardsItemInner--showBox
+                        .CardsItemInner-cell
+                          .FormattedTextWithImage
+                            .FormattedText.notranslate.lang-ja
+                              %div{style:"display:block"}=@words[0].meaning
 
-                    %section.CardsItem.next.showing.showing-first#card-2{"data-index": 2}
-                      .CardsItemSide.CardsItemSide--firstSide.has-text
-                        .CardsItemInner.CardsItemInner--showBox
-                          .CardsItemInner-cell
-                            .FormattedTextWithImage
-                              .FormattedText.notranslate.lang-en
-                                %div{style:"display:block"}=@words[1].name
-                      .CardsItemSide.CardsItemSide--secondSide.CardsItemSide--lastSide.has-text
-                        .CardsItemInner.CardsItemInner--showBox
-                          .CardsItemInner-cell
-                            .FormattedTextWithImage
-                              .FormattedText.notranslate.lang-ja
-                                %div{style:"display:block"}=@words[1].meaning
+                  %section.CardsItem.next.showing.showing-first#card-2{"data-index": 2}
+                    .CardsItemSide.CardsItemSide--firstSide.has-text
+                      .CardsItemInner.CardsItemInner--showBox
+                        .CardsItemInner-cell
+                          .FormattedTextWithImage
+                            .FormattedText.notranslate.lang-en
+                              %div{style:"display:block"}=@words[1].name
+                    .CardsItemSide.CardsItemSide--secondSide.CardsItemSide--lastSide.has-text
+                      .CardsItemInner.CardsItemInner--showBox
+                        .CardsItemInner-cell
+                          .FormattedTextWithImage
+                            .FormattedText.notranslate.lang-ja
+                              %div{style:"display:block"}=@words[1].meaning
 
-                    %section.CardsItem.finish.showing.showing-first
-                      .CardsItemSide.CardsItemSide--firstSide.has-text
-                        .CardsItemInner.CardsItemInner--showBox
-                          .CardsItemInner-cell
-                            .FormattedTextWithImage
-                              .FormattedText.notranslate.lang-en
-                                %div{style:"display:block"} お疲れ様でした！
+                  %section.CardsItem.finish.showing.showing-first
+                    .CardsItemSide.CardsItemSide--firstSide.has-text
+                      .CardsItemInner.CardsItemInner--showBox
+                        .CardsItemInner-cell
+                          .FormattedTextWithImage
+                            .FormattedText.notranslate.lang-en
+                              %div{style:"display:block"} お疲れ様でした！
 
 
-                  .CardsList-navControl.previousButton
-                    .UIIconButton
-                      %button.UIButton.UIButton--borderless{title: "前のカード", type: "button"}
-                        %span.UIButton-wrapper
-                          %i{class:"fas fa-arrow-left"}
-                  .CardsList-navControl.progressIndex{"data-max-index": "#{@words.length}" }
-                    %span.UIText.UIText--bodyThree
-                  .CardsList-navControl.nextButton
-                    .UIIconButton
-                      %button.UIButton.UIButton--borderless{title: "次のカード", type: "button"}
-                        %span.UIButton-wrapper
-                          %i{class:"fas fa-arrow-right"}
-                  .CardsList-fontSizer
+                .CardsList-navControl.previousButton
+                  .UIIconButton
+                    %button.UIButton.UIButton--borderless{title: "前のカード", type: "button"}
+                      %span.UIButton-wrapper
+                        %i{class:"fas fa-arrow-left"}
+                .CardsList-navControl.progressIndex{"data-max-index": "#{@words.length}" }
+                  %span.UIText.UIText--bodyThree
+                .CardsList-navControl.nextButton
+                  .UIIconButton
+                    %button.UIButton.UIButton--borderless{title: "次のカード", type: "button"}
+                      %span.UIButton-wrapper
+                        %i{class:"fas fa-arrow-right"}
+                .CardsList-fontSizer
 
       .cardset-content
         %div.active
