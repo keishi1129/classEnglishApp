@@ -1,6 +1,8 @@
-%h1 生徒情報の編集
-
-.nav.justfy-content-end 
- = link_to '生徒一覧', classroom_path(@classroom), class: 'nav-link'
-
-= render partial: 'form', locals: { student: @student, url: classroom_student_path}
+-# - breadcrumb :edit_student, @student
+-# =render "layouts/breadcrumbs"  
+.cm-container  
+  .mypage-wrapper 
+    .mypage-content
+      %h1.page-title 生徒情報編集
+      .mb-3.p-3
+        = render partial: 'form', locals: { student: @student}

@@ -1,11 +1,13 @@
-
+.start-msg{
+  margin-top: 100px;
+}
 .start-btn{
   font-size: 50px;
   width: 100px;
-  margin: 0 auto;
+  margin: 300px auto 300px;
 }
 .word-card {
-width: 500px;
+max-width: 500px;
 margin: 40px auto;
 height: 300px;
 font-size: 50px;
@@ -39,6 +41,12 @@ align-items: center;
   }
 }
 
+
+
+
+
+
+
 .answer-rate{
 
   &__message{
@@ -52,12 +60,26 @@ align-items: center;
   z-index: 10;
   float: right;
   position: fixed;
-  bottom: 32px;
+  top: 60px;
   right: 30px;
 }
 
+
+// @media screen and (min-width:480px) { 
+//   /*　画面サイズが480pxからはここを読み込む　*/
+//   #timer{
+//     font-size: 100px;
+//   }
+// }
+// @media screen and (min-width:768px) {
+//   /*　画面サイズが768pxから1024pxまではここを読み込む　*/
+//   #timer{
+//     font-size: 100px;
+//   }
+// }
+
 .word-test{
-  background: #eee;
+  width: 100%;
   height: 1000px;
   margin-top: 50px;
   padding: 50px 0;
@@ -67,7 +89,8 @@ align-items: center;
   display: flex;
   flex-flow: column;
   margin: 0 auto;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
 
   .selector{
     margin-top: 20px;
@@ -76,7 +99,6 @@ align-items: center;
     display: inline-block;
     padding: 0.3em 1em;
     text-decoration: none;
-    // color: #67c5ff;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
     border: solid 2px #67c5ff;
     border-radius: 3px;
@@ -90,19 +112,20 @@ align-items: center;
 
   .next{
     margin-top: 20px;
+    width: 100%;
     height: 50px;
     font-size: 20px;
     display: inline-block;
     padding: 0.3em 1em;
     text-decoration: none;
-    // color: #67c5ff;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-    border: solid 2px #ffcd1f;
+    border: solid 2px $yellow;
     border-radius: 3px;
     transition: .4s;
+    background: white;
 
     &:hover{
-      background: #ffcd1f;
+      background: $yellow;
       color: white;
     }
   }

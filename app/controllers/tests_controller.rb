@@ -1,5 +1,9 @@
 class TestsController < ApplicationController
-  before_action :set_user 
+  # before_action :set_student, exept: :index
+
+  def index
+
+  end
 
   def word_king_menu
     @teacher = Teacher.find(params[:teacher_id]) || Student.find(params[:student_id]).teacher
@@ -24,14 +28,15 @@ class TestsController < ApplicationController
   end
 
 
+
   private
 
   def word_test_params
     params.require(:word_test).permit(:name, words_attributes: [:name, :meaning, :destroy]).merge(user_id: current_user.id)
   end
 
-  def set_user
-    @user = User.find(params[:user_id])
+  def set_student
+    @student = Student.find(params[:student_id])
   end
 
 end

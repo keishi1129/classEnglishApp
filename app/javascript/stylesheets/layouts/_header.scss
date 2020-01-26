@@ -1,28 +1,85 @@
+.cm-container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+@media screen and (min-width:480px) { 
+  /*　画面サイズが480pxからはここを読み込む　*/
+  .cm-container{
+    width: 100%;
+  } 
+}
+@media screen and (min-width:768px) and ( max-width:1024px) {
+  /*　画面サイズが768pxから1024pxまではここを読み込む　*/
+  .cm-container{
+    width: 100%;
+  }
+}
+@media screen and (min-width:1024px) {
+  /*　画面サイズが1024pxからはここを読み込む　*/
+  .cm-container{
+    width: 1024px;
+  }
+}
+
+
 .app-header{
-  display: flex;
-  background: #000;
+  top: 0;
+  background-color: #fff;
+  color: #525c65;
+  border-width: 0 0 1px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+  padding: 5px 0;
+  height: 100px;
   &__title{
-    margin: 30px;
-    width: 30%;
-    font-weight: bold;
-    color: white;
+    position: relative;
+    width: 200px;
+    img{
+      width: 160px;
+      max-width: 100%;
+      height: auto;
+      position: absolute;
+      top: 10px;
+    }
   }
   &__list{
     margin: 30px;
-    width: 70%;
     display: flex;
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 0px;
 
     li, div{
       font-size: 20px;
       margin-right: 30px;
       list-style: none;
-      color: white;
+      color: black;
     }
     a{
-      color: white;
+      color: black;
+
+      &:hover{
+        text-decoration-color: $yellow;
+      }
     }
   }
 }
+
+
+
+#nav-drawer {
+  position: relative;
+}
+
+.nav-unshown {
+  display:none;
+}
+
+
 
 .header-nav{
   display: inline-block;
@@ -42,11 +99,11 @@
   .droplist {
     display: none;
     position: absolute;
-    top: 30px;
-    left: -1px;
+    top: 35px;
+    left: 0;
     ul {
-      background-color: black;
-      // box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
       width: 90%;
       list-style: none;
       z-index: 100;
@@ -57,7 +114,7 @@
       width: 100%;
       transition: .2s;
       a{
-        color: #fff;
+        color: black;
         display: block;
         font-size: 20px;
         line-height: 44px;
@@ -68,11 +125,107 @@
         padding: 0px 16px;
   
         &:hover {
-          color: #0056b3;
+          background: $yellow;
           text-decoration: none;
         }
       }
     }
   }
 }
+
+
+
+@media screen and (max-width: 768px) { 
+  /*　画面サイズが480pxからはここを読み込む　*/
+  
+  #nav-open {
+    display: inline-block;
+    width: 30px;
+    height: 22px;
+    vertical-align: middle;
+    position: absolute;
+    top: 40px;
+    right: 15px;
+  
+    span, span::before, span::after{
+      position: absolute;
+      height: 3px;/*線の太さ*/
+      width: 25px;/*長さ*/
+      border-radius: 3px;
+      background: #555;
+      display: block;
+      content: '';
+      cursor: pointer;
+    }
+  }
+  
+  #nav-open span:before {
+    bottom: -8px;
+  }
+  #nav-open span:after {
+    bottom: -16px;
+  }
+  
+  #nav-close {
+    display: none;/*はじめは隠しておく*/
+    position: fixed;
+    z-index: 99;
+    top: 0;/*全体に広がるように*/
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    transition: .3s ease-in-out;
+  }
+  
+  #nav-content {
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;/*最前面に*/
+    width: 90%;/*右側に隙間を作る（閉じるカバーを表示）*/
+    max-width: 330px;/*最大幅（調整してください）*/
+    height: 100%;
+    background: #fff;/*背景色*/
+    transition: .3s ease-in-out;/*滑らかに表示*/
+    -webkit-transform: translateX(-105%);
+    transform: translateX(-105%);/*左に隠しておく*/
+  }
+  
+  
+  #nav-input:checked ~ #nav-close {
+    display: block;/*カバーを表示*/
+    opacity: .5;
+  }
+  
+  #nav-input:checked ~ #nav-content {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);/*中身を表示（右へスライド）*/
+    box-shadow: 6px 0 25px rgba(0,0,0,.15);
+  }
+
+  .app-header{
+    &__title{
+      float: none;
+      margin: 0 auto;
+    }
+    &__list{
+      display: block;
+      float: none;
+
+      li, div{
+        margin-top: 100px;
+      }
+    }
+  }
+
+  .header-nav{
+    display: block;
+    position: relative;
+    cursor: pointer;
+  }
+}
+
 

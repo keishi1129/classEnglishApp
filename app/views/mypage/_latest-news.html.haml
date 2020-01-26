@@ -1,7 +1,9 @@
 .latest-news
-  %h3 最近のニュース
-  %P
-    %a{class: "modal-open", "data-news-id": 1} スコアが上がりました！
-  %P 
-    %a{class: "modal-open", "data-news-id": 2} Thanks Letterが届きました！
+  %ul.news-list
+    %li.news-item
+      %a{class: "modal-open", "data-news-id": 1} スコアが上がりました！
+    %li.news-item
+      %a{class: "modal-open", "data-news-id": 2} Thanks Letterが届きました！
+    %li.go-news-index
+      %a{class: "modal-open", "data-news-id": 2} お知らせ一覧
   #modal-main モーダルウインドウ

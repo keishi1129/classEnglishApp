@@ -1,24 +1,27 @@
-%h1 #{@group.name} 生徒一覧
+- breadcrumb :classroom
+=render "layouts/breadcrumbs"  
+.cm-container  
+  .mypage-wrapper 
+    .mypage-content
+      %h1.page-title=@classroom.name
+      .mb-3.pl-3
+        = link_to '新規生徒登録', new_classroom_student_path(@classroom), class: 'btn btn-primary'
+        -if @students.present?
+          %table.table.table-hover
+            %thead.thead-default
+              %tr
+                %th= Student.human_attribute_name(:name)
+                %th= Student.human_attribute_name(:email)
+                %th
+              %th
+            %tbody
+              -@students.each do |student|
+                %tr
+                  %td= student.name
+                  %td= student.email
+                  %td
+                    =link_to '編集', edit_student_path(student), class:'btn btn-warning mr-3' 
+                    =link_to '削除', student_path(student), method: :delete, data: { confirm: "「#{student.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger'
 
-= link_to '新規登録', new_group_admin_user_path(@group), class: 'btn btn-primary'
 
-.mb-3
-%table.table.table-hover
-  %thead.thead-default
-    %tr
-      %th= User.human_attribute_name(:name)
-      %th= User.human_attribute_name(:email)
-      %th= User.human_attribute_name(:created_at)
-      %th= User.human_attribute_name(:updated_at)
-      %th
-    %th
-  %tbody
-    - @group.users.each do |user|
-      %tr
-        %td= user.name
-        %td= user.email
-        %td= user.created_at.to_s
-        %td= user.updated_at.to_s
-        %td
-          =link_to '編集', edit_group_admin_user_path(@group, user), class:'btn btn-primary mr-3' 
-          =link_to '削除', group_admin_user_path(@group, user), method: :delete, data: { confirm: "ユーザー「#{user.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger'
+

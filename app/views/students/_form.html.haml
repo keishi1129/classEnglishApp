@@ -1,4 +1,4 @@
-= form_with(model: student, url: url, local: true) do |f|
+= form_with(model: [@classroom, student], local: true) do |f|
   .form-group
     = f.label :name, '名前'
     = f.text_field :name, class: 'form-control'

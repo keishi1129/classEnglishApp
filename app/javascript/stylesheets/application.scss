@@ -1,9 +1,11 @@
-@import 'layouts/common';
+@import 'variable';
 @import "~bootstrap/scss/bootstrap";
+@import 'layouts/common';
+@import "tests/top-page";
 @import 'layouts/mixin';
-@import 'layouts/color';
 @import 'layouts/breadcrumbs';
 @import 'layouts/header';
+@import 'devise/form';
 @import 'posts/posts';
 @import 'posts/form';
 @import 'posts/show';
@@ -12,6 +14,7 @@
 @import 'cardsets/test';
 @import 'cardsets/practice';
 @import 'cardsets/form';
+@import 'cardsets/cardset';
 @import 'users/mypage';
 @import 'users/side-bar';
 @import 'users/user-info';

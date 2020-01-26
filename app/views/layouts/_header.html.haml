@@ -1,45 +1,30 @@
 .app-header
-  %h1.app-header__title ClassEnglish!
-  %ul.app-header__list
-    - if current_teacher
-      .header-nav.nav-link 
-        学習する
-        .droplist
-          %ul
+  .cm-container
+    .app-header__title
+      = image_pack_tag 'media/images/title-logo.png', alt: 'title-logo'
+    #nav-drawer
+      %input{id: "nav-input", type: "checkbox", class: "nav-unshown"}
+      %label{id: "nav-open", for: "nav-input"}
+        %span
+      %label{class: "nav-unshown", id: "nav-close", for: "nav-input"}
+      #nav-content
+        %ul.app-header__list
+          - if current_teacher
+            %li.header-nav
+              = link_to 'テスト', root_path
+            %li.header-nav
+              = link_to '先生ページ', teacher_mypage_path(current_teacher)
+            %li.header-nav
+              = link_to 'ログアウト', destroy_teacher_session_path, method: :delete
+          - elsif current_student
+            %li.header-nav
+              = link_to 'テスト', root_path
+            %li.header-nav
+              = link_to 'マイページ', student_mypage_path(current_student)
+            %li.header-nav
+              = link_to 'ログアウト', destroy_student_session_path, method: :delete
+          - else
             %li
-              =link_to posts_path, class: 'nav-link' do
-                読解王
-      .header-nav.nav-link
-        クラス情報
-        .droplist
-          %ul
+              = link_to '生徒のログイン', new_student_session_path
             %li
-              =link_to classrooms_path, class: 'nav-link' do
-                生徒一覧
-            %li
-              =link_to classrooms_path, class: 'nav-link' do
-                生徒登録
-            %li
-              =link_to new_classroom_path, class: 'nav-link' do
-                新規クラス登録
-      %li
-        = link_to '先生ページ', teacher_mypage_path(current_teacher), class: 'nav-link'
-      %li
-        = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
-    - elsif current_student
-      .header-nav.nav-link 
-        学習する
-        .droplist
-          %ul
-            %li
-              =link_to posts_path, class: 'nav-link' do
-                探求
-      %li
-        = link_to 'マイページ', student_mypage_path(current_student), class: 'nav-link'
-      %li
-        = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
-    - else
-      %li
-        = link_to 'ログイン', login_path, class: 'nav-link'
-      %li
-        = link_to '新規の先生はこちら', new_teacher_path, class: 'nav-link'
+              = link_to '先生のログイン', new_teacher_session_path

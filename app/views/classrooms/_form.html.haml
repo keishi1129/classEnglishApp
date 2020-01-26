@@ -1,4 +1,4 @@
-= form_for classroom do |f|
+= form_for [@teacher, classroom] do |f| 
   - if classroom.errors.any?
     .group-form__errors
       %h2= "#{classroom.errors.full_messages.count}件のエラーが発生しました。"
@@ -12,9 +12,9 @@
       = f.text_field :name, class: 'group_name group-form__input', placeholder: 'クラス名を入力してください'
   .group-form__field
     .group-form__field--left
-      = f.label :password, class: 'group-form__label'
+      = f.label :classroom_code, class: 'group-form__label'
     .group-form__field--right
-      = f.text_field :password, class: 'group_name group-form__input', placeholder: 'クラスのパスワードを決めてください'
+      = f.text_field :classroom_code, class: 'group_name group-form__input', placeholder: 'クラスコードを決めてください。生徒のログインに必要です。'
   .group-form__field
     .group-form__field--left
       %label.group-form__label{:for => "members"} 先生

@@ -4,45 +4,18 @@
     %li.side-bar__menu 
       = link_to "#", class:"side-bar__menu--link" do
         クラス課題
-        %i.fa.fa-chevron-up
-
-    .droplist
-      %ul
-        %li
-          =link_to classrooms_path, class: 'nav-link' do
-            生徒一覧
-            %i.fa.fa-chevron-right
-        %li
-          =link_to classrooms_path, class: 'nav-link' do
-            生徒登録
-            %i.fa.fa-chevron-right
-        %li
-          =link_to new_classroom_path, class: 'nav-link' do
-            新規クラス登録
-            %i.fa.fa-chevron-right
-        
-
-  %ul.side-bar.mypage-middle-nav 
-    %p テスト
-    %li.side-bar__menu 
-      = link_to "#", class:"side-bar__menu--link" do
-        テストに挑戦
         %i.fa.fa-chevron-right
     %li.side-bar__menu 
       = link_to "#", class:"side-bar__menu--link" do
-        テストを復習
+        Thanks Letter
         %i.fa.fa-chevron-right
 
   %ul.side-bar 
-    %p 〇〇王チャレンジ
-    %li.side-bar__menu 
-      = link_to student_word_king_path(current_student), class:"side-bar__menu--link" do
-        単語王
-        %i.fa.fa-chevron-right
-    %li.side-bar__menu  
-      = link_to "#", class:"side-bar__menu--link" do
-        文法王
-        %i.fa.fa-chevron-right
+    %p テスト
+    -# %li.side-bar__menu 
+    -#   = link_to student_word_king_path(current_student), class:"side-bar__menu--link" do
+    -#     単語王
+    -#     %i.fa.fa-chevron-right
     %li.side-bar__menu  
       = link_to "#", class:"side-bar__menu--link" do
         読解王
@@ -51,20 +24,17 @@
       = link_to "#", class:"side-bar__menu--link" do
         聴解王
         %i.fa.fa-chevron-right
+    %li.side-bar__menu  
+      = link_to "#", class:"side-bar__menu--link" do
+        文法王
+        %i.fa.fa-chevron-right
     %li.side-bar__menu 
       = link_to "#", class:"side-bar__menu--link" do
         弁論王
         %i.fa.fa-chevron-right
     %li.side-bar__menu 
       = link_to "#", class:"side-bar__menu--link" do
-        雑談王
-        %i.fa.fa-chevron-right
-
-  %ul.side-bar 
-    %p 
-    %li.side-bar__menu 
-      = link_to "#", class:"side-bar__menu--link" do
-        Thanks Letter
+        作文王
         %i.fa.fa-chevron-right
 
 -if current_teacher
@@ -74,10 +44,27 @@
       = link_to "#", class:"side-bar__menu--link" do
         クラス課題管理
         %i.fa.fa-chevron-right
-    %li.side-bar__menu  
+    
+    %li.side-bar__menu.droplist-opener  
       = link_to "#", class:"side-bar__menu--link" do
         クラス管理
-        %i.fa.fa-chevron-right
+        %i.fa.fa-chevron-down
+      .droplist
+        %ul
+          %li.droplist-item
+            =link_to teacher_classrooms_path(@current_teacher.id), class: 'nav-link' do
+              生徒一覧
+              %i.fas.fa-chalkboard-teacher 
+          %li.droplist-item
+            =link_to teacher_classrooms_path(@current_teacher.id), class: 'nav-link' do
+              生徒登録
+              %i.fas.fa-chalkboard-teacher
+          %li.droplist-item
+            =link_to new_teacher_classroom_path(@current_teacher.id), class: 'nav-link' do
+              新規クラス登録
+              %i.fas.fa-chalkboard-teacher
+
+          
     %li.side-bar__menu 
       = link_to "#", class:"side-bar__menu--link" do
         記事管理

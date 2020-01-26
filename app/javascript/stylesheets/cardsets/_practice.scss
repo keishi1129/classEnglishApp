@@ -81,7 +81,7 @@
 }
 
 .is-highlighted{
-  border-bottom-color: #ffcd1f;
+  border-bottom-color: $yellow;
 }
 
 .CardsList {
@@ -97,7 +97,7 @@
       perspective: 1000px;
     }
     .CardsItem{
-      background: transparent;
+      background: white;
       box-shadow: none;
       transform-style: preserve-3d;
 
@@ -435,3 +435,6 @@
   transform: rotate(45deg);
 }
 
+table{
+  background: white;
+}

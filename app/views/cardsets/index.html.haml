@@ -1,4 +1,7 @@
-.main-content
-  -if current_user.admin?
-    =link_to 'テスト用の学習セット一覧はこちら', test_index_user_cardsets_path
-  =render partial: 'index', locals: {title: '学習セット', cardsets: @cardsets}
+
+.cm-container  
+  .mypage-content.main-content
+    .p-3
+      -if current_teacher
+        =link_to 'テスト用の学習セット一覧はこちら', test_index_teacher_cardsets(current_teacer)
+      =render partial: 'index', locals: {title: '学習セット', cardsets: @cardsets}

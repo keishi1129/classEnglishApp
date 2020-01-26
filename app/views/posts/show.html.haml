@@ -1,20 +1,19 @@
-.main-content
-  %p#notice= notice
-  .margin-0-auto
-    .mb-5.bgc-gray
-      .post-content
-        .post-title
-          %h1= @post.title
-        %p= @post.content
-      .post-content
-        %p
-          参照元
-          =link_to @post.url, "#{@post.url}" , class: 'nav-link'
-    .mb-3
-      -if current_teacher
-        .button
-          = link_to '編集', edit_post_path(@post), class: 'nav-link'
-          = link_to '長文問題の一覧', posts_path, class: 'nav-link'
-      -else
-        .button
-          = link_to '長文問題の一覧', posts_path, class: 'nav-link'
+
+.cm-container
+  .main-content
+    .post-content
+      .post-title
+        %h1= @post.title
+      %p= @post.content
+    -if @post.url.present?
+      %p
+        参照元
+        =link_to @post.url, "#{@post.url}" , class: 'nav-link'
+  .mb-3
+    -if current_teacher
+      .button
+        = link_to '編集', edit_post_path(@post), class: 'nav-link'
+        = link_to '長文問題の一覧', posts_path, class: 'nav-link'
+    -else
+      .button
+        = link_to '長文問題の一覧', posts_path, class: 'nav-link'

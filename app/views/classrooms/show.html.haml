@@ -1,21 +1,27 @@
-.main-content
-  .mb-3
-  %table.table.table-hover
-    %thead.thead-default
-      %tr
-        %th= Student.human_attribute_name(:name)
-        %th= Student.human_attribute_name(:email)
-        %th= Student.human_attribute_name(:created_at)
-        %th= Student.human_attribute_name(:updated_at)
-        %th
-      %th
-    %tbody
-      - @students.each do |student|
-        %tr
-          %td= student.name
-          %td= student.email
-          %td= student.created_at.to_s
-          %td= student.updated_at.to_s
-          %td
-            =link_to '編集', edit_classroom_student_path(@classroom, student), class:'btn btn-primary mr-3' 
-            =link_to '削除', classroom_student_path(@classroom, student), method: :delete, data: { confirm: "ユーザー「#{student.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger'
+- breadcrumb :classroom, @classroom
+=render "layouts/breadcrumbs"  
+.cm-container  
+  .mypage-wrapper 
+    .mypage-content
+      %h1.page-title=@classroom.name
+      .mb-3.pl-3
+        = link_to '新規生徒登録', new_classroom_student_path(@classroom), class: 'btn btn-primary'
+        -if @students.present?
+          %table.table.table-hover
+            %thead.thead-default
+              %tr
+                %th= Student.human_attribute_name(:name)
+                %th= Student.human_attribute_name(:email)
+                %th
+              %th
+            %tbody
+              -@students.each do |student|
+                %tr
+                  %td= student.name
+                  %td= student.email
+                  %td
+                    =link_to '編集', edit_student_path(student), class:'btn btn-warning mr-3' 
+                    =link_to '削除', student_path(student), method: :delete, data: { confirm: "「#{student.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger'
+
+
+

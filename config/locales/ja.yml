@@ -8,6 +8,8 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       post: 投稿記事
+      teacher: 先生
+      classroom: クラス
     attributes:
       post:
         id: ID
@@ -18,9 +20,6 @@ ja:
         image: 画像
         created_at: 登録日時
         updated_at: 更新日時
-      post_content:
-        desc: 詳しい説明
-        title: タイトル
       student:
         name: 名前
         email: メールアドレス
@@ -28,6 +27,11 @@ ja:
         password_confirmation: パスワード（確認）
         created_at: 登録日時
         updated_at: 更新日時
+      teacher:
+        name: 名前
+      classroom:
+        name: 名前
+        classroom_code: クラスコード
   date:
     abbr_day_names:
     - 日

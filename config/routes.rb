@@ -1,38 +1,51 @@
 Rails.application.routes.draw do
-  root "posts#index"
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  get '/login_for_teacher', to: 'sessions#teacher_new'
-  post '/login_for_teacher', to: 'sessions#teacher_create'
-  delete '/logout', to: 'sessions#destroy'
+  devise_for :teachers, controllers: {
+    sessions:      'teachers/sessions',
+    passwords:     'teachers/passwords',
+    registrations: 'teachers/registrations'
+  }
+  devise_for :students, controllers: {
+    sessions:      'students/sessions',
+    passwords:     'students/passwords',
+    registrations: 'students/registrations'
+  }
+  root "tests#index"
   get '/word_find', to: 'cardsets#word_find'
   get '/find_words_name', to: 'cardsets#find_words_name'
   get '/find_words_definition', to: 'cardsets#find_words_definition'
   get 'word_king_menu', to: 'tests#word_king_menu'
-  # resources :groups do
-  #   collection do
-  #     get 'user_list', to: 'groups#before_user_list'
-  #     get 'user_create', to: 'groups#before_user_create'
-  #   end
-  # end
+
 
   resources :teachers, only: [:new, :create, :edit, :update] do
     get '/mypage', to: 'teachers#mypage'
     get '/word_king', to: 'teachers#word_king'
   end
 
-  resources :classrooms do
-    resources :students
+  resources :teachers, only: :show do
+    resources :classrooms, shallow: true do
+      resources :students
+    end
   end
 
   resources :students, only: :show do
     get '/mypage', to: 'students#mypage'
-    get '/word_practice', to: 'students#word_practice'
-    get '/word_king', to: 'students#word_king'
 
-    resources :cardsets do
-      get '/practice', to: 'cardsets#practice'
-      get '/test', to: 'cardsets#test'
+    resources :cardsets, only: :show do
+      member do
+        get 'practice', to: 'cardsets#practice'
+        get 'test', to: 'cardsets#test'
+      end
+    # get '/word_practice', to: 'students#word_practice'
+    # get '/word_king', to: 'students#word_king'
+    end
+  end
+
+  resources :cardsets, only: [:index, :new, :create, :edit, :update] 
+
+  resources :teachers, shallow: true do
+    resources :cardsets, only: :show do
+      # get '/practice', to: 'cardsets#practice'
+      # get '/test', to: 'cardsets#test'
 
       collection do 
         get '/test_index', to: 'cardsets#test_index'
@@ -44,7 +57,7 @@ Rails.application.routes.draw do
     post :import, on: :collection
   end
 
-  resources :tests, only: :show do
+  resources :tests, only: :index do
     collection do
       get 'success_or_fail'
     end

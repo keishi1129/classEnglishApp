@@ -1,8 +1,9 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:edit, :update, :destroy]
-  before_action :set_classroom, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_action :set_classroom, only: [:index, :new, :create]
 
   def index
+    @students = @classroom.students
   end  
   
   def mypage
@@ -10,6 +11,7 @@ class StudentsController < ApplicationController
   end
 
   def new
+    @teacher = @classroom.teacher
     @student = @classroom.students.new
   end
 
@@ -28,7 +30,7 @@ class StudentsController < ApplicationController
 
   def update
     if @student.update(student_params)
-      redirect_to group_admin_students_path(@group), noice: "ユーザー「#{@student.name}」を更新しました。"
+      redirect_to classroom_students_path(@student.classroom), noice: "ユーザー「#{@student.name}」を更新しました。"
     else
       render :edit
     end
@@ -36,7 +38,7 @@ class StudentsController < ApplicationController
 
   def destroy
     @student.destroy
-    redirect_to group_admin_students_path(@group), notice: "ユーザー「#{@student.name}」を削除しました。"
+    redirect_to classroom_students_path(@student.classroom), notice: "ユーザー「#{@student.name}」を削除しました。"
   end
 
 
@@ -52,7 +54,8 @@ class StudentsController < ApplicationController
   end
 
   def set_classroom
-    @classroom = Classroom.find(params[:classroom_id])
+    id = params[:classroom_id] || params[:id]
+    @classroom = Classroom.find(id)
   end
 
 end

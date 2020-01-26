@@ -1,26 +1,29 @@
-.main-content
-  %h1.page-title 長文読解一覧
-  %table.table.table-hover.post-table 
-    %thead.thead-default
-      %tr
-        %th タイトル
-        %th{:colspan => "3"}
-    %tbody
-      - @posts.each do |post|
-        %tr
-          %td= post.title
-          -if current_teacher
-            %td
-              = link_to '詳細', post, class: 'btn btn-primary'
-              = link_to '編集', edit_post_path(post), class: 'btn btn-primary'
-              = link_to '削除', post, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
-          -else
-            %td
-              = link_to '学習する', post, class: 'btn btn-primary'
--if current_teacher  
-  .post-btn
-    = link_to '長文問題投稿', new_post_path, class: 'btn btn-primary'
-    = link_to 'エクスポート', posts_path(format: :csv), class: 'btn btn-warning'
-    =form_tag import_posts_path, multipart: true do
-      = submit_tag "インポート", class: 'btn btn-info',  id: 'import-btn', disabled: "true"
-      = file_field_tag :file, id:"csv-input"
+
+.cm-container
+  .main-content
+    %h1.page-title 長文読解一覧
+    .p-3
+      %table.table.table-hover.post-table 
+        %thead.thead-default
+          %tr
+            %th タイトル
+            %th{:colspan => "3"}
+        %tbody
+          - @posts.each do |post|
+            %tr
+              %td= post.title
+              -if current_teacher
+                %td
+                  = link_to '詳細', post, class: 'btn btn-primary'
+                  = link_to '編集', edit_post_path(post), class: 'btn btn-primary'
+                  = link_to '削除', post, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
+              -else
+                %td
+                  = link_to '学習する', post, class: 'btn btn-primary'
+      -if current_teacher  
+        .post-btn
+          = link_to '長文問題投稿', new_post_path, class: 'btn btn-primary'
+          = link_to 'エクスポート', posts_path(format: :csv), class: 'btn btn-warning'
+          =form_tag import_posts_path, multipart: true do
+            = submit_tag "インポート", class: 'btn btn-info',  id: 'import-btn', disabled: "true"
+            = file_field_tag :file, id:"csv-input"

@@ -1,7 +1,6 @@
-.main-content
+.cm-container
   #timer
-  .margin-0-auto
-  %h1 単語王チャレンジ
+  %h1.start-msg 単語王チャレンジ
   .start-btn{"data-words-length": @words.length}
     %button{class: "btn btn-primary"} START
   -@words.each do |word|
@@ -15,7 +14,7 @@
         %button.next 次の問題
 
   .answer-rate
-    =link_to "単語力詳細へ", admin_user_mypage_path, class: "nav-link mb-3"
+    =link_to "単語力詳細へ", student_mypage_path, class: "nav-link mb-3"
     %table.table.table-hover
       %thead.thead-default
         %tr
@@ -29,4 +28,4 @@
             %td=word.meaning
             %td.your-answer
 
-        
+          

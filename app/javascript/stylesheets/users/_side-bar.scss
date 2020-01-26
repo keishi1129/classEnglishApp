@@ -6,14 +6,15 @@
     font-weight: bold;
     font-size: 16px;
   }
-  li{
+  &__menu{
     border-bottom: 1px solid #f3f1f2;
-    &:hover a{
-        background: white;
+    &:hover{
+      .side-bar__menu--link{
+        background: $yellow;
         text-decoration: none;
-        color: black;
-      
-      .fa-chevron-right, .fa-chevron-up{
+        color: white;
+       }
+      .fa-chevron-right, .fa-chevron-down{
         color: rgb(51, 51, 51);
         transition: all 0.3s ease 0s;
         transform: translateX(0.25em);
@@ -25,40 +26,52 @@
       display: block;
       min-height: 48px;
       padding: 16px;
-      background: #eee;
+      background: white;
       font-size: 14px;
       color: #333;
   
-      .fa-chevron-right, .fa-chevron-up{
+      .fa-chevron-right, .fa-chevron-down, .fa-chalkboard-teacher {
         display: block;
         margin: 0 0 0 auto;
         color: #ccc;
         position: absolute;
         font-size: 16px;
+      }
+      .fa-chalkboard-teacher {
+        left:10px;
+        top:18px;
+      }
+
+      .fa-chevron-right, .fa-chevron-down{
         right:15px;
         top:18px;
       }
     }
   }
-}
-
-
-.mypage-top-nav {
-  position: relative;
-  cursor: pointer;
-  margin-top: 200px;
 
   .droplist {
     display: none;
-    position: absolute;
-    width: 100%;
-    top: -150px;
-    ul {
-      list-style: none;
-      z-index: 100;
-      transition: all .2s ease;
-    }
+
+    .droplist-item{
+      a{
+        padding-left: 45px;
+        &:hover{
+          background: #eee;
+          .fa-chalkboard-teacher{
+            color: rgb(51, 51, 51);
+            transition: all 0.3s ease 0s;
+            transform: translateX(0.25em);
+          }
+        }
+      }
+    } 
   }
+}
+
+
+.droplist-opener {
+  position: relative;
+  cursor: pointer;
   &:hover {
     .droplist{
       display: block;
@@ -68,15 +81,43 @@
   } 
 }
 
+
+
 .latest-news{
-  h2{
+  .news-list{
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 40px;
+    background-color: white;
 
-  }
+    .news-item{
+      border-bottom: 1px solid #eee;
 
-  p{
-    word-wrap: break-word;
+      a{
+        display: block;
+        min-height: 20px;
+        padding: 16px;
+      }
+    }
+
+    .go-news-index{
+      border: 0;
+      position: relative;
+      a{
+        display: block;
+        height: 60px;
+        margin: 0 auto;
+        background: #eee;
+        color: #333;
+        line-height: 60px;
+        text-align: center;
+        text-decoration: none;
+        touch-action: manipulation;
+      }
+    }
   }
 }
+
 
 
 #modal-main{

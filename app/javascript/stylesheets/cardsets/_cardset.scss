@@ -1,0 +1,22 @@
+.cardset-item{
+  vertical-align: middle !important;
+  overflow: hidden;
+  span{
+    margin-left: 10px;
+    padding: 8px 25px 8px 8px;
+    background: $sky;
+    border-radius: 0.25rem;
+    color: white;
+    position: relative;
+    user-select: none;
+    font-size: 1rem;
+  }
+  a {
+    position: relative
+  }
+  .fa-pencil-alt{
+    position: absolute;
+    right: 5px;
+    color: white;
+  }
+}

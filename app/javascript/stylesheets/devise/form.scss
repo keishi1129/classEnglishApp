@@ -1,0 +1,47 @@
+.form-wrapper{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 660px;
+}
+
+.form-container{
+  width: 100%;
+  margin-top: 50px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+  background-color: white;
+  box-sizing: border-box;
+
+  h2{
+    margin: 20px 0;
+    padding: 0;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  .default-form {
+    width: 100%;
+    margin: 5px 0 15px;
+    padding: 10px;
+    border: 1px solid #D8D8D8;
+    border-radius: 5px;
+    font-family: "游ゴシック", "YuGothic";
+  }
+
+  .default-btn {
+    background-color: #57C3E9;
+    border-radius: 20px;
+    color: #fff;
+    border: 0;
+    font-size: 18px;
+  }
+
+  input[type="checkbox"] {
+    display: inline-block;
+  }
+  
+
+}

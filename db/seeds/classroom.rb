@@ -1,5 +1,5 @@
 teacher = Teacher.create!(
-  name: "huga先生",
+  name: "huga",
   email: "huga@gmail.com",
   password: "password",
   password_confirmation: "password"
@@ -7,7 +7,7 @@ teacher = Teacher.create!(
 
 classroom = teacher.classrooms.create!(
   name: '1年A組',
-  password: '1111'
+  classroom_code: "1111"
 )
 
 30.times do |i|
@@ -15,6 +15,6 @@ classroom = teacher.classrooms.create!(
     name: "hoge#{i + 1}",
     email: "hoge#{i + 1}@example.com", 
     password: "password",
-    password_confirmation: "password"
+    password_confirmation: "password",
   )
 end

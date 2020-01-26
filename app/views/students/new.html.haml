@@ -1,6 +1,11 @@
-%h1 生徒登録
+- breadcrumb :new_teacher_classrooms_student, @teacher, @classroom
+=render "layouts/breadcrumbs"  
+.cm-container  
+  .mypage-wrapper 
+    .mypage-content
+      %h1.page-title 生徒登録
+      .mb-3.p-3
+        = render partial: 'form', locals: { student: @student}
 
-.nav.justify-content-end
-   = link_to '一覧', classroom_path(@classroom), class: 'nav-link'
 
-= render partial: 'form', locals: { student: @student, url: classroom_students_path }
+

@@ -1,18 +1,22 @@
-.main-content
-  %h1.page-title グループ一覧
-
-  .mb-3
-  %table.table.table-hover
-    %thead.thead-default
-      %tr
-        %th クラス
-        %th 
-        %th 
-    %tbody
-      -@classrooms.each do |classroom|
-        %tr
-          %td
-            =classroom.name
-          %td 
-            =link_to  new_classroom_student_path(classroom) do
-              新規生徒登録
+- breadcrumb :teacher_classrooms, @teacher
+=render "layouts/breadcrumbs"  
+.cm-container  
+  .mypage-wrapper 
+    .right-content
+      .mypage-content
+        %h1.page-title クラス一覧
+        .mb-3.p-3
+        %table.table.table-hover
+          %tbody
+            -@classrooms.each do |classroom|
+              %tr
+                %td
+                  =link_to classroom_path(classroom), class: "nav-link" do
+                    =classroom.name
+                %td 
+                  =link_to  new_classroom_student_path(classroom_id: classroom.id), class: "btn btn-warning" do
+                    新規生徒登録
+    .left-content
+      =render partial:  'mypage/user-info', locals: {user: @teacher}
+      =render partial: 'mypage/latest-news'
+      =render partial: 'mypage/side-bar'

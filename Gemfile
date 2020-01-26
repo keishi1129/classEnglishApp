@@ -70,3 +70,6 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 gem "erb2haml"
 gem 'pry-rails'
 gem "gretel"
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'

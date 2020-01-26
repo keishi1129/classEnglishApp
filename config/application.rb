@@ -11,6 +11,7 @@ module ClassEnglishApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
     config.assets.paths << config.root.join("node_modules")
+    config.i18n.default_locale = :ja
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

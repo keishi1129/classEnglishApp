@@ -3,15 +3,17 @@
   padding-top: 50px;
 }
 .CreateSetPage{
+  background: #F4FAFA;
   counter-reset: studiable-item;
 }
 .CreateSetHeader{
-  background: #fff;
+  background: #F4FAFA;
   overflow: visible;
   padding: 1.5rem 0 2rem;
   position: relative;
 
   &.is-sticky .CreateSetHeader-sticky{
+    background-color: white;
     position: fixed;
     box-shadow: 0 0.3125rem 1rem 0 rgba(0,0,0,.24);
     z-index: 1000;
@@ -112,7 +114,7 @@
   }
 }
 .UITextarea-textarea.UITextarea-autoExpandTextarea.is-focused~.UITextarea-border,.UITextarea-textarea.UITextarea-autoExpandTextarea.is-focused~.UITextarea-border{
-  box-shadow: 0 0.25rem 0 0 #ffcd1f;
+  box-shadow: 0 0.25rem 0 0 $yellow;
 }
 .AutoExpandTextarea{
   position: relative;
@@ -144,7 +146,7 @@
   }
   &.is-focused{
     .UITextarea-border{
-      box-shadow: 0 0.25rem 0 0 #ffcd1f;
+      box-shadow: 0 0.25rem 0 0 $yellow;
     }
   }
 }
@@ -178,7 +180,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: #fff;
+  background: #F4FAFA;
   height: 4rem;
   transform: translateZ(0);
 }
@@ -337,8 +339,7 @@
   line-height: 1.285714285714286;
   transition: all .12s cubic-bezier(.47,0,.745,.715);
   &:hover{
-    background: #ffcd1f;
+    background: $yellow;
     color: black;
   }
-    
 }
