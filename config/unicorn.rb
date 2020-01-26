@@ -7,10 +7,10 @@ worker_processes 1
 #アプリケーションの設置されているディレクトリを指定
 working_directory "#{app_path}/classEnglishApp/current"
 
-listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
-pid "#{app_path}/shared/tmp/pids/unicorn.pid"
-stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
-stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
+listen "#{app_path}/classEnglishApp/shared/tmp/sockets/unicorn.sock"
+pid "#{app_path}/classEnglishApp/shared/tmp/pids/unicorn.pid"
+stderr_path "#{app_path}/classEnglishApp/shared/log/unicorn.stderr.log"
+stdout_path "#{app_path}/classEnglishApp/shared/log/unicorn.stdout.log"
 
 #Railsアプリケーションの応答を待つ上限時間を設定
 timeout 60
