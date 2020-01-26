@@ -144,52 +144,22 @@
     display: block;
   } 
 }
-.point-boxes {
-  display: flex;
-  .operator{
-    font-size: 40px;
-    font-weight: bold;
-    line-height: 120px;
-  }
-  
-  .point-box{
-    font-style: italic;
-    position: relative;
-    margin: 0 0 0 30px ;
-    &:first-child{
-      margin: 0 20px 0 0;
-    }
-    &__name{
-      margin-top: 70px;
-      p{
-        font-size: 20px;
-      }
-    }
-    
-    &__number {
-      position: absolute;
-      left: 100px;
-      top: 20px;
-      strong{
-      font-size: 50px;
-      }
-    }
-  }
-}
 
 .item-header {
-  display: flex;
-  justify-content: space-between;
   margin-top: 50px;
-
   &-title{
     font-style: italic;
   }
 }
+.item-header-date{
+  position: absolute;
+  right: 0px;
+  top: -30px;
+}
 
 
 .sensei-note{
-  width:300px;/*幅はお好きなサイズに*/
+  max-width:300px;/*幅はお好きなサイズに*/
   position:relative;
   z-index:0;
 
