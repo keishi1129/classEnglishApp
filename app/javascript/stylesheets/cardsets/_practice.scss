@@ -1,4 +1,4 @@
-.SetPage-studyPreview{
+.SetPage{
   display: flex;
   .SetPageCardsPreview-container{
     height: 22.5rem;
@@ -12,27 +12,20 @@
   
     .SetPageModeButton-modeName{
       font-size: 1.125rem;
-      line-height: 1.44;
-      position: relative;
       font-weight: 600;
-      letter-spacing: 0!important;
       color: #455358;
-      bottom: 0;
     }
     .SetPageModes-buttonWrapper{
       height: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .SetPageModes-buttonWrapper-link{
-      height: 1.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 15px;
+      padding-bottom: 30px;
     }
   }
 }
 
 @media screen and (max-width:768px) { 
   /*　画面サイズが480pxからはここを読み込む　*/
-  .SetPage-studyPreview{
+  .SetPage{
     flex-direction: column-reverse;
     .SetPageCardsPreview-container{
       max-width: 32.5rem;
@@ -45,26 +38,18 @@
       max-width: 32.5rem;
       width: 100%;
       margin: 0 auto;
-      .SetPageModeButton-modeName{
-        height: 2rem;
-        width: auto;
-        display: inline-block;
-      }
       .SetPageModes-buttonWrapper{
         display: inline-block;
         height: 2rem;
-        width: auto;
-      }
-      .SetPageModes-buttonWrapper-link{
-        display: inline-block;
-        height: 2rem;
-        width: auto;
+        width: 49%;
+        margin: 5px 0;
+        text-align: center;
       }
     } 
   }
 }
 @media screen and (min-width:768px) {
-  .SetPage-studyPreview{
+  .SetPage{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -72,273 +57,86 @@
       max-width: 32.5rem;
       width: 32.5rem;
     }
-    .SetPageModeButton-modeName{
-      margin-left: 1rem;
-      padding-left: 2.0625rem;
-    }
     .SetPageModes-buttonWrapper{
       display: block;
-      width: 13.375rem;
-    }
-    .setPageModes-buttonWrapper-link{
-      display: block;
-      width: 13.375rem;
+      margin-right: 20px;
+      width: 130px;
     }
   }
 }
-
-.SetPageCardsPreview{
-  height: 100%;
-  padding: 0;
-  overflow-x: visible;
-  clear: both;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 81.25em;
-  padding: 0;
-  &-inner{
-    border: none;
-    height: 100%;
-  }
-  
-}
-
-
 
 .SetPageModes-group{
   display: inline-block;
 
-  .SetPageModeButton-content{
-    position: relative;
+  .SetPageModes-buttonWrapper{
+    height: 1rem;
+    margin: 0 13px .8125rem;
   }
-  &--study{
-    .SetPageModes-buttonWrapper{
-      height: 1rem;
-      margin: 0 0 .8125rem;
-    }
-    .SetPageModeButton{
-      border: none;
-      box-shadow: none;
-    }
-    .SetPageModeButton-content{
-      text-align: left;
-    }
+  .SetPageModeButton{
+    text-decoration: none !important;
   }
+  .active{
+    border-bottom: 3px solid $yellow;
+  }
+  
 }
 
-.is-highlighted{
-  border-bottom-color: $yellow;
+
+
+
+
+// 単語カードのスタイル
+
+.SetPageCardsPreview{
+  height: 100%;
 }
 
 .CardsList {
-  margin: 0 auto;
   position: relative;
-  width: auto;
   height: 100%;
-  max-width: 50rem;
-  
-  &--showSingle{
 
-    .CardsList-container{
-      perspective: 1000px;
-    }
-    .CardsItem{
-      background: white;
-      box-shadow: none;
-      transform-style: preserve-3d;
-
-      .CardsItemSide{
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        visibility: visible;
-        z-index: 4;
-        backface-visibility: hidden;
-        transform: none;
-        transform-style: flat;
-        transition: all .32s ease-in-out!important;
-        .CardsItemInner{
-          background-color: #fff;
-          visibility: visible;
-        }
-        &--secondSide{
-          transform: rotateX(-180deg) translateY(5%) scale(1.1);
-          opacity: 0;
-          z-index: 5;
-  
-        }
-      }
-
-      &.showing{
-        display: block;
-        z-index: 5;
-
-        &.current, &.previous, &.next{
-          display: block!important;
-          transition: transform .24s ease,opacity .12s linear!important;
-        }
-      }
-
-      &.previous{
-        opacity: 0;
-        transform: translateX(-16%) rotateY(16deg) translateZ(0)!important;
-        pointer-events: none;
-      }
-      &.current{
-        z-index: 6;
-      }
-      &.next{
-        opacity: 0;
-        transform: translateX(16%) rotateY(-16deg) translateZ(0)!important;
-        pointer-events: none;
-      }
-      
-
-      &.showing-first{
-        .CardsItemSide--firstSide{
-          .CardsItemInner{
-            transform: translateY(50%)
-          }
-        }
-      }
-      &.showing-second{
-
-        .CardsItemSide {
-          transform: rotateX(180deg) translateY(-5%) scale(1.1)!important;
-          opacity: 0;
-
-          &--firstSide{
-            .CardsItemInner{
-              height: 100%;
-              transform: none;
-              transition: none!important;
-            }
-          }
-          &--secondSide{
-            transform: none!important;
-            opacity: 1;
-          }
-        }
-      }
-    }
-
-    .CardsList-navControl{
-      bottom: 0;
-    } 
-  }
-
-  .CardsList-container{
-    position: absolute;
-    margin-top: 0;
-    top: 0;
-    left: 0;
-    bottom: 2rem;
+  &-container{
+    perspective: 1000px;
     height: 100%;
-    width: 100%;
-    transition: none!important;
-    transform: none!important;
-    overflow: visible;
   }
 }
-
-.CardsItem.showing.current {
-  display: block!important;
-  transition: transform .24s ease,opacity .12s linear!important;
-}
-// .CardsItem.next.finished {
-//   .CardsItemSide--firstSide {
-//     transition: transform .2s ease-out;
-//     transform: translateY(50%)
-//   }
-// }
 
 .CardsItem{
-  background: #fff;
+  background: transparent;
+  box-shadow: none;
+  transform-style: preserve-3d;
   bottom: 15%;
   clear: left;
-  display: none!important;
-  height: auto!important;
   left: 0;
   margin: 0;
   padding: 0;
   position: absolute;
   right: 0;
   top: 0;
-  transform: none!important;
-  zoom: 1;
+  // transform: none!important;
+  // zoom: 1;
 
   .CardsItemSide{
     border-radius: .3125rem;
     overflow: hidden;
     box-shadow: 0 0.3125rem 1.25rem 0 rgba(0,0,0,.24);
-    background: transparent;
-    background-position: 50%;
-    background-repeat: none;
-    background-size: contain;
-    border: 0;
     cursor: pointer;
-    display: block;
     font-size: 42px;
-    height: 100%!important;
-    position: relative;
+    transition: all .32s ease-in-out!important;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    visibility: visible;
+    z-index: 4;
+    backface-visibility: hidden;
     transform: none;
-  
-    .CardsItemInner{
-      background-color: #fff;
-      visibility: visible;
-      align-items: center;
-      display: flex;
-      height: 100%;
-      justify-content: center;
-      left: 0;
-      top: 0;
-      width: 100%;
- 
+    transform-style: flat;
+    background: #fff;
 
-      .CardsItemInner-cell{
-        height: 100%;
-        width: 100%;
-        opacity: 1;
-        visibility: visible;
-        word-wrap: break-word;
-        flex-grow: 1;
-        font-size: inherit;
-        left: 0;
-        overflow: visible!important;
-        padding: 0 34px;
-        position: relative;
-        text-align: center;
-        vertical-align: middle;
-        hyphens: auto;
-      }
-    }
+  }
   
-
-    &--firstSide{
-      z-index: 2;
-      .CardsItemInner{
-        transform: translateY(0);
-        height: 45%
-      }
-    }
-    &--secondSide{
-      transform: rotateX(-180deg) translateY(5%) scale(1.1);
-      opacity: 0;
-      z-index: 5;
-    }
-  }
-  .FormattedTextWithImage{
-    align-items: center;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    padding: 2.5rem 0;
-    height: 100%;
-    width: 100%;
-    position: relative;
-  }
   .FormattedText{
     align-items: center;
     display: flex;
@@ -354,11 +152,66 @@
       max-height: 100%;
     }
   }
+  
+  &.previous{
+    opacity: 0;
+    transform: translateX(-16%) rotateY(16deg) translateZ(0)!important;
+    pointer-events: none;
+  }
+  &.current{
+    z-index: 6;
+  }
+  &.next{
+    opacity: 0;
+    transform: translateX(16%) rotateY(-16deg) translateZ(0)!important;
+    pointer-events: none;
+  }
+    
+  
+  &.showing{
+    z-index: 5;
+
+    &.current, &.previous, &.next{
+      // display: block!important;
+      transition: transform .24s ease,opacity .12s linear!important;
+    }
+    
+    &-first{
+      .CardsItemSide{
+        &--firstSide {
+          transform: none!important;
+          opacity: 1;
+        }
+  
+        &--secondSide{
+          transform: rotateX(-180deg) translateY(5%) scale(1.1);
+          opacity: 0;
+          z-index: 5;
+        }
+      }
+  
+    }
+    &-second{
+  
+      .CardsItemSide{
+        &--firstSide {
+        transform: rotateX(180deg) translateY(-5%) scale(1.1)!important;
+        opacity: 0;
+        }
+  
+        &--secondSide{
+          transform: none!important;
+          opacity: 1;
+        }
+      }
+    }   
+  }
 }
+
 
 .CardsList-navControl{
   position: absolute;
-  bottom: 8%;
+  bottom: 0;
 
   &.previousButton{
     left: 33%;
@@ -427,7 +280,6 @@
       justify-content: center;
       width: 100%;
     }    
-  
   }
 }
 
