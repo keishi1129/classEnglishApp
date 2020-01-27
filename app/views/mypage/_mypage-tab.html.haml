@@ -21,99 +21,36 @@
 
   .mypage-content        
     .mypage-item.active
-      .item-header-date=Date.today.to_s
-      .item-header
-        .item-header-title 
-          %h2 Vocabulary
-      .sensei-note
-        %ul
-          %li
-            先生メモ:
-            %br
-            語彙力はリーディング、リスニング、スピーキング、グラマー全ての基盤です。
+      =render partial: 'mypage/tab-content', locals: {title: 'Vocabulary', memo: "語彙力はリーディング、リスニング、スピーキング、グラマー全ての基盤です。"}
       -if current_student
         =link_to '単語を覚える',  cardsets_path, class: "mt-4 btn btn-primary" 
       =link_to '単語王ランキング', '#', class: "mt-4 btn btn-warning"
-
     .mypage-item
-      .item-header-date=Date.today.to_s
-      .item-header
-        .item-header-title 
-          %h2 Reading
-      .sensei-note
-        %ul
-          %li
-            先生メモ:
-            %br
-            WPM(Words Per Minute)は１分で何文字読めるかという速さの基準です。
-            %br
+      =render partial: 'mypage/tab-content', locals: {title: 'Reading', memo: " WPM(Words Per Minute)は１分で何文字読めるかという速さの基準です。"}
       -if current_student
         =link_to '長文を読む', posts_path, class: "mt-4 btn btn-primary" 
       =link_to '読解王ランキング', '#', class: "mt-4 btn btn-warning"
 
     .mypage-item
-      .item-header-date=Date.today.to_s
-      .item-header
-        .item-header-title 
-          %h2 Listening
-      .sensei-note
-        %ul
-          %li
-            先生メモ:
-            %br
-            リスニングは、実はスピーキングも大事です。
-            %br
-            たくさん聞いたら、たくさん真似して話してみましょう。
+      =render partial: 'mypage/tab-content', locals: {title: 'Listening', memo: " リスニング上達の鍵は、実はスピーキングです。たくさん聞いたら、たくさん真似して話してみましょう。"}
       -if current_student
         =link_to '問題を聴く', '#', class: "mt-4 btn btn-primary" 
       =link_to '聴解王ランキング', '#', class: "mt-4 btn btn-warning"
 
     .mypage-item
-      .item-header-date=Date.today.to_s
-      .item-header
-        .item-header-title 
-          %h2 Speaking
-      .sensei-note
-        %ul
-          %li
-            先生メモ:
-            %br
-            スピーキングは、
-            %br
-            音源に1,2秒遅れて話すシャドーイング(shadowing)と
-            %br
-            同時に話して発音矯正するオーバーラッピング(overlapping)が効果的です。
+      =render partial: 'mypage/tab-content', locals: {title: 'Speaking', memo: " スピーキングは、音源に1,2秒遅れて話すシャドーイング(shadowing)と同時に話して発音矯正するオーバーラッピング(overlapping)が効果的です。"}
       -if current_student
         =link_to '問題を解く', '#', class: "mt-4 btn btn-primary" 
       =link_to '弁論王ランキング', '#', class: "mt-4 btn btn-warning"
       
     .mypage-item
-      .item-header-date=Date.today.to_s
-      .item-header
-        .item-header-title 
-          %h2 Grammar
-      .sensei-note
-        %ul
-          %li
-            先生メモ:
-            %br
-            語順に品詞に時制、冠詞、、、大変だけど
-            %br
-            文法はやればやるほどすぐ力になるよ！
-      =link_to '問題を解く', '#', class: "mt-4 btn btn-primary"
+      =render partial: 'mypage/tab-content', locals: {title: 'Grammar', memo: "  語順に品詞に時制、冠詞、、、大変だけど、文法はやればやるほどすぐ力になるよ！"}
+      -if current_student
+        =link_to '問題を解く', '#', class: "mt-4 btn btn-primary"
       =link_to '文法王ランキング', '#', class: "mt-4 btn btn-warning"
 
     .mypage-item
-      .item-header-date=Date.today.to_s
-      .item-header
-        .item-header-title 
-          %h2 Chatting
-      .sensei-note
-        %ul
-          %li
-            先生メモ:
-            %br
-            英語は使って楽しく身につけよう！
+      =render partial: 'mypage/tab-content', locals: {title: 'Chatting', memo: "  英語は使って楽しく身につけよう！！"}
       .search-form
         %input{class: "search-form__input" , size: "20", placeholder: "トピックをランダムに表示します"} 
         %button{type: "submit", class: "search-form__btn"}

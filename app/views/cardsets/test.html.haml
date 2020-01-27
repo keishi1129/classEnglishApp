@@ -1,8 +1,9 @@
-.cm-container
-  #timer
+.start-box
   %h1.start-msg 単語王チャレンジ
   .start-btn{"data-words-length": @words.length}
     %button{class: "btn btn-primary"} START
+.cm-container
+  #timer
   -@words.each do |word|
     .word-test
       =render partial: 'word-card', locals: {word: word, words: @words_shadow}

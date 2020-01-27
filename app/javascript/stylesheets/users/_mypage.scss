@@ -146,20 +146,39 @@
 }
 
 .item-header {
-  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  padding-top: 50px;
   &-title{
     font-style: italic;
   }
+  &-date{
+    font-size: 18px;
+  }
 }
-.item-header-date{
-  position: absolute;
-  right: 0px;
-  top: -30px;
+
+@media screen and (max-width: 850px){
+  .item-header {
+    display: block;
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
+    &-title{
+      font-style: italic;
+    }
+    &-date{
+      position: relative;
+      font-size: 15px;
+    }
+  }
+
 }
 
 
 .sensei-note{
-  max-width:300px;/*幅はお好きなサイズに*/
+  max-width:300px;
+  margin-top: 50px;
   position:relative;
   z-index:0;
 

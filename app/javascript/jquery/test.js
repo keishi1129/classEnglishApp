@@ -76,7 +76,7 @@ $(document).on('turbolinks:load', function(){
     random_num = Math.floor( Math.random()*4);
 
     $('.start-btn').click(function(){
-      $(this).hide();
+      $('.start-box').hide();
       layout(index, random_num);
     });
   
