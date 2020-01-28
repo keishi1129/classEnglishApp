@@ -31,10 +31,9 @@ class CardsetsController < ApplicationController
     if @cardset.練習用? && @cardset.save
       redirect_to cardsets_path
     elsif @cardset.save
-      test_index_teacher_cardsets_path(@cardset.teacher)
+      redirect_to test_index_teacher_cardsets_path(@cardset.teacher)
     else
       30.times{@cardset.words.build}
-      binding.pry
       render :new
     end
   end
@@ -45,7 +44,7 @@ class CardsetsController < ApplicationController
     if @cardset.練習用? && @cardset.save
       redirect_to cardsets_url
     elsif @cardset.save
-      test_index_teacher_cardsets_path(@cardset.teacher)
+      redirect_to test_index_teacher_cardsets_path(@cardset.teacher)
     else
       (30 - @cardset.words.length).times{@cardset.words.build}
       render :edit
