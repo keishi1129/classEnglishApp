@@ -42,8 +42,10 @@ class CardsetsController < ApplicationController
  
   def update
     @cardset.update(cardset_params)
-    if @cardset.save
+    if @cardset.練習用? && @cardset.save
       redirect_to cardsets_url
+    elsif @cardset.save
+      test_index_teacher_cardsets_path(@cardset.teacher)
     else
       (30 - @cardset.words.length).times{@cardset.words.build}
       render :edit
