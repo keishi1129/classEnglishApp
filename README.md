@@ -5,6 +5,15 @@
     
     英語アプリを作成中です。
     [英語アプリのURL](http://3.113.102.115/)
+    
+    先生としてログインする場合は、
+    email: huga@gmail.com
+    password : password
+    
+    生徒としてログインする場合は、
+    email: huge1@gmail.com (hoge1~hoge20までお好きな番号で入ってください)
+    password : password
+    
 
     学校、塾、家庭教師の先生が、ご生徒さんとお使いいただける英語学習アプリ（になる予定）です。就職活動の合間に更新していきます。
 
