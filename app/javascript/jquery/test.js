@@ -68,7 +68,7 @@ function layout(index, random_num){
 $(document).on('turbolinks:load', function(){
 
   // if (window.location.href.match(/\/test/)){
-
+  console.log("OK")
     $('.word-test').hide();
     $('.word-detail').hide();
     $('.answer-rate').hide();
@@ -80,7 +80,7 @@ $(document).on('turbolinks:load', function(){
       layout(index, random_num);
     });
   
-    $(document).on('click', '.selector', function(){
+    $('.select-answers').on('click', '.selector', function(){
       let input = $(this).text();
       answer = $('.answer').eq(index).data("answer")
       $('#timer').addClass('stop')
@@ -97,7 +97,7 @@ $(document).on('turbolinks:load', function(){
       }, 1000)
     });
   
-    $(document).on('click', '.next', function(){
+    $('.select-answers').on('click', '.next', function(){
       index += 1
       random_num = Math.floor( Math.random()*4);
       layout(index, random_num);
