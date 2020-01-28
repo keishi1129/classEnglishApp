@@ -148,11 +148,15 @@
 @media screen and (max-width: 576px){
 
   .mypage-content .mypage-item{
-    height: 500px;
+    height: 530px;
     margin: 0;
   }
   .mypage-tabs{
     display: none !important;
+  }
+
+  .slick-dots{
+    bottom: -40px !important;
   }
 }
 
