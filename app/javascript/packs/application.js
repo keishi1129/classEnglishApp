@@ -3,8 +3,14 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+require("@rails/ujs").start()
+require("trix")
+require("@rails/actiontext")
+require("turbolinks").start()
+require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+// require("bootstrap")
 require("jquery/test") 
 require("jquery/practice") 
 require("jquery/tab") 
@@ -24,11 +30,6 @@ require.context('images', true, /\.(png|jpg|jpeg|svg)$/)
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-// require("@rails/actiontext").start()
-// require("@rails/ujs").start()
-// require("@rails/activestorage").start()
-// require("trix").start()
-require("turbolinks").start()
 
 // import "bootstrap"
 import 'slick-carousel'
