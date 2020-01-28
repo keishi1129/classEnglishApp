@@ -47,6 +47,13 @@ align-items: center;
   margin-top: 60px;
 }
 
+.your-answer{
+  .word-meaning{
+    margin:0;
+    font-size: 20px;
+  }
+}
+
 .answer-rate{
 
   &__message{

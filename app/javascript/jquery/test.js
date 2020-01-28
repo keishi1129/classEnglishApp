@@ -104,22 +104,22 @@ $(document).on('turbolinks:load', function(){
     });
   // }
 
-  $('.score-input').click(function(){
-    words_length = $('.start-btn').data('words-length')
-    correct_number = $('.your-answer').children('.correct').length;
-    score = 
-    $.ajax({
-      url: "success_or_fail",
-      type: "GET",
-      dataType: 'json',
-      data: {
-        max: words_length,
-        score: correct_number 
-      }
-    })
-    .done(function(){
-      $('.answer-rate').append('<div class="msg">スコアを提出しました！</div>');
-    })
+  // $('.score-input').click(function(){
+  //   words_length = $('.start-btn').data('words-length')
+  //   correct_number = $('.your-answer').children('.correct').length;
+  //   score = 
+  //   $.ajax({
+  //     url: "success_or_fail",
+  //     type: "GET",
+  //     dataType: 'json',
+  //     data: {
+  //       max: words_length,
+  //       score: correct_number 
+  //     }
+  //   })
+  //   .done(function(){
+  //     $('.answer-rate').append('<div class="msg">スコアを提出しました！</div>');
+  //   })
     
-  })
+  // })
 });

@@ -9,7 +9,7 @@
           - @cardsets.each do |cardset|
             %tr
               %td.cardset-item
-                = link_to cardset.name, word_king_teacher_cardset_path(current_student, cardset)
+                = link_to cardset.name, test_student_cardset_path(current_student, cardset)
                 .learning-icon
                   %a
                     %span 学習中 
