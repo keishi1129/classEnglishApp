@@ -1,14 +1,12 @@
 
-%h1.page-title #{title}
-.p-3.table-responsive
-  %table.table.table-hover
-    %tbody.thead-default
-      - cardsets.each do |cardset|
-        %tr
-          %td.cardset-item
-            -if current_teacher
-              =cardset.name
-            -else
+-if current_student
+  %h1.page-title #{title}
+  .p-3.table-responsive
+    %table.table.table-hover
+      %tbody.thead-default
+        - cardsets.each do |cardset|
+          %tr
+            %td.cardset-item
               -if current_student.duplicated_cardsets.include?(DuplicatedCardset.find_by(student_id: current_student.id, origin_id: cardset.id))
                 = link_to cardset.name, practice_student_cardset_path(current_student, cardset)
                 .learning-icon
@@ -17,12 +15,31 @@
                     %i{class: "fas fa-pencil-alt"}
               -else
                 = link_to cardset.name, practice_student_cardset_path(current_student, cardset)
-
-          %td.cardset-item.cardset-item--name
-            -if cardset.student.present?
-              #{cardset.student.name}
+            -if cardset.student == current_student
+              %td=link_to '編集する', edit_cardset_path(cardset), class: "btn btn-warning"
             -else
-              #{cardset.teacher.name}
+              %td.cardset-item.cardset-item--name
+                -if cardset.student.present?
+                  #{cardset.student.name}
+                -else
+                  #{cardset.teacher.name}
+-else
+  %h1.page-title #{title}
+  .p-3.table-responsive
+    %table.table.table-hover
+      %tbody.thead-default
+        - cardsets.each do |cardset|
+          %tr
+            %td.cardset-item
+              =cardset.name
+            -if cardset.teacher == current_teacher
+              %td=link_to '編集する', edit_cardset_path(cardset), class: "btn btn-warning"
+            -else
+              %td.cardset-item.cardset-item--name
+                -if cardset.student.present?
+                  #{cardset.student.name}
+                -else
+                  #{cardset.teacher.name}
 
 
 
