@@ -43,5 +43,5 @@
           %ul
             - cardset.errors[:words].each do |message|
               %li= message
-      =render partial: 'new_card', locals: {f: f}
+      =render partial: 'shared/new_card', locals: {f: f}
     .UIContainer

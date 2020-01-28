@@ -1,0 +1,29 @@
+.start-box
+  %h1.start-msg 単語王チャレンジ
+  .start-btn{"data-words-length": @words.length}
+    %button{class: "btn btn-primary"} START
+.cm-container
+  #timer
+  -@words.each do |word|
+    .word-test
+      =render partial: 'shared/word-card', locals: {word: word, words: @words_shadow}
+      .select-answers
+        %button.selector=@words_shadow.where.not(id: word.id)[rand(0...@length)].meaning
+        %button.selector=@words_shadow.where.not(id: word.id)[rand(0...@length)].meaning
+        %button.selector=@words_shadow.where.not(id: word.id)[rand(0...@length)].meaning
+        %button.selector=@words_shadow.where.not(id: word.id)[rand(0...@length)].meaning
+        %button.next 次の問題
+
+  .answer-rate.mt-5
+    %table.table.table-hover
+      %thead.thead-default
+        %tr
+          %th 単語
+          %th 正解
+          %th あなたの解答
+      %tbody
+        -@words.each do |word|
+          %tr
+            %td=word.name
+            %td=word.meaning
+            %td.your-answer

@@ -67,7 +67,7 @@ function layout(index, random_num){
 
 $(document).on('turbolinks:load', function(){
 
-  if (window.location.href.match(/\/test/)){
+  // if (window.location.href.match(/\/test/)){
 
     $('.word-test').hide();
     $('.word-detail').hide();
@@ -102,7 +102,7 @@ $(document).on('turbolinks:load', function(){
       random_num = Math.floor( Math.random()*4);
       layout(index, random_num);
     });
-  }
+  // }
 
   $('.score-input').click(function(){
     words_length = $('.start-btn').data('words-length')

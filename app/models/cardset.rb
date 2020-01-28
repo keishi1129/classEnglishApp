@@ -4,7 +4,8 @@ class Cardset < ApplicationRecord
   accepts_nested_attributes_for :words, allow_destroy: true, reject_if: :reject_words
   validates :name, presence: {message: "名前を入力してください"}
   validates :words, length: { minimum: 5, message: "必ず5個は単語を入れてください"}
-  belongs_to :student
+  belongs_to :student, optional: true
+  belongs_to :teacher, optional: true
   has_many :duplicated_cardsets, class_name: "DuplicatedCardset", foreign_key: "origin_id",  dependent: :destroy
 
   def reject_words(attributes)

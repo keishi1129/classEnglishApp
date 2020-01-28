@@ -13,21 +13,30 @@ Rails.application.routes.draw do
   get '/word_find', to: 'cardsets#word_find'
   get '/find_words_name', to: 'cardsets#find_words_name'
   get '/find_words_definition', to: 'cardsets#find_words_definition'
-  get 'word_king_menu', to: 'tests#word_king_menu'
 
 
   resources :teachers, only: [:new, :create, :edit, :update] do
     get '/mypage', to: 'teachers#mypage'
     get '/word_king', to: 'teachers#word_king'
-  end
 
-  resources :teachers, only: :show do
     resources :classrooms, shallow: true do
       resources :students
     end
+
+    resources :cardsets, only: :show do
+      collection do 
+        get '/test_index', to: 'cardsets#test_index'
+        get '/word_king_menu', to: 'cardsets#word_king_menu'
+      end
+      member do
+        get 'word_king', to: 'cardsets#word_king'
+      end
+    end
+
   end
 
-  resources :students, only: :show do
+
+  resources :students do
     get '/mypage', to: 'students#mypage'
 
     resources :cardsets, only: :show do
@@ -35,31 +44,18 @@ Rails.application.routes.draw do
         get 'practice', to: 'cardsets#practice'
         get 'test', to: 'cardsets#test'
       end
-    # get '/word_practice', to: 'students#word_practice'
-    # get '/word_king', to: 'students#word_king'
     end
+
   end
 
   resources :cardsets, only: [:index, :new, :create, :edit, :update] 
+ 
 
-  resources :teachers, shallow: true do
-    resources :cardsets, only: :show do
-      # get '/practice', to: 'cardsets#practice'
-      # get '/test', to: 'cardsets#test'
-
-      collection do 
-        get '/test_index', to: 'cardsets#test_index'
-      end
-    end
-  end
-  
   resources :posts do
     post :import, on: :collection
   end
 
-  resources :tests, only: :index do
-    collection do
-      get 'success_or_fail'
-    end
-  end
+  resources :test, only: :index
+
+
 end

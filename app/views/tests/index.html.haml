@@ -9,7 +9,7 @@
           %h4.test-title 単語王
           .test-image
             = image_pack_tag 'media/images/red-king.png', size: '100x100', alt: 'user-icon'
-          =link_to '#' do
+          =link_to word_king_menu_teacher_cardsets_path(current_student.teacher) do
             .round-btn.round-btn--red
               テストをはじめる
       .col-xs-6.col-sm-4.col-md-3

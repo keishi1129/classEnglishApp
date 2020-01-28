@@ -1,5 +1,6 @@
 class CardsetsController < ApplicationController
   before_action :set_cardset, only: [:show, :edit, :update, :destroy, :practice, :word_find, :test]
+  before_action :set_cardset, only: [:show, :edit, :update, :destroy, :practice, :word_find, :test, :word_king]
 
 
   def index
@@ -8,7 +9,8 @@ class CardsetsController < ApplicationController
   end
 
   def test_index
-    @cardsets_test = Cardset.テスト用.all
+    @teacher = Teacher.find(params[:teacher_id])
+    @cardsets_test = @teacher.cardsets.テスト用.all
   end
 
   def show
@@ -31,6 +33,7 @@ class CardsetsController < ApplicationController
       redirect_to cardsets_path
     else
       30.times{@cardset.words.build}
+      binding.pry
       render :new
     end
   end
@@ -84,6 +87,20 @@ class CardsetsController < ApplicationController
     @words_shadow = @cardset.words
     @length = @cardset.words.length - 1
   end
+
+
+  def word_king_menu
+    @teacher = Teacher.find(params[:teacher_id]) || Student.find(params[:student_id]).teacher
+    @cardsets = @teacher.cardsets
+  end
+
+  def word_king
+    @words = @cardset.words
+    @words_shadow = @cardset.words
+    @length = @cardset.words.length - 1
+  end
+
+
 
   def find_words_name
     @words = Word.where('name LIKE ?', "#{params[:keyword]}%").limit(3)

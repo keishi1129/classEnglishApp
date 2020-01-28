@@ -5,20 +5,6 @@ class TestsController < ApplicationController
 
   end
 
-  def word_king_menu
-    @teacher = Teacher.find(params[:teacher_id]) || Student.find(params[:student_id]).teacher
-    @cardsets = @teacher.cardsets
-  end
-
-  def word_king
-    if @cardset= Cardset.テスト用[@user.wordability]
-      @words = @cardset.words
-      @words_shadow = @words
-      @other_words = Word.where.not(id: @words.ids)
-    else
-      render :no_test
-    end
-  end
 
   def success_or_fail
     score = params[:score].to_f

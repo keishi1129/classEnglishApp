@@ -93,13 +93,11 @@
             %thead.thead-default
               %tr
                 %th.mb-1 名前
-                %th 作成者
                 %th 
             %tbody
               - @student.duplicated_cardsets.each do |cardset|
                 %tr
                   %td= link_to cardset.name, practice_student_cardset_path(current_student, cardset)
-                  %td=cardset.origin.student.name
 
 
 
@@ -108,13 +106,11 @@
             %thead.thead-default
               %tr
                 %th.mb-1 名前
-                %th 作成者
                 %th 
             %tbody
               - @cardsets.each do |cardset|
                 %tr
                   %td= link_to cardset.name, practice_student_cardset_path(current_student, cardset) 
-                  %td=cardset.student.name
     .left-content
       =render partial:  'mypage/user-info', locals: {user: @student}
       =render partial: 'mypage/latest-news'
