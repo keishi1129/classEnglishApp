@@ -24,10 +24,10 @@ require.context('images', true, /\.(png|jpg|jpeg|svg)$/)
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-require("@rails/actiontext").start()
-require("@rails/ujs").start()
-require("@rails/activestorage").start()
-require("trix").start()
+// require("@rails/actiontext").start()
+// require("@rails/ujs").start()
+// require("@rails/activestorage").start()
+// require("trix").start()
 require("turbolinks").start()
 
 // import "bootstrap"
