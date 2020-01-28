@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function(){
  
-  //テキストリンクをクリックしたら
+
  $(".modal-open").click(function(){
     let newsId = $(this).data('news-id')
       //body内の最後に<div id="modal-bg"></div>を挿入

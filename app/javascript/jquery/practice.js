@@ -3,26 +3,14 @@
 
 function previousCard(word, index) {
   let html = `<section class="CardsItem previous showing showing-first" id="card-${index}" data-index="${index}">
-                <div class="CardsItemSide CardsItemSide--firstSide has-text">
-                  <div class="CardsItemInner CardsItemInner--showBox">
-                    <div class="CardsItemInner-cell">
-                      <div class="FormattedTextWithImage">
-                        <div class="FormattedText notranslate lang-en">
-                          <div style="display:block;">${word.name}</div>
-                        </div>
-                      </div>
-                    </div>
+                <div class="CardsItemSide CardsItemSide--firstSide">
+                  <div class="FormattedText notranslate lang-en">
+                    <div style="display:block;">${word.name}</div>
                   </div>
                 </div>
                 <div class="CardsItemSide CardsItemSide--secondSide has-text">
-                  <div class="CardsItemInner CardsItemInner--showBox">
-                    <div class="CardsItemInner-cell">
-                      <div class="FormattedTextWithImage">
-                        <div class="FormattedText notranslate lang-ja">
-                          <div style="display:block;">${word.meaning}</div>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="FormattedText notranslate lang-ja">
+                    <div style="display:block;">${word.meaning}</div>
                   </div>
                 </div>
               </section>`
@@ -32,25 +20,13 @@ function previousCard(word, index) {
 function nextCard(word, index) {
   let html = `<section class="CardsItem next showing showing-first" id="card-${index}" data-index="${index}">
                 <div class="CardsItemSide CardsItemSide--firstSide has-text">
-                  <div class="CardsItemInner CardsItemInner--showBox">
-                    <div class="CardsItemInner-cell">
-                      <div class="FormattedTextWithImage">
-                        <div class="FormattedText notranslate lang-en">
-                          <div style="display:block;">${word.name}</div>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="FormattedText notranslate lang-en">
+                    <div style="display:block;">${word.name}</div>
                   </div>
                 </div>
                 <div class="CardsItemSide CardsItemSide--secondSide has-text">
-                  <div class="CardsItemInner CardsItemInner--showBox">
-                    <div class="CardsItemInner-cell">
-                      <div class="FormattedTextWithImage">
-                        <div class="FormattedText notranslate lang-ja">
-                          <div style="display:block;">${word.meaning}</div>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="FormattedText notranslate lang-ja">
+                    <div style="display:block;">${word.meaning}</div>
                   </div>
                 </div>
               </section>`
@@ -58,23 +34,6 @@ function nextCard(word, index) {
   return html;
 }
 
-function finishCard(){
-  let html = `<section class="CardsItem current finish showing showing-first">
-                <div class="CardsItemSide CardsItemSide--firstSide has-text">
-                  <div class="CardsItemInner CardsItemInner--showBox">
-                    <div class="CardsItemInner-cell">
-                      <div class="FormattedTextWithImage">
-                        <div class="FormattedText notranslate lang-en">
-                          <div style="display:block;">お疲れ様でした！</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>`
-
-  return html;
-}
 
 function go(word, required_word_index, direction){
   if (direction === 1){
