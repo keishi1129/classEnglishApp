@@ -10,9 +10,9 @@
         = f.label :password 
         = f.password_field :password, autocomplete: "current-password", class: "default-form"
 
-      .field
-        %label 教室コード
-        %input{name: "classroom_code", class: "default-form"}
+      -# .field
+      -#   %label 教室コード
+      -#   %input{name: "classroom_code", class: "default-form"}
 
       -if devise_mapping.rememberable? 
         .field-check
