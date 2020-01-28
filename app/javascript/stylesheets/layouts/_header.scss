@@ -61,9 +61,11 @@
     }
     a{
       color: black;
+      padding-bottom: 15px;
 
       &:hover{
-        text-decoration-color: $yellow;
+        text-decoration: none;
+        border-bottom: 5px solid #ffcd1f;
       }
     }
   }
@@ -135,7 +137,7 @@
 
 
 
-@media screen and (max-width: 768px) { 
+@media screen and (max-width: 820px) { 
   /*　画面サイズが480pxからはここを読み込む　*/
   
   #nav-open {

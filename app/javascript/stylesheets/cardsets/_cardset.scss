@@ -1,15 +1,22 @@
 .cardset-item{
   vertical-align: middle !important;
   overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+.learning-icon{
+  display: inline-block;
+  font-size: 13px;
   span{
-    margin-left: 10px;
-    padding: 8px 25px 8px 8px;
+    padding: 7px 25px 7px 5px;
     background: $sky;
     border-radius: 0.25rem;
     color: white;
     position: relative;
     user-select: none;
-    font-size: 1rem;
+    white-space: nowrap;
   }
   a {
     position: relative
@@ -18,5 +25,11 @@
     position: absolute;
     right: 5px;
     color: white;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .cardset-item--name{
+    display: none !important
   }
 }

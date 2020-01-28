@@ -15,6 +15,8 @@ require("jquery/tab")
 require("jquery/cardset_new") 
 require("jquery/post") 
 require("jquery/modal") 
+require("jquery/slick") 
+
 require.context('images', true, /\.(png|jpg|jpeg|svg)$/)
 
 
@@ -30,5 +32,9 @@ require("trix")
 require("@rails/actiontext")
 
 // import "bootstrap"
+import 'slick-carousel'
+import 'slick-carousel/slick/slick/';
+import 'slick-carousel/slick/slick.scss/';
+import 'slick-carousel/slick/slick-theme.scss/';
 import '@fortawesome/fontawesome-free/js/all'
 import "../stylesheets/application"

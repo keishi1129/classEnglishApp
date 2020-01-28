@@ -3,5 +3,6 @@
   .mypage-content.main-content
     .p-3
       -if current_teacher
-        =link_to 'テスト用の学習セット一覧はこちら', test_index_teacher_cardsets(current_teacer)
-      =render partial: 'index', locals: {title: '学習セット', cardsets: @cardsets}
+        =link_to 'テスト用のフラッシュカード一覧はこちら', test_index_teacher_cardsets(current_teacher)
+      =render partial: 'index', locals: {title: 'フラッシュカード', cardsets: @cardsets}
+

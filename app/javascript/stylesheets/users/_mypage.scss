@@ -145,6 +145,17 @@
   } 
 }
 
+@media screen and (max-width: 576px){
+
+  .mypage-content .mypage-item{
+    height: 500px;
+    margin: 0;
+  }
+  .mypage-tabs{
+    display: none !important;
+  }
+}
+
 .item-header {
   display: flex;
   justify-content: space-between;
@@ -166,6 +177,13 @@
     margin: 0 auto;
     &-title{
       font-style: italic;
+      &--red{border-bottom: 5px solid $red;}
+      &--orange{border-bottom: 5px solid $orange;}
+      &--yellow{border-bottom: 5px solid $yellow;}
+      &--green{border-bottom: 5px solid $green;}
+      &--blue{border-bottom: 5px solid $blue;}
+      &--purple{border-bottom: 5px solid $purple;}
+      
     }
     &-date{
       position: relative;
@@ -173,10 +191,12 @@
     }
   }
 
+
 }
 
 
 .sensei-note{
+  width: 90%;
   max-width:300px;
   margin-top: 50px;
   position:relative;
@@ -199,11 +219,38 @@
       bottom: 5px;
       right: 0;
       height: 15px;
-      width: 99%;
+      width: 64%;
       background: rgba(0,0,0,0.5);
-      box-shadow: 0 5px 5px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 5px rgba(0,0,0,0.3);
       transform: rotate(2deg);
 
+    }
+  }
+}
+
+
+.maypage-button-wrapper{
+
+
+  strong{
+    margin-left: 20px;
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 576px){
+  .sensei-note ul li{
+    margin-left: 20px;
+  }
+
+  .maypage-button-wrapper{
+    margin: 0 auto;
+    width: 60%;
+    text-align: center;
+
+    strong{
+      font-size: 35px;
+      margin: 0;
     }
   }
 }

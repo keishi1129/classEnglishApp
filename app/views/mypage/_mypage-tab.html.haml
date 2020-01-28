@@ -21,38 +21,63 @@
 
   .mypage-content        
     .mypage-item.active
-      =render partial: 'mypage/tab-content', locals: {title: 'Vocabulary', memo: "語彙力はリーディング、リスニング、スピーキング、グラマー全ての基盤です。"}
-      -if current_student
-        =link_to '単語を覚える',  cardsets_path, class: "mt-4 btn btn-primary" 
-      =link_to '単語王ランキング', '#', class: "mt-4 btn btn-warning"
+      =render partial: 'mypage/tab-content', locals: {title: 'Vocabulary', memo: "語彙力はリーディング、リスニング、スピーキング、グラマー全ての基盤です。", color: "red"}
+      .maypage-button-wrapper
+        %p あなたの得点は...
+        %br
+        %strong 150
+        %br
+        -if current_student
+          =link_to '単語を覚える',  cardsets_path, class: "mt-4 btn btn-primary" 
+        =link_to '単語王ランキング', '#', class: "mt-4 btn btn-warning"
     .mypage-item
-      =render partial: 'mypage/tab-content', locals: {title: 'Reading', memo: " WPM(Words Per Minute)は１分で何文字読めるかという速さの基準です。"}
-      -if current_student
-        =link_to '長文を読む', posts_path, class: "mt-4 btn btn-primary" 
-      =link_to '読解王ランキング', '#', class: "mt-4 btn btn-warning"
+      =render partial: 'mypage/tab-content', locals: {title: 'Reading', memo: " WPM(Words Per Minute)は１分で何文字読めるかという速さの基準です。", color: "orange"}
+      .maypage-button-wrapper
+        %p あなたの得点は...
+        %br
+        %strong 150
+        %br
+        -if current_student
+          =link_to '長文を読む', posts_path, class: "mt-4 btn btn-primary" 
+        =link_to '読解王ランキング', '#', class: "mt-4 btn btn-warning"
 
     .mypage-item
-      =render partial: 'mypage/tab-content', locals: {title: 'Listening', memo: " リスニング上達の鍵は、実はスピーキングです。たくさん聞いたら、たくさん真似して話してみましょう。"}
-      -if current_student
-        =link_to '問題を聴く', '#', class: "mt-4 btn btn-primary" 
-      =link_to '聴解王ランキング', '#', class: "mt-4 btn btn-warning"
+      =render partial: 'mypage/tab-content', locals: {title: 'Listening', memo: " リスニング上達の鍵は、実はスピーキングです。たくさん聞いたら、たくさん真似して話してみましょう。", color: "yellow"}
+      .maypage-button-wrapper
+        %p あなたの得点は...
+        %br
+        %strong 150
+        %br
+        -if current_student
+          =link_to '問題を聴く', '#', class: "mt-4 btn btn-primary" 
+        =link_to '聴解王ランキング', '#', class: "mt-4 btn btn-warning"
 
     .mypage-item
-      =render partial: 'mypage/tab-content', locals: {title: 'Speaking', memo: " スピーキングは、音源に1,2秒遅れて話すシャドーイング(shadowing)と同時に話して発音矯正するオーバーラッピング(overlapping)が効果的です。"}
-      -if current_student
-        =link_to '問題を解く', '#', class: "mt-4 btn btn-primary" 
-      =link_to '弁論王ランキング', '#', class: "mt-4 btn btn-warning"
+      =render partial: 'mypage/tab-content', locals: {title: 'Speaking', memo: " スピーキングは、音源に1,2秒遅れて話すシャドーイング(shadowing)と同時に話して発音矯正するオーバーラッピング(overlapping)が効果的です。", color: "green"}
+      .maypage-button-wrapper
+        %p あなたの得点は...
+        %br
+        %strong 150
+        %br
+        -if current_student
+          =link_to '問題を解く', '#', class: "mt-4 btn btn-primary" 
+        =link_to '弁論王ランキング', '#', class: "mt-4 btn btn-warning"
       
     .mypage-item
-      =render partial: 'mypage/tab-content', locals: {title: 'Grammar', memo: "  語順に品詞に時制、冠詞、、、大変だけど、文法はやればやるほどすぐ力になるよ！"}
-      -if current_student
-        =link_to '問題を解く', '#', class: "mt-4 btn btn-primary"
-      =link_to '文法王ランキング', '#', class: "mt-4 btn btn-warning"
+      =render partial: 'mypage/tab-content', locals: {title: 'Grammar', memo: "  語順に品詞に時制、冠詞、、、大変だけど、文法はやればやるほどすぐ力になるよ！", color: "blue"}
+      .maypage-button-wrapper
+        %p あなたの得点は...
+        %br
+        %strong 150
+        %br
+        -if current_student
+          =link_to '問題を解く', '#', class: "mt-4 btn btn-primary"
+        =link_to '文法王ランキング', '#', class: "mt-4 btn btn-warning"
 
     .mypage-item
-      =render partial: 'mypage/tab-content', locals: {title: 'Chatting', memo: "  英語は使って楽しく身につけよう！！"}
+      =render partial: 'mypage/tab-content', locals: {title: 'Chatting', memo: "  英語は使って楽しく身につけよう！！", color: "purple"}
       .search-form
-        %input{class: "search-form__input" , size: "20", placeholder: "トピックをランダムに表示します"} 
+        %input{class: "search-form__input" , size: "20", placeholder: "トピックをランダム表示"} 
         %button{type: "submit", class: "search-form__btn"}
           %i.fas.fa-search
 
