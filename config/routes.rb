@@ -48,7 +48,7 @@ Rails.application.routes.draw do
 
   end
 
-  resources :cardsets, only: [:index, :new, :create, :edit, :update] 
+  resources :cardsets
  
 
   resources :posts do

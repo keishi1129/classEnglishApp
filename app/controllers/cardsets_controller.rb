@@ -28,8 +28,10 @@ class CardsetsController < ApplicationController
   
   def create
     @cardset = Cardset.new(cardset_params)
-    if @cardset.save
+    if @cardset.練習用? && @cardset.save
       redirect_to cardsets_path
+    elsif @cardset.save
+      test_index_teacher_cardsets_path(@cardset.teacher)
     else
       30.times{@cardset.words.build}
       binding.pry
@@ -52,10 +54,10 @@ class CardsetsController < ApplicationController
   def destroy
     if @cardset.練習用?
       @cardset.destroy
-      redirect_to user_cardsets_url
+      redirect_to cardsets_url
     else
       @cardset.destroy
-      redirect_to test_index_user_cardsets_url
+      redirect_to test_index_teacher_cardsets_path(@cardset.teacher)
     end
   end
 
