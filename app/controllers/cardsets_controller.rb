@@ -1,5 +1,4 @@
 class CardsetsController < ApplicationController
-  before_action :set_cardset, only: [:show, :edit, :update, :destroy, :practice, :word_find, :test]
   before_action :set_cardset, only: [:show, :edit, :update, :destroy, :practice, :word_find, :test, :word_king]
 
 
