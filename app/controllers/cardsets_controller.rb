@@ -93,7 +93,7 @@ class CardsetsController < ApplicationController
 
   def word_king_menu
     @teacher = Teacher.find(params[:teacher_id]) || Student.find(params[:student_id]).teacher
-    @cardsets = @teacher.cardsets
+    @cardsets = @teacher.cardsets.テスト用
   end
 
   def word_king
