@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function(){
  $(".modal-open").click(function(){
     let newsId = $(this).data('news-id')
       //body内の最後に<div id="modal-bg"></div>を挿入
-     $("body").append('<div id="modal-bg"></div>');
+    $("body").append('<div id="modal-bg"></div>');
  
     //画面中央を計算する関数を実行
     modalResize();
@@ -20,7 +20,7 @@ $(document).on('turbolinks:load', function(){
               $('#modal-bg').remove() ;
          });
  
-        });
+      });
  
     //画面の左上からmodal-mainの横幅・高さを引き、その値を2で割ると画面中央の位置が計算できます
      $(window).resize(modalResize);
@@ -39,4 +39,6 @@ $(document).on('turbolinks:load', function(){
           });
      }
    });
+
+
 });

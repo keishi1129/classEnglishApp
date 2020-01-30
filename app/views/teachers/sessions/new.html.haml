@@ -1,6 +1,7 @@
 .form-wrapper
   .form-container
     %h2 先生のログイン
+    %h5.text-align-center=link_to '※生徒には生徒用ログイン画面がございます', new_student_session_path, class: "text-warning"
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field
         = f.label :email 

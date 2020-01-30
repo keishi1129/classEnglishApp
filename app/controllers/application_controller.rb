@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
     redirect_to new_student_session_path unless current_student || current_teacher
   end
   
-
   protected
 
   def configure_permitted_parameters

@@ -1,5 +1,5 @@
 class CardsetsController < ApplicationController
-  before_action :set_cardset, only: [:show, :edit, :update, :destroy, :practice, :word_find, :test, :word_king]
+  before_action :set_cardset, only: [:show, :edit, :update, :destroy, :practice, :word_find, :test, :word_king, :word_score]
 
 
   def index
@@ -102,6 +102,10 @@ class CardsetsController < ApplicationController
     @length = @cardset.words.length - 1
   end
 
+  def word_score
+    score = params[:score].to_i + current_student.vocabulary
+    current_student.update_attributes(vocabulary: score)
+  end
 
 
   def find_words_name

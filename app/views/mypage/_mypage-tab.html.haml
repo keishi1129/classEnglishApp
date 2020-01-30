@@ -25,7 +25,10 @@
       .maypage-button-wrapper
         %p あなたの得点は...
         %br
-        %strong 150
+        -if current_student
+          %strong=current_student.vocabulary || 先生に得点はありません
+        -else
+          %p 先生に得点はありません
         %br
         -if current_student
           =link_to '単語を覚える',  cardsets_path, class: "mt-4 btn btn-primary" 
@@ -37,7 +40,7 @@
       .maypage-button-wrapper
         %p あなたの得点は...
         %br
-        %strong 150
+        %strong 準備中です
         %br
         -if current_student
           =link_to '長文を読む', posts_path, class: "mt-4 btn btn-primary" 
@@ -48,7 +51,7 @@
       .maypage-button-wrapper
         %p あなたの得点は...
         %br
-        %strong 150
+        %strong 準備中です
         %br
         -if current_student
           =link_to '問題を聴く', '#', class: "mt-4 btn btn-primary" 
@@ -59,7 +62,7 @@
       .maypage-button-wrapper
         %p あなたの得点は...
         %br
-        %strong 150
+        %strong 準備中です
         %br
         -if current_student
           =link_to '問題を解く', '#', class: "mt-4 btn btn-primary" 
@@ -70,7 +73,7 @@
       .maypage-button-wrapper
         %p あなたの得点は...
         %br
-        %strong 150
+        %strong 準備中です
         %br
         -if current_student
           =link_to '問題を解く', '#', class: "mt-4 btn btn-primary"

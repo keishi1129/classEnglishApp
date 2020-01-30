@@ -213,8 +213,6 @@ $(document).on('turbolinks:load', function(){
             setTimeout(function(){
               required_card_index = $('.current').data('index')
               btnControl(required_card_index, required_ids);
-              console.log(required_card_index)
-              console.log(required_ids)
             },500)
           }else{                                                              //     1-2-1, 残ったカードが後にない時(=後ろに戻る)
             direction = -1

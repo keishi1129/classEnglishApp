@@ -1,4 +1,7 @@
 
+
+
+
 function incorrectAnswer(answer){
   html = `<p class="word-meaning incorrect">
             × ${answer}
@@ -56,7 +59,7 @@ function layout(index, random_num){
     $('.next').hide();
     countDown(index, answer);
   }else {
-    let correct_number = $('.your-answer').children('.correct').length;
+    correct_number = $('.your-answer').children('.correct').length;
     $('#timer').addClass('stop').hide();
     $('.word-test').hide();
     $('.answer').show();
@@ -68,7 +71,7 @@ function layout(index, random_num){
 $(document).on('turbolinks:load', function(){
 
   // if (window.location.href.match(/\/test/)){
-  console.log("OK")
+
     $('.word-test').hide();
     $('.word-detail').hide();
     $('.answer-rate').hide();
@@ -102,10 +105,64 @@ $(document).on('turbolinks:load', function(){
       random_num = Math.floor( Math.random()*4);
       layout(index, random_num);
     });
+
   // }
+  if ($('.start-btn').data('cardset-use') === "テスト用") {
+    $('.answer-rate').append(`<div class='report-score'>スコアを報告する</>
+                              <div id="modal-main"></div>`)
+
+    $('.answer-rate').on('click', '.report-score', function(){
+      words_length = $('.start-btn').data('words-length')
+      correct_number = $('.your-answer').children('.correct').length;
+      answer_rate = correct_number / words_length 
+      if (answer_rate >= 0.8) {
+        $("#modal-main").text("合格です。")
+        $.ajax({
+          type: "GET",
+          url: 'word_score',
+          data: { score: correct_number},
+          dataType: "json"
+        })
+      }else{
+        $("#modal-main").text("不合格です。")
+      }
+      $("body").append('<div id="modal-bg"></div>');
+    //画面中央を計算する関数を実行
+      modalResize();
+ 
+    //モーダルウィンドウを表示
+      $("#modal-bg,#modal-main").fadeIn("slow");
+ 
+    //画面のどこかをクリックしたらモーダルを閉じる
+      $("#modal-bg,#modal-main").click(function(){
+        $("#modal-main,#modal-bg").fadeOut("slow",function(){
+          //挿入した<div id="modal-bg"></div>を削除
+          $('#modal-bg').remove() ;
+           $('.report-score').hide();
+        });
+ 
+      });
+ 
+    //画面の左上からmodal-mainの横幅・高さを引き、その値を2で割ると画面中央の位置が計算できます
+     $(window).resize(modalResize);
+      function modalResize(){
+ 
+        var w = $(window).width();
+        var h = $(window).height();
+        var cw = $("#modal-main").outerWidth();
+        var ch = $("#modal-main").outerHeight();
+
+    //取得した値をcssに追加する
+        $("#modal-main").css({
+            "left": ((w - cw)/2) + "px",
+            "top": ((h - ch)/2) + "px"
+        });
+     }
+    
+    })
+  }
 
   // $('.score-input').click(function(){
-  //   words_length = $('.start-btn').data('words-length')
   //   correct_number = $('.your-answer').children('.correct').length;
   //   score = 
   //   $.ajax({
