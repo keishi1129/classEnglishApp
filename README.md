@@ -10,7 +10,7 @@
     password : password
     
     生徒としてログインする場合は、
-    email: huge1@example.com (hoge1~hoge20までお好きな番号で入ってください)
+    email: hoge1@example.com (hoge1~hoge20までお好きな番号で入ってください)
     password : password
     
 
