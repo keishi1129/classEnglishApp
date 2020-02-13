@@ -12,8 +12,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def game_index
+  end
+
   def import
-    current_user.posts.import(params[:file])
+    current_teacher.posts.import(params[:file])
     redirect_to posts_url, notice: "長文問題を追加しました"
   end
   # GET /posts/1
@@ -78,6 +81,11 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :url, :content, :use).merge(user_id: current_user.id)
+      if current_student
+        params.fetch(:post, {}).permit(:title, :url, :content, :use).merge(student_id: current_student.id)
+      else 
+        params.fetch(:post, {}).permit(:title, :url, :content, :use).merge(teacher_id: current_teacher.id)
+      end
     end
+
 end
