@@ -24,7 +24,6 @@
 }
 
 @media screen and (max-width:768px) { 
-  /*　画面サイズが480pxからはここを読み込む　*/
   .SetPage{
     flex-direction: column-reverse;
     .SetPageCardsPreview-container{

@@ -1,0 +1,79 @@
+.game-btn{
+  &-wrapper{
+  }
+  &-box{
+    width: 100%;
+    min-height: 300px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 0.25rem;
+    color: white;
+    &--red{
+      background-color: lighten($red, 10%);
+      a:hover{
+        color: $red;
+      }
+    }
+    &--blue{
+      background-color: lighten($blue, 10%);
+      a:hover{
+        color: $blue;
+      }
+    }
+    &--yellow{
+      background-color: lighten($yellow, 10%);
+      a:hover{
+        color: $yellow;
+      }
+    }
+    &--purple{
+      background-color: lighten($purple, 10%);
+      a:hover{
+        color: $purple;
+      }
+    }
+
+  }
+
+  &-title {
+    margin-top: 120px;
+
+    p{
+      font-size: 30px;
+      margin-bottom: 30px;
+    }
+  }
+  &-link{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: 0 auto;
+    a{
+      display: inline-block;  
+      border: 2px solid white;
+      color: white;
+      border-radius: 5px;
+      padding: 5px;
+      margin-bottom: 10px;
+
+      &:hover{
+        text-decoration: none;
+        background-color: white;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width:768px) { 
+  .game-btn-box{
+    width: 49%;
+  }
+  .game-btn-link{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: 0 auto;
+  }
+}

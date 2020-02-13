@@ -15,6 +15,8 @@
             %li.header-nav
               = link_to 'フラッシュカード作成', new_cardset_path
             %li.header-nav
+              = link_to '長文作成', new_post_path
+            %li.header-nav
               = link_to '先生ページ', teacher_mypage_path(current_teacher)
             %li.header-nav
               = link_to 'ログアウト', destroy_teacher_session_path, method: :delete
@@ -22,7 +24,7 @@
             %li.header-nav
               = link_to 'テスト', root_path
             %li.header-nav
-              = link_to 'フラッシュカードを作成する', new_cardset_path
+              = link_to 'フラッシュカードを作成', new_cardset_path
             %li.header-nav
               = link_to 'マイページ', student_mypage_path(current_student)
             %li.header-nav

@@ -2,7 +2,8 @@ class Post < ApplicationRecord
   has_rich_text :content
   validates :title, presence: true
   validates :content, presence: true
-  belongs_to :teacher
+  belongs_to :teacher, optional: true
+  belongs_to :student, optional: true
 
 
   def self.csv_attributes
