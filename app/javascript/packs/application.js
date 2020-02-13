@@ -4,13 +4,10 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("trix")
-require("@rails/actiontext")
 require("turbolinks").start()
-// require("@rails/activestorage").start()
+require("@rails/activestorage").start()
 require("channels")
 require("jquery")
-// require("bootstrap")
 require("jquery/test") 
 require("jquery/practice") 
 require("jquery/tab") 
@@ -22,19 +19,13 @@ require("jquery/slick")
 require.context('images', true, /\.(png|jpg|jpeg|svg)$/)
 
 
-
-// Uncomment to copy all static images under ../images to the output folder and reference
-// them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
-// or the `imagePath` JavaScript helper below.
-//
-// const images = require.context('../images', true)
-// const imagePath = (name) => images(name, true)
-
-
-// import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all'
+import "../stylesheets/actiontext"
 import "../stylesheets/application"
 import 'slick-carousel'
 import 'slick-carousel/slick/slick/';
 import 'slick-carousel/slick/slick.scss/';
 import 'slick-carousel/slick/slick-theme.scss/';
+
+require("trix")
+require("@rails/actiontext")
