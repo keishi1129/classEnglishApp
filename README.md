@@ -10,9 +10,16 @@
     password : password
     
     生徒としてログインする場合は、
-    email: huge1@example.com (hoge1~hoge20までお好きな番号で入ってください)
+    email: hoge1@example.com (hoge1~hoge20までお好きな番号で入ってください)
     password : password
     
+# 仕様
+
+    ruby 2.6.4
+    Ruby on Rails 6.0.2.1
+    Mysql 5.6
+    その他の言語、サーバー等
+    haml, sass, jquery, unicorn, AWS(EC2)
 
 
 # 制作背景
