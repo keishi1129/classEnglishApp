@@ -2,7 +2,6 @@
   overflow-wrap: break-word;
   font-family: "sans-serif";
   font-size: 20px;
-  line-height: 2px;
 
   .post-title {
     width: 80%;
@@ -15,3 +14,14 @@
     }
   }
 }
+
+@media screen and (max-width:768px) { 
+  .post-content {
+    font-size: 15px;
+  }
+}
+// @media screen and (min-width:768px) {
+//   .post-content {
+//     font-size: 20px;
+//   }
+// }
