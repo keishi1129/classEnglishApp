@@ -1,7 +1,6 @@
 .main-content
   %h1.page-title 長文問題の編集
-  .margin-0-auto
-    = render 'form', post: @post
-    .button
-      = link_to '詳細', @post, class: 'nav-link'
-      = link_to '長文問題の一覧', posts_path, class: 'nav-link'
+  = render 'form', post: @post
+  .button
+    = link_to '詳細', @post, class: 'nav-link'
+    = link_to '長文問題の一覧', posts_path, class: 'nav-link'
