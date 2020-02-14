@@ -3,7 +3,7 @@
   .main-content
     %h1.page-title 長文読解一覧
     .p-3
-      %table.table.table-hover.post-table 
+      %table.table.table-hover
         %thead.thead-default
           %tr
             %th タイトル
@@ -13,7 +13,7 @@
             %tr
               %td= post.title
               -if current_teacher
-                %td
+                %td.btn-td
                   = link_to '詳細', post, class: 'btn btn-primary'
                   = link_to '編集', edit_post_path(post), class: 'btn btn-warning'
                   = link_to '削除', post, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
