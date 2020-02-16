@@ -26,7 +26,7 @@
 # cardset.save
 
 
-cardset_test1 = Cardset.new(name: "学校の英単語", user_id: 1, use: 2)
+cardset_test1 = Cardset.new(name: "学校の英単語", teacher_id: 1, use: 2)
 
 cardset_test1.words.new(name:"school", meaning:"学校")
 cardset_test1.words.new(name:"classroom", meaning:"教室")
@@ -62,7 +62,7 @@ cardset_test1.words.new(name:"eraser", meaning:"消しゴム")
 cardset_test1.save
 
 
-cardset_test2 = Cardset.new(name: "家の中", user_id: 1, use: 2)
+cardset_test2 = Cardset.new(name: "家の中", teacher_id: 1, use: 2)
 
 cardset_test2.words.new(name:"kitchen", meaning:"来る")
 cardset_test2.words.new(name:"room", meaning:"部屋")
@@ -92,7 +92,7 @@ cardset_test2.words.new(name:"chopsticks", meaning:"箸")
 
 cardset_test2.save
 
-cardset_test3 = Cardset.new(name: "体", user_id: 1, use: 2)
+cardset_test3 = Cardset.new(name: "体", teacher_id: 1, use: 2)
 
 cardset_test3.words.new(name:"body", meaning:"体")
 cardset_test3.words.new(name:"eye", meaning:"目")
@@ -126,7 +126,7 @@ cardset_test3.words.new(name:"feet", meaning:"footの複数形")
 cardset_test3.save
 
 
-cardset_test4 = Cardset.new(name: "スポーツ", user_id: 1, use: 2)
+cardset_test4 = Cardset.new(name: "スポーツ", teacher_id: 1, use: 2)
 cardset_test3.words.new(name:"soccer", meaning:"サッカー")
 cardset_test3.words.new(name:"basketball", meaning:"バスケットボール")
 cardset_test3.words.new(name:"baseball", meaning:"野球")
@@ -152,7 +152,7 @@ cardset_test4.words.new(name:"rest", meaning:"休み")
 
 cardset_test4.save
 
-cardset_test5 = Cardset.new(name: "食べ物", user_id: 1, use: 2)
+cardset_test5 = Cardset.new(name: "食べ物", teacher_id: 1, use: 2)
 
 cardset_test5.words.new(name:"food", meaning:"食べ物")
 cardset_test5.words.new(name:"bread", meaning:"パン")
