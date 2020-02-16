@@ -16,7 +16,7 @@
               -if current_student
                 = link_to '一覧に戻る', cardsets_path, class:"btn btn-info"
               -else
-                = link_to '一覧に戻る', test_index_teacher_cardsets_path, class:"btn btn-info"
+                = link_to '一覧に戻る', test_index_teacher_cardsets_path(current_teacher), class:"btn btn-info"
              
     .UIContainer
       .CreateSetHeader-headingContent
