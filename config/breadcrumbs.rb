@@ -12,6 +12,7 @@ end
 
 crumb :teacher_classrooms do
   link "クラス一覧", teacher_classrooms_path(current_teacher.id)
+  parent :teacher_mypage
 end
 
 crumb :classroom do |classroom|

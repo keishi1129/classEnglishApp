@@ -1,6 +1,7 @@
-%h1 先生情報の編集
+.cm-container  
+  .mypage-wrapper 
+    .mypage-content
+      %h1.page-title 先生の情報編集
+      .mb-3.p-3
+        =render partial: 'form', locals: { teacher: @teacher, url: teacher_path}
 
-.nav.justfy-content-end 
- = link_to '生徒一覧', '#', class: 'nav-link'
-
-= render partial: 'form', locals: { teacher: @teacher, url: teacher_path}

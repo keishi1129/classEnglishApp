@@ -8,15 +8,12 @@
               .CreateSetHeader-title
                 %span フラッシュカードを作成する
             .CreateSetHeader-infoButtonWrap
-              -if current_teacher
-                = f.select :use, Cardset.uses.keys,{prompt: '---'}, class: "btn btn-info"
               -if cardset.persisted?
                 = f.submit '変更を決定する', class:"btn btn-primary"
-                = link_to '削除する', cardset_path(@cardset), method: :delete, data: { confirm: '本当によろしいですか' }, class:"btn btn-danger"
               -else
                 = f.submit '作成する', class:"btn btn-primary"
               = link_to '単語を追加する', '#', class:"btn btn-warning addCards"
-              = link_to 'フラッシュカード一覧', cardsets_path, class:"btn btn-info"
+              = link_to '一覧に戻る', cardsets_path, class:"btn btn-info"
              
     .UIContainer
       .CreateSetHeader-headingContent

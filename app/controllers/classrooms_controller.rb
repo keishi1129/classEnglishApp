@@ -3,19 +3,9 @@ class ClassroomsController < ApplicationController
   before_action :set_classroom, only: [:show, :edit, :update]
   
   def index
-    redirect_to new_group_path unless current_teacher.classrooms.present?
+    redirect_to new_teacher_classroom_path unless current_teacher.classrooms.present?
     @classrooms = current_teacher.classrooms
   end
-
-  # def before_user_create
-  #   redirect_to new_group_path unless current_teacher.groups.present?
-  #   @groups = current_teacher.groups
-  # end
-  
-  # def before_user_list
-  #   redirect_to new_group_path unless current_teacher.groups.present?
-  #   @groups = current_teacher.groups
-  # end
 
   def new
     @classroom = @teacher.classrooms.new
@@ -36,7 +26,7 @@ class ClassroomsController < ApplicationController
 
   def update
     if @classroom.update(classroom_params)
-      redirect_to group_messages_path(@group), notice: 'グループを編集しました'
+      redirect_to classroom_path(@group), notice: 'グループを編集しました'
     else
       render :edit
     end

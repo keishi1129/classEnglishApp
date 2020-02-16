@@ -1,6 +1,7 @@
 class TeachersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   before_action :set_teacher, only: [:edit, :update, :destroy, :mypage]
+  
   def new
     @teacher = Teacher.new
   end

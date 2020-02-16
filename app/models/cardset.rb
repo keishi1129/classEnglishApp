@@ -5,6 +5,7 @@ class Cardset < ApplicationRecord
   validates :name, presence: {message: "名前を入力してください"}
   validates :words, length: { minimum: 5, message: "必ず5個は単語を入れてください"}
   belongs_to :student, optional: true
+  belongs_to :classroom, optional: true
   belongs_to :teacher, optional: true
   has_many :duplicated_cardsets, class_name: "DuplicatedCardset", foreign_key: "origin_id",  dependent: :destroy
 

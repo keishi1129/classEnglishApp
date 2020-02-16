@@ -1,4 +1,4 @@
-.main-content
-  -if current_teacher
-    =link_to '練習用フラッシュカード一覧はこちら', cardsets_path
-  =render partial: 'shared/index', locals: {title: 'テスト用フラッシュカード一覧', cardsets: @cardsets_test}
+.cm-container  
+  .mypage-content.main-content
+    .p-3
+      =render partial: 'shared/index', locals: {title: 'テスト用フラッシュカード一覧', cardsets: @cardsets_test}

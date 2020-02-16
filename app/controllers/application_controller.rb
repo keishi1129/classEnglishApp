@@ -21,8 +21,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:student, keys: [:name, :classroom_code])
-    devise_parameter_sanitizer.permit(:teacher, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
 

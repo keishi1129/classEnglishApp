@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', function(){
   
   $(function () {
     var win = $(window);
-    var slider = $(".mypage-content");
+    var slider = $(".mypage-slick");
   
     win.on("load resize", function () {
       if (win.width() < 576) {
@@ -21,35 +21,5 @@ $(document).on('turbolinks:load', function(){
     });
   });
   
-  // if($(window).width() <= 750){ 
-  //   $('.mypage-content').slick({
-  //     // autoplay: true, //自動再生
-  //     dots: true, //ドットのナビゲーションを表示
-  //     autoplay: true,
-  //     adaptiveHeight: true,
-  //     arrows: true,
-  //     prevArrow:'<div class="prev">PREV</div>',
-  //     nextArrow:'<div class="next">NEXT</div>',
-  //   })
-  // }
-  // $('.test-gates').slick({
-  //   // autoplay: true, //自動再生
-  //   dots: true, //ドットのナビゲーションを表示
-  //   autoplay: true,
-  //   adaptiveHeight: true,
-  //   arrows: true,
-  //   prevArrow:'<div class="prev">PREV</div>',
-  //   nextArrow:'<div class="next">NEXT</div>'
-  // });
-
-  // $('.slider').slick({
-  //   // autoplay: true, //自動再生
-  //   dots: true, //ドットのナビゲーションを表示
-  //   autoplay: true,
-  //   adaptiveHeight: true,
-  //   arrows: true,
-  //   prevArrow:'<div class="prev">PREV</div>',
-  //   nextArrow:'<div class="next">NEXT</div>'
-  // });
 
 })
