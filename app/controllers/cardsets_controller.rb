@@ -3,8 +3,8 @@ class CardsetsController < ApplicationController
 
 
   def index
-    @cardsets = Cardset.練習用.all
-    @cardsets_test = Cardset.テスト用.all
+    classroom = current_student.classroom 
+    @cardsets = classroom.cardsets.all
   end
 
   def test_index
@@ -109,21 +109,18 @@ class CardsetsController < ApplicationController
 
 
   def find_words_name
-    @words = Word.where('name LIKE ?', "#{params[:keyword]}%").limit(3)
+    @words = Word.where('name LIKE ?', "#{params[:keyword]}%").group(:name).limit(3)
     respond_to do |format| 
       format.json
     end
   end
 
   def find_words_definition
-    @words = Word.where('meaning LIKE ?', "#{params[:keyword]}%").limit(3)
+    @words = Word.where('meaning LIKE ?', "#{params[:keyword]}%").group(:meaning).limit(3)
     respond_to do |format| 
       format.json
     end
   end
-
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -139,9 +136,9 @@ class CardsetsController < ApplicationController
 
     def cardset_params
       if current_student
-        params.fetch(:cardset, {}).permit(:name, :use, words_attributes: [:name, :meaning, :_destroy, :id]).merge(student_id: current_student.id)
+        params.fetch(:cardset, {}).permit(:name, :use, words_attributes: [:name, :meaning, :_destroy, :id]).merge(student_id: current_student.id, classroom_id: current_student.classroom.id)
       else 
-        params.fetch(:cardset, {}).permit(:name, :use, words_attributes: [:name, :meaning, :_destroy, :id]).merge(teacher_id: current_teacher.id)
+        params.fetch(:cardset, {}).permit(:name, words_attributes: [:name, :meaning, :_destroy, :id]).merge(teacher_id: current_teacher.id, use: 2)
       end
     end
 end

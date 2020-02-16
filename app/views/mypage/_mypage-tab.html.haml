@@ -33,7 +33,7 @@
         -if current_student
           =link_to '単語を覚える',  cardsets_path, class: "mt-4 btn btn-primary" 
         -else
-          =link_to 'フラッシュカードを見る',  cardsets_path, class: "mt-4 btn btn-primary" 
+          =link_to 'フラッシュカードを見る',  test_index_teacher_cardsets_path, class: "mt-4 btn btn-primary" 
         =link_to '単語王ランキング', '#', class: "mt-4 btn btn-warning"
     .mypage-item
       =render partial: 'mypage/tab-content', locals: {title: 'Reading', memo: " WPM(Words Per Minute)は１分で何文字読めるかという速さの基準です。", color: "orange"}
