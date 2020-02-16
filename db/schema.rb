@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_23_093941) do
+ActiveRecord::Schema.define(version: 2020_02_15_094735) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2020_01_23_093941) do
     t.bigint "teacher_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "classroom_id"
+    t.index ["classroom_id"], name: "index_cardsets_on_classroom_id"
     t.index ["student_id"], name: "index_cardsets_on_student_id"
     t.index ["teacher_id"], name: "index_cardsets_on_teacher_id"
   end
@@ -93,6 +95,8 @@ ActiveRecord::Schema.define(version: 2020_01_23_093941) do
     t.bigint "teacher_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "student_id"
+    t.index ["student_id"], name: "index_posts_on_student_id"
     t.index ["teacher_id"], name: "index_posts_on_teacher_id"
   end
 
@@ -136,6 +140,13 @@ ActiveRecord::Schema.define(version: 2020_01_23_093941) do
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
   end
 
+  create_table "whoamis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "type", default: 1, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
     t.string "meaning", null: false
@@ -151,7 +162,9 @@ ActiveRecord::Schema.define(version: 2020_01_23_093941) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cardset_words", "cardsets"
   add_foreign_key "cardset_words", "words"
+  add_foreign_key "cardsets", "classrooms"
   add_foreign_key "classrooms", "teachers"
+  add_foreign_key "posts", "students"
   add_foreign_key "posts", "teachers"
   add_foreign_key "students", "classrooms"
 end
