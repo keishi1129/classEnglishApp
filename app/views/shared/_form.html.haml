@@ -13,7 +13,10 @@
               -else
                 = f.submit '作成する', class:"btn btn-primary"
               = link_to '単語を追加する', '#', class:"btn btn-warning addCards"
-              = link_to '一覧に戻る', cardsets_path, class:"btn btn-info"
+              -if current_teacher
+                = link_to '一覧に戻る', cardsets_path, class:"btn btn-info"
+              -else
+                = link_to '一覧に戻る', test_index_teacher_cardsets_path, class:"btn btn-info"
              
     .UIContainer
       .CreateSetHeader-headingContent
