@@ -16,8 +16,9 @@
               -else
                 = link_to cardset.name, practice_student_cardset_path(current_student, cardset)
             -if cardset.student == current_student
-              %td=link_to '編集する', edit_cardset_path(cardset), class: "btn btn-warning"
-              %td=link_to '削除する', cardset_path(cardset), method: :delete, data: { confirm: '本当によろしいですか' }, class:"btn btn-danger"
+              %td
+                =link_to '編集する', edit_cardset_path(cardset), class: "btn btn-warning"
+                =link_to '削除する', cardset_path(cardset), method: :delete, data: { confirm: '本当によろしいですか' }, class:"btn btn-danger"
             -else
               %td.cardset-item.cardset-item--name
                 #{cardset.student.name}

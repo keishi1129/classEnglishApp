@@ -69,7 +69,7 @@ class CardsetsController < ApplicationController
     unless @student.duplicated_cardsets.include?(DuplicatedCardset.find_by(student_id: @student.id, origin_id: @cardset.id))
       @student.duplicated_cardsets << duplicated_cardset
     end
-    @cardsets = Cardset.other_origin_cardsets(@student.duplicated_cardsets)
+    @cardsets = Cardset.where(classroom_id: @student.classroom.id).other_origin_cardsets(@student.duplicated_cardsets)
   end
 
   def word_find
