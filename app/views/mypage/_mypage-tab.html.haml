@@ -20,7 +20,7 @@
         チャット
 
   .mypage-content.mypage-slick        
-    .mypage-item
+    .mypage-item.active
       =render partial: 'mypage/tab-content', locals: {title: 'Vocabulary', memo: "語彙力はリーディング、リスニング、スピーキング、グラマー全ての基盤です。", color: "red"}
       .maypage-button-wrapper
         %p あなたの得点は...
@@ -78,7 +78,7 @@
           =link_to '問題を解く', '#', class: "mt-4 btn btn-primary"
         =link_to '文法王ランキング', '#', class: "mt-4 btn btn-warning"
 
-    .mypage-item.active
+    .mypage-item
       =render partial: 'mypage/tab-content', locals: {title: 'Chatting', memo: "  英語は使って楽しく身につけよう！！", color: "purple"}
       -if current_student
         .chatroom-form-select
