@@ -80,11 +80,12 @@
 
     .mypage-item.active
       =render partial: 'mypage/tab-content', locals: {title: 'Chatting', memo: "  英語は使って楽しく身につけよう！！", color: "purple"}
-      .chatroom-form-select
-        %button.search-btn
-          %i.fas.fa-search
-        %button.add-btn
-          %i.fa.fa-plus
+      -if current_student
+        .chatroom-form-select
+          %button.search-btn
+            %i.fas.fa-search
+          %button.add-btn
+            %i.fa.fa-plus
       .chatroom-form.chatroom-form--select
         %input{class: "chatroom-form__input" , size: "20", placeholder: "トピックを検索"} 
         %button{type: "submit", class: "chatroom-form__btn chatroom-form__btn--search"}
