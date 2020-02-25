@@ -213,7 +213,7 @@ $(document).on('turbolinks:load', function(){
             setTimeout(function(){
               required_card_index = $('.current').data('index')
               btnControl(required_card_index, required_ids);
-            },500)
+            },1000)
           }else{                                                              //     1-2-1, 残ったカードが後にない時(=後ろに戻る)
             direction = -1
             let auto_move = function(){
@@ -230,7 +230,7 @@ $(document).on('turbolinks:load', function(){
             setTimeout(function(){
               required_card_index = $('.current').data('index')
               btnControl(required_card_index, required_ids);
-            },500)
+            },1000)
           }                                                             
         }
         
