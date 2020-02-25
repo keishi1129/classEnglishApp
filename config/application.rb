@@ -13,6 +13,7 @@ module ClassEnglishApp
     config.autoloader = :classic
     config.assets.paths << config.root.join("node_modules")
     config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

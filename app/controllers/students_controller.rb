@@ -8,6 +8,7 @@ class StudentsController < ApplicationController
   
   def mypage
     @student = current_student 
+    @chatrooms = @student.classroom.chatrooms.order(created_at: :desc)
   end
 
   def new
@@ -50,7 +51,7 @@ class StudentsController < ApplicationController
   end
 
   def set_student
-    @student = Student.find(params[:id])
+    @student = Student.find(params[:id]) || current_student
   end
 
   def set_classroom

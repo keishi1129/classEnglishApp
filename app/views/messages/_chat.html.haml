@@ -1,0 +1,22 @@
+.chat-main
+  .main-header
+    .main-header__left-box
+      %h2.main-header__left-box__current-group 
+        =@chatroom.name
+      -# %ul.main-header__left-box__member-list
+      -#   %p member :
+      -#   - @group.users.each do |user|
+      -#     %li.main-header__left-box__member-list__member 
+      -#       = user.name
+    -# .main-header__edit-btn
+    -#   =link_to "Edit", edit_group_path(@group.id)
+  .messages
+    = render partial: 'message', collection: @messages
+  .form
+    = form_with(model: [@chatroom, @message], id: "new_message", local: true) do |f|
+      .input-box
+        = f.text_field :content, class: 'input-box__message', placeholder: 'type a message'
+        = f.label :image, class: 'input-box__image' do
+          %i{class:"fas fa-image"}
+          = f.file_field :image, class: 'input-box__image__hidden'
+      = f.submit 'Send', class: 'submit'

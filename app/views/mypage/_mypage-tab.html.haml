@@ -20,7 +20,7 @@
         チャット
 
   .mypage-content.mypage-slick        
-    .mypage-item.active
+    .mypage-item
       =render partial: 'mypage/tab-content', locals: {title: 'Vocabulary', memo: "語彙力はリーディング、リスニング、スピーキング、グラマー全ての基盤です。", color: "red"}
       .maypage-button-wrapper
         %p あなたの得点は...
@@ -78,12 +78,28 @@
           =link_to '問題を解く', '#', class: "mt-4 btn btn-primary"
         =link_to '文法王ランキング', '#', class: "mt-4 btn btn-warning"
 
-    .mypage-item
+    .mypage-item.active
       =render partial: 'mypage/tab-content', locals: {title: 'Chatting', memo: "  英語は使って楽しく身につけよう！！", color: "purple"}
-      .search-form
-        %input{class: "search-form__input" , size: "20", placeholder: "トピックをランダム表示"} 
-        %button{type: "submit", class: "search-form__btn"}
+      .chatroom-form-select
+        %button.search-btn
           %i.fas.fa-search
+        %button.add-btn
+          %i.fa.fa-plus
+      .chatroom-form.chatroom-form--select
+        %input{class: "chatroom-form__input" , size: "20", placeholder: "トピックを検索"} 
+        %button{type: "submit", class: "chatroom-form__btn chatroom-form__btn--search"}
+          %i.fas.fa-search
+      .chatroom-form.chatroom-form--add
+        = form_with(model: Chatroom.new, class:"new_chatroom", local: true) do |f|
+          =f.text_field :name, class: "chatroom-form__input chatroom-name", size: "20", placeholder: "新しいトピックのタイトル"
+          %button{type: "submit", class: "chatroom-form__btn chatroom-form__btn--add"}
+            %i.fa.fa-plus
+      .chatroom-index-box
+        = render partial: 'mypage/chatroom', collection: @chatrooms
+
+      
+
+
 
             
       

@@ -1,0 +1,136 @@
+
+
+.chat-main{
+  width: 100%;;
+
+  .main-header{
+    border-bottom: 1px solid #eeeeee;
+    height: 100px;
+    padding: 0 40px;
+    background-color: darken(#F4FAFA, 10%);
+    &__left-box{
+      float: left;
+
+      &__current-group{
+        margin-top: 35px;
+        margin-bottom: 15px;
+        font-size: 20px;
+        color: black;
+      }
+      &__member-list{
+        display: flex;
+        font-size: 12px;
+        color: gray;
+
+
+        &__member{
+          margin: 0 5px;
+        }
+      }
+
+    }
+    &__edit-btn{
+      float: right;
+      border: 1px solid $sky;
+      padding: 0 20px;
+      height: 40px;
+      margin: 28px 0;
+    
+      
+      a{
+        line-height: 40px;
+        text-decoration: none;
+        color: $sky;
+      }
+    }
+  }
+
+  .messages{
+    background-color: lighten(gray, 68%);
+    height: calc(100vh - 190px);
+    padding: 46px 40px;
+    overflow: scroll;
+
+
+
+
+
+      .message{
+        margin-bottom: 40px;
+
+
+
+        &__upper-info{
+          display: flex;
+          margin-bottom: 10px;
+
+          &__user-name{
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+          }
+
+          &__date{
+            margin-left: 10px;
+            font-size: 12px;
+            color: lighten(black, 30%);
+          }
+        }
+
+        &__text{
+          font-size: 14px;
+          color: black;
+          
+        }
+
+
+
+      }
+  }
+
+  .form{
+    height: 90px;
+    padding: 20px 40px;
+    background-color: #eee;
+    
+    #new_message{
+      display: flex;
+
+      .input-box{
+        position: relative;
+        width: 100%;
+        &__message{
+          font-size: 16px;
+          color: black;
+          height: 50px;
+          width: 100%;
+          padding: 0 40px 0 20px;
+        }
+        &__image{
+            color: black;
+            font-size: 1.3rem;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+
+            &__hidden{
+              display: none;
+            }
+      
+          }      
+        }
+      
+      .submit{
+        background-color: $sky;
+        width: 100px;
+        height: 50px;
+        padding: 0 30px;
+        cursor: pointer;
+        margin-left: 15px;
+        color: white;
+  
+      }
+    }
+  }
+}

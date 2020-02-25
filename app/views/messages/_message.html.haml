@@ -1,0 +1,16 @@
+-# .message{"data-message-id": "#{message.id}"}
+-#   = react_component("Messages", { name: message.student.name, created_at: message.created_at.to_s, content: message.content })
+
+
+.message{"data-message-id": "#{message.id}"}
+  .message__upper-info
+    %p.message__upper-info__user-name 
+      = message.student.name
+    %p.message__upper-info__date
+      = message.created_at.to_s
+  - if message.content.present?
+    %p.message__text
+      = message.content
+  - if message.image.url.present?
+    = image_tag message.image.url, class: 'message__image' 
+  

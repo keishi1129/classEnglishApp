@@ -1,0 +1,11 @@
+.cm-container
+  .mypage-wrapper 
+    .right-content
+      = render 'chat'
+    .left-content
+      =render partial:  'mypage/user-info', locals: {user: current_student}
+      =render partial: 'mypage/latest-news'
+      =render 'mypage/side-bar'
+
+
+ 

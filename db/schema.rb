@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_094735) do
+ActiveRecord::Schema.define(version: 2020_02_24_034053) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 2020_02_15_094735) do
     t.index ["teacher_id"], name: "index_cardsets_on_teacher_id"
   end
 
+  create_table "chatrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.string "name"
+    t.bigint "classroom_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["classroom_id"], name: "index_chatrooms_on_classroom_id"
+    t.index ["name"], name: "index_chatrooms_on_name", unique: true
+  end
+
   create_table "classrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false
     t.string "classroom_code", null: false
@@ -85,6 +94,17 @@ ActiveRecord::Schema.define(version: 2020_02_15_094735) do
     t.index ["origin_id"], name: "index_duplicated_cardsets_on_origin_id"
     t.index ["student_id"], name: "index_duplicated_cardsets_on_student_id"
     t.index ["teacher_id"], name: "index_duplicated_cardsets_on_teacher_id"
+  end
+
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.string "content"
+    t.string "image"
+    t.bigint "chatroom_id"
+    t.bigint "student_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["student_id"], name: "index_messages_on_student_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -163,7 +183,10 @@ ActiveRecord::Schema.define(version: 2020_02_15_094735) do
   add_foreign_key "cardset_words", "cardsets"
   add_foreign_key "cardset_words", "words"
   add_foreign_key "cardsets", "classrooms"
+  add_foreign_key "chatrooms", "classrooms"
   add_foreign_key "classrooms", "teachers"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "students"
   add_foreign_key "posts", "students"
   add_foreign_key "posts", "teachers"
   add_foreign_key "students", "classrooms"

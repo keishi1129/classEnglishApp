@@ -260,9 +260,25 @@
 }
 
 
-.search-form { 
+.chatroom-form { 
   width: 100%;
   position: relative;
+
+  &-select {
+    margin: 10px;
+    button{
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: lighten($sky, 50%);
+    }
+  }
+
+  &--select{
+    display: none;
+  }
+  &--add{
+    display: none;
+  }
 
   &__input{
     width: 100%;
@@ -275,16 +291,35 @@
   }
 
   &__btn{
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    background-color: transparent;
+    border-style: none;
     position: absolute;
     height: 40px;
     width: 40px;
     right: 0;
     top: 0;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    background-color: transparent;
-    border-style: none;
   }
+
+
 }
 
+.chatroom-index{
+
+  &-item{
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding:0 10px;
+    background-color: #eee;
+    line-height: 50px;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+
+    a{
+      display: block;
+    }
+  }
+}
 

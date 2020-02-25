@@ -15,6 +15,8 @@ require("jquery/cardset_new")
 require("jquery/post") 
 require("jquery/modal") 
 require("jquery/slick") 
+require("jquery/message") 
+require("jquery/chatroom") 
 
 require.context('images', true, /\.(png|jpg|jpeg|svg)$/)
 
@@ -29,3 +31,7 @@ import 'slick-carousel/slick/slick-theme.scss/';
 
 require("trix")
 require("@rails/actiontext")
+// Support component names relative to this directory:
+// var componentRequireContext = require.context("components", true);
+// var ReactRailsUJS = require("react_ujs");
+// ReactRailsUJS.useContext(componentRequireContext);
