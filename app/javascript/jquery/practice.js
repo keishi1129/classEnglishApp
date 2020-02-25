@@ -134,7 +134,7 @@ $(document).on('turbolinks:load', function(){
       if ($.inArray(index - 1, required_ids) === - 1){ //前のカードの番目(index + 1)が表示されたいカード番号の配列に入っていないとき実行
         index -= 1
         word_find(index, direction);
-        setTimeout(auto_move, 50);
+        setTimeout(auto_move, 500);
       }else{
         index -= 1
         word_find(index, direction);
@@ -157,7 +157,7 @@ $(document).on('turbolinks:load', function(){
       if ($.inArray(index + 1, required_ids) === -1){ //次のカードの番目(index + 1)が表示されたいカード番号の配列に入っていないとき実行
         index += 1
         word_find(index, direction);
-        setTimeout(auto_move, 50);
+        setTimeout(auto_move, 100);
       }else{
         index += 1
         word_find(index, direction);
@@ -203,7 +203,7 @@ $(document).on('turbolinks:load', function(){
               if ($.inArray(index + 1, required_ids) === -1){ 
                 index += 1
                 word_find(index, direction);
-                setTimeout(auto_move, 50);
+                setTimeout(auto_move, 100);
               }else{
                 index += 1
                 word_find(index, direction);

@@ -74,11 +74,8 @@ class CardsetsController < ApplicationController
 
   def word_find
     index = params[:index].to_i - 1
-    if index < @cardset.words.length && index >= 0
-      @word = @cardset.words[index]
-    else
-      return false
-    end
+    return false if index > @cardset.words.length || index < 0
+    @word = @cardset.words[index]
     respond_to do |format| 
       format.json
     end
